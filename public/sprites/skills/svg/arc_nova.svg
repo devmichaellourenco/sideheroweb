@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="novaCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="35%" stop-color="#c4b5fd" stop-opacity="0.95"/>
+      <stop offset="70%" stop-color="#7c3aed" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#4c1d95" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="novaGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+  <g filter="url(#novaGlow)">
+    <circle cx="200" cy="200" r="120" fill="url(#novaCore)">
+      <animate attributeName="r" values="70;130;70" dur="0.55s" repeatCount="indefinite"/>
+    </circle>
+    <g stroke="#e9d5ff" stroke-width="3" opacity="0.85">
+      <line x1="200" y1="40" x2="200" y2="360">
+        <animate attributeName="opacity" values="0.4;1;0.4" dur="0.3s" repeatCount="indefinite"/>
+      </line>
+      <line x1="40" y1="200" x2="360" y2="200">
+        <animate attributeName="opacity" values="0.4;1;0.4" dur="0.3s" begin="0.05s" repeatCount="indefinite"/>
+      </line>
+      <line x1="85" y1="85" x2="315" y2="315">
+        <animate attributeName="opacity" values="0.3;0.9;0.3" dur="0.35s" begin="0.08s" repeatCount="indefinite"/>
+      </line>
+      <line x1="315" y1="85" x2="85" y2="315">
+        <animate attributeName="opacity" values="0.3;0.9;0.3" dur="0.35s" begin="0.12s" repeatCount="indefinite"/>
+      </line>
+    </g>
+  </g>
+  <animate attributeName="opacity" values="0;1;1;0" times="0;0.1;0.75;1" dur="0.65s" repeatCount="indefinite"/>
+</svg>

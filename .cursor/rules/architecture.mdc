@@ -1,0 +1,15 @@
+---
+description: Arquitetura DDD Side Hero — camadas e dependências
+alwaysApply: true
+---
+
+# Side Hero — Arquitetura
+
+- `domain/` não importa `application`, `infrastructure` nem `presentation`
+- `presentation/` consome apenas `application/dto` — nunca entidades de domínio
+- Novas ações = use case em `application/use-cases/` + case em `handleGameMessage.ts`
+- Runtime único: HTML5 itch.io (`dist/`) — sem extensão Chrome
+- Catálogos declarativos (`*Catalog.ts`) + serviços que validam
+- Estado imutável: `with*` em entidades, sem mutação in-place
+- Antes de feature nova: ler `specs/<feature>.spec.md` e skill em `.cursor/skills/`
+- Workflow do agente: ver `.cursor/rules/workflow.mdc`

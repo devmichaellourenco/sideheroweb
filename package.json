@@ -1,0 +1,20 @@
+{
+  "name": "side-hero",
+  "version": "0.8.7",
+  "private": true,
+  "description": "Side Hero — idle RPG HTML5 para itch.io",
+  "scripts": {
+    "build": "node scripts/generate-icons.mjs && node scripts/build.mjs",
+    "watch": "node scripts/build.mjs --watch",
+    "test": "vitest run",
+    "balance-lab": "node scripts/balance-lab.mjs",
+    "release": "node scripts/pack-release.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "happy-dom": "^20.10.6",
+    "sharp": "^0.35.2",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}

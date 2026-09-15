@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="holyBeam" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="45%" stop-color="#fde68a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="holyBeamGlow" x="-30%" y="-10%" width="160%" height="120%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+  <g filter="url(#holyBeamGlow)">
+    <rect x="178" y="30" width="44" height="420" rx="14" fill="url(#holyBeam)">
+      <animate attributeName="height" values="380;440;380" dur="0.35s" repeatCount="indefinite"/>
+    </rect>
+    <ellipse cx="200" cy="420" rx="55" ry="16" fill="#fbbf24" opacity="0.45">
+      <animate attributeName="rx" values="40;65;40" dur="0.4s" repeatCount="indefinite"/>
+    </ellipse>
+    <g fill="#ffffff">
+      <circle cx="200" cy="80" r="3">
+        <animate attributeName="cy" values="80;400" dur="0.4s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="1;0" dur="0.4s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+  <animate attributeName="opacity" values="0;1;1;0" times="0;0.06;0.8;1" dur="0.48s" repeatCount="indefinite"/>
+</svg>

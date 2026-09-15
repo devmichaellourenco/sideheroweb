@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-03T21:06:00.915Z",
+  "missions": {
+    "normal:custom:vig_lia_da_aldeia": {
+      "id": "normal:custom:vig_lia_da_aldeia",
+      "kind": "normal",
+      "mapId": "stendra",
+      "name": "Vigília da Aldeia",
+      "phaseTemplateId": "1-2",
+      "stars": 1,
+      "unlockAfterMissionIds": []
+    },
+    "normal:custom:trilha_de_cinzas": {
+      "id": "normal:custom:trilha_de_cinzas",
+      "kind": "normal",
+      "mapId": "stendra",
+      "name": "Trilha de Cinzas",
+      "phaseTemplateId": "1-6",
+      "stars": 2,
+      "unlockAfterMissionIds": [
+        "main:1-1"
+      ],
+      "rewards": {
+        "sceneId": "side:stendra_ash_trail"
+      }
+    },
+    "side:posto_avan_ado_stendra": {
+      "id": "side:posto_avan_ado_stendra",
+      "kind": "side",
+      "mapId": "stendra",
+      "name": "Posto avançado · Stendra",
+      "phaseTemplateId": "1-13",
+      "stars": 2,
+      "unlockAfterMissionIds": []
+    }
+  },
+  "deletedMissionIds": [
+    "side:stendra_village_watch",
+    "side:stendra_ash_trail",
+    "normal:1-13"
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-23T18:47:05.850Z",
+  "items": {
+    "copper_ring": {
+      "stats": {
+        "healthBonus": 10
+      }
+    },
+    "flawless_ruby_ring": {
+      "stats": {
+        "defenseBonus": 1,
+        "healthBonus": 5
+      }
+    },
+    "sapphire_ring": {
+      "stats": {
+        "attackBonus": 0,
+        "defenseBonus": 2,
+        "healthBonus": 15
+      }
+    },
+    "copper_bracelet": {
+      "stats": {
+        "attackBonus": 2,
+        "healthBonus": 5
+      }
+    },
+    "tin_brooch": {
+      "stats": {
+        "attackBonus": 3,
+        "healthBonus": 0
+      }
+    },
+    "obsidian_pendant": {
+      "stats": {
+        "healthBonus": 20
+      }
+    },
+    "bone_pendant": {
+      "stats": {
+        "attackBonus": 2,
+        "healthBonus": 10
+      }
+    },
+    "wood_talisman": {
+      "stats": {
+        "attackBonus": 0,
+        "healthBonus": 25
+      }
+    },
+    "wool_cloak": {
+      "stats": {
+        "defenseBonus": 2,
+        "healthBonus": 15
+      }
+    },
+    "iron_vest": {
+      "stats": {
+        "defenseBonus": 5,
+        "healthBonus": 10
+      }
+    },
+    "charred_cuirass": {
+      "stats": {
+        "defenseBonus": 5,
+        "healthBonus": 15
+      }
+    },
+    "rain_shield": {
+      "stats": {
+        "defenseBonus": 10,
+        "healthBonus": 5
+      }
+    },
+    "wooden_shield": {
+      "stats": {
+        "defenseBonus": 5,
+        "healthBonus": 5
+      }
+    },
+    "leather_jerkin": {
+      "stats": {
+        "defenseBonus": 5,
+        "healthBonus": 15
+      }
+    },
+    "cold_jerkin": {
+      "stats": {
+        "defenseBonus": 15,
+        "healthBonus": 5
+      }
+    },
+    "shadow_mantle": {
+      "stats": {
+        "defenseBonus": 3,
+        "healthBonus": 10
+      }
+    },
+    "iron_dagger": {
+      "requirements": {
+        "minLevel": 2
+      },
+      "stats": {
+        "attackBonus": 1
+      }
+    },
+    "venom_dagger": {
+      "requirements": {
+        "minLevel": 2
+      },
+      "stats": {
+        "attackBonus": 1
+      }
+    },
+    "rain_rod": {
+      "stats": {
+        "attackBonus": 1
+      }
+    },
+    "birch_staff": {
+      "stats": {
+        "attackBonus": 1
+      }
+    },
+    "scorched_sword": {
+      "stats": {
+        "attackBonus": 3
+      }
+    },
+    "galneon_recruit_sword": {
+      "stats": {
+        "attackBonus": 2
+      }
+    },
+    "worn_sword": {
+      "stats": {
+        "attackBonus": 2
+      }
+    },
+    "chill_blade": {
+      "stats": {
+        "attackBonus": 3
+      }
+    },
+    "field_axe": {
+      "stats": {
+        "attackBonus": 2,
+        "defenseBonus": 7
+      }
+    }
+  }
+}

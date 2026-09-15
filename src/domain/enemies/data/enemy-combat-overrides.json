@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-16T01:47:49.728Z",
+  "identities": {
+    "giant_rat": {
+      "attackPerLevel": 1,
+      "healthPerLevel": 2,
+      "levelUpAttackGain": 1,
+      "levelUpDefenseGain": 1,
+      "levelUpHealthGain": 1
+    }
+  },
+  "monsterSkills": {
+    "wild_bite": {
+      "basePower": 1,
+      "cooldownTurns": 5,
+      "initialCooldown": 3
+    }
+  }
+}

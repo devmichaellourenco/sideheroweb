@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-23T21:02:00.462Z",
+  "items": {
+    "wood_talisman": {
+      "basePrice": 1,
+      "lootPool": false
+    },
+    "iron_dagger": {
+      "requirements": {
+        "minLevel": 2
+      }
+    },
+    "venom_dagger": {
+      "requirements": {
+        "minLevel": 2
+      }
+    },
+    "field_axe": {
+      "basePrice": 1,
+      "lootPool": false
+    },
+    "wind_rod": {
+      "basePrice": 1,
+      "lootPool": false,
+      "requirements": {
+        "minLevel": 1,
+        "int": 0
+      }
+    },
+    "side_stendra_cache_charm": {
+      "basePrice": 1,
+      "unique": false,
+      "salvageBlocked": false,
+      "requirements": {
+        "minLevel": 1
+      }
+    },
+    "thunder_rod": {
+      "basePrice": 1,
+      "lootPool": false,
+      "requirements": {
+        "minLevel": 1,
+        "int": 0
+      }
+    }
+  }
+}

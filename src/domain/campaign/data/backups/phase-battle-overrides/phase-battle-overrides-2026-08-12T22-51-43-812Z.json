@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-12T22:51:08.588Z",
+  "overrides": {
+    "1-5": {
+      "displayName": "Alerta nas Fronteiras",
+      "statMultiplier": 1,
+      "waves": [
+        {
+          "id": "w1",
+          "goldMultiplier": 1,
+          "slots": [
+            {
+              "enemyType": "cave_bat",
+              "role": "trash",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "2-1": {
+      "displayName": "Chegada Calorosa",
+      "statMultiplier": 1,
+      "waves": [
+        {
+          "id": "w1",
+          "goldMultiplier": 1.2,
+          "slots": [
+            {
+              "enemyType": "goblin_raider",
+              "role": "boss",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

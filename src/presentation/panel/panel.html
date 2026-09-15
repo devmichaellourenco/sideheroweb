@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-ui-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Side Hero</title>
+    <link rel="stylesheet" href="panel.css" />
+  </head>
+  <body>
+    <div id="app" class="game-scroll">
+      <header class="header">
+        <div class="stats-bar">
+          <span id="gold-label" class="stat-pill">0</span>
+          <span id="chest-label" class="stat-pill">0</span>
+          <span id="chest-progress-label" class="stat-pill">0/3</span>
+          <button
+            id="open-wow-inbox-btn"
+            type="button"
+            class="stat-pill stat-pill--wow-inbox hidden"
+            title="Celebrações recentes"
+            aria-label="Celebrações recentes"
+            aria-expanded="false"
+          >
+            <span class="wow-inbox-btn-icon" aria-hidden="true">✦</span>
+            <span class="wow-inbox-btn-count"></span>
+          </button>
+        </div>
+        <button
+          id="support-btn"
+          type="button"
+          class="header-support-btn"
+          aria-label="Apoiar o Side Hero"
+          aria-haspopup="dialog"
+          aria-expanded="false"
+          aria-controls="donation-prompt-root"
+        >
+          Apoiar
+        </button>
+      </header>
+
+      <div id="wow-inbox-root" class="wow-inbox-root hidden" aria-hidden="true">
+        <div id="wow-inbox-panel" class="wow-inbox-panel" aria-label="Celebrações recentes"></div>
+      </div>
+
+      <section id="campaign-context-bar" class="campaign-context-bar" aria-label="Trilha da campanha">
+        <button
+          id="campaign-context-btn"
+          class="campaign-context-btn"
+          type="button"
+          data-campaign-tooltip
+          tabindex="0"
+          title="Abrir campanha"
+          aria-label="Abrir campanha"
+        ></button>
+      </section>
+
+      <div class="battle-stage">
+        <div
+          id="stage-progress-root"
+          class="stage-progress-root hidden"
+          aria-hidden="true"
+        ></div>
+        <div class="battle-field">
+          <section class="battle-strip" aria-label="Campo de batalha">
+            <div class="strip-bg" data-strip-bg>
+              <div class="strip-bg__sky" aria-hidden="true"></div>
+              <div class="strip-bg__center" aria-hidden="true"></div>
+              <div class="strip-bg__left" aria-hidden="true"></div>
+              <div class="strip-bg__right" aria-hidden="true"></div>
+            </div>
+            <div class="strip-floor"></div>
+          </section>
+          <div class="battle-hud-deck" aria-hidden="true"></div>
+          <div id="heroes-container" class="heroes-row"></div>
+          <div id="enemy-container" class="enemy-slot"></div>
+          <div id="battle-float-layer" class="battle-float-layer" aria-hidden="true"></div>
+          <div id="battle-victory-overlay" class="battle-victory-overlay hidden" aria-live="polite"></div>
+          <div
+            id="camp-campaign-map-root"
+            class="camp-campaign-map-root hidden"
+            aria-label="Mapa da campanha"
+          >
+            <div id="camp-campaign-map-body" class="camp-campaign-map-body"></div>
+          </div>
+          <div id="battle-pause-overlay" class="battle-pause-overlay hidden" aria-live="polite">
+            <span class="battle-pause-label">Acampamento</span>
+          </div>
+        </div>
+
+        <div class="battle-combat-bar">
+          <div class="combat-bar-row combat-bar-row--primary">
+            <div class="combat-bar-slot combat-bar-slot--left">
+              <button
+                id="pause-battle-btn"
+                class="combat-bar-btn combat-bar-btn--side hidden"
+                type="button"
+                aria-label="Pausar batalha"
+                title="Pausar a batalha sem voltar ao acampamento. Você pode ver as estatísticas e continuar de onde parou."
+              >
+                <span class="combat-bar-btn-icon" aria-hidden="true">⏸</span>
+                <span class="combat-bar-btn-label">Pausar</span>
+              </button>
+              <button
+                id="resume-battle-btn"
+                class="combat-bar-btn combat-bar-btn--side combat-bar-btn--continue hidden"
+                type="button"
+                aria-label="Continuar batalha"
+                title="Retomar a batalha de onde parou"
+              >
+                <span class="combat-bar-btn-icon" aria-hidden="true">▶</span>
+                <span class="combat-bar-btn-label">Continuar</span>
+              </button>
+            </div>
+            <div class="combat-bar-slot combat-bar-slot--right">
+              <button
+                id="pause-loadout-btn"
+                class="combat-bar-btn hidden"
+                type="button"
+                aria-label="Voltar ao acampamento"
+                title="Voltar ao acampamento para ajustar equipe e loadout"
+                hidden
+              >
+                <span class="combat-bar-btn-icon" aria-hidden="true">⛺</span>
+                <span class="combat-bar-btn-label">Acampamento</span>
+              </button>
+              <button
+                id="continue-loadout-btn"
+                class="combat-bar-btn combat-bar-btn--continue hidden"
+                type="button"
+                aria-label="Batalhar"
+                title="Sair do acampamento e reiniciar a fase do início"
+              >
+                <img
+                  class="combat-bar-btn-icon"
+                  src="assets/ui/attack.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="eager"
+                  decoding="async"
+                />
+                <span class="combat-bar-btn-label">Batalhar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="actions">
+        <div class="quick-action-bar" aria-label="Ações rápidas">
+          <button id="open-chest-btn" class="quick-action-btn quick-action-btn--chest" type="button" disabled data-menu-tooltip="chest" aria-label="Abrir baú">
+            <img class="btn-icon" src="assets/ui/chest.png" alt="" aria-hidden="true" loading="eager" decoding="async" />
+            <span class="quick-action-label">Abrir baú</span>
+          </button>
+          <button id="open-all-chests-btn" class="quick-action-btn quick-action-btn--chest-all hidden" type="button" data-menu-tooltip="chest-all" aria-label="Abrir todos os baús">
+            <img class="btn-icon" src="assets/ui/chest-open.png" alt="" aria-hidden="true" loading="eager" decoding="async" />
+            <span class="quick-action-label">Abrir todos</span>
+          </button>
+          <button id="optimize-loadout-btn" class="quick-action-btn quick-action-btn--optimize hidden" type="button" data-menu-tooltip="optimize" aria-label="Otimizar equipe">
+            <img class="btn-icon" src="assets/ui/attack.png" alt="" aria-hidden="true" loading="eager" decoding="async" />
+            <span class="quick-action-label">Otimizar equipe</span>
+          </button>
+        </div>
+        <div class="actions-icon-bar" aria-label="Sistemas do jogo">
+          <button id="open-heroes-btn" class="action-icon-btn action-icon-btn--menu action-icon-btn--heroes" type="button" data-menu-tooltip="heroes" aria-label="Heróis">
+            <img class="btn-icon" src="assets/ui/heroes.png" alt="" aria-hidden="true" loading="eager" decoding="async" />
+            <span class="action-icon-label">Heróis</span>
+          </button>
+          <button id="open-formation-btn" class="action-icon-btn action-icon-btn--menu action-icon-btn--formation" type="button" data-menu-tooltip="formation" aria-label="Formação">
+            <img class="btn-icon" src="assets/ui/defense.png" alt="" aria-hidden="true" loading="eager" decoding="async" />
+            <span class="action-icon-label">Formação</span>
+          </button>
+          <button id="open-battle-log-btn" class="action-icon-btn action-icon-btn--menu action-icon-btn--log" type="button" data-menu-tooltip="log" aria-label="Log de batalha" aria-expanded="false">
+            <span class="action-icon-glyph" aria-hidden="true">📜</span>
+            <span class="action-icon-label">Log</span>
+          </button>
+          <button id="open-battle-stats-btn" class="action-icon-btn action-icon-btn--menu action-icon-btn--stats hidden" type="button" data-menu-tooltip="stats" aria-label="Estatísticas de batalha" aria-expanded="false">
+            <span class="action-icon-glyph" aria-hidden="true">📊</span>
+            <span class="action-icon-label">Stats</span>
+          </button>
+          <button id="open-campaign-btn" class="action-icon-btn action-icon-btn--menu action-icon-btn--campaign" type="button" data-menu-tooltip="campaign" aria-label="Mapa">
+            <img class="btn-icon" src="assets/ui/campaign.png" alt="" aria-hidden="true" loading="eager" decoding="async" />
+            <span class="action-icon-label">Mapa</span>
+          </button>
+          <button id="open-shop-btn" class="action-icon-btn action-icon-btn--menu action-icon-btn--shop" type="button" data-menu-tooltip="shop" aria-label="Loja">
+            <img class="btn-icon" src="assets/ui/shop.png" alt="" aria-hidden="true" loading="eager" decoding="async" />
+            <span class="action-icon-label">Loja</span>
+          </button>
+          <button id="open-inventory-btn" class="action-icon-btn action-icon-btn--menu action-icon-btn--inventory" type="button" data-menu-tooltip="inventory" aria-label="Inventário">
+            <img class="btn-icon" src="assets/ui/inventory.png" alt="" aria-hidden="true" loading="eager" decoding="async" />
+            <span class="action-icon-label">Inventário</span>
+          </button>
+          <button id="open-stash-btn" class="action-icon-btn action-icon-btn--menu action-icon-btn--stash hidden" type="button" data-menu-tooltip="stash" aria-label="Baús">
+            <img class="btn-icon" src="assets/ui/chest-open.png" alt="" aria-hidden="true" loading="eager" decoding="async" />
+            <span class="action-icon-label">Baús</span>
+          </button>
+          <button id="open-forge-btn" class="action-icon-btn action-icon-btn--menu action-icon-btn--forge hidden" type="button" data-menu-tooltip="forge" aria-label="Forja Divina">
+            <img class="btn-icon" src="assets/ui/forge.png" alt="" aria-hidden="true" loading="eager" decoding="async" />
+            <span class="action-icon-label">Forja</span>
+          </button>
+          <button id="open-upgrades-btn" class="action-icon-btn action-icon-btn--menu action-icon-btn--upgrades" type="button" data-menu-tooltip="upgrades" aria-label="Runas do acampamento">
+            <img class="btn-icon" src="assets/ui/rune.png" alt="" aria-hidden="true" loading="eager" decoding="async" />
+            <span class="action-icon-label">Runas</span>
+          </button>
+          <button id="open-achievements-btn" class="action-icon-btn action-icon-btn--menu action-icon-btn--achievements" type="button" data-menu-tooltip="achievements" aria-label="Achievements">
+            <img class="btn-icon" src="assets/ui/book-open.png" alt="" aria-hidden="true" loading="eager" decoding="async" />
+            <span class="action-icon-label">Achievements</span>
+          </button>
+          <button id="open-settings-btn" class="action-icon-btn action-icon-btn--menu action-icon-btn--settings" type="button" data-menu-tooltip="settings" aria-label="Configurações">
+            <span class="action-icon-glyph" aria-hidden="true">⚙</span>
+            <span class="action-icon-label">Config</span>
+          </button>
+        </div>
+      </footer>
+    </div>
+
+    <div id="wow-celebration-root" class="wow-celebration-root hidden" aria-hidden="true">
+      <div class="wow-celebration-backdrop" data-wow-celebration-close></div>
+      <div
+        id="wow-celebration-stage"
+        class="wow-celebration-stage"
+        role="dialog"
+        aria-modal="true"
+        aria-live="assertive"
+        aria-label="Celebração"
+      ></div>
+    </div>
+
+    <div id="act-scene-root" class="act-scene-root hidden" aria-hidden="true">
+      <div id="act-scene-backdrop" class="act-scene-backdrop" data-act-scene-dismiss></div>
+      <div
+        id="act-scene-stage"
+        class="act-scene-stage"
+        role="dialog"
+        aria-modal="true"
+        aria-live="polite"
+        aria-label="Cena da campanha"
+      ></div>
+    </div>
+
+    <div id="battle-log-overlay" class="battle-log-overlay hidden" aria-hidden="true">
+      <div class="battle-log-backdrop" data-battle-log-close></div>
+      <section class="battle-log-floating" aria-label="Log de batalha">
+        <div class="battle-log-header systems-sheet-header">
+          <div class="systems-sheet-toolbar">
+            <div class="systems-menu-icons" data-systems-menu-icons></div>
+            <button type="button" class="sheet-dismiss-btn" id="battle-log-close" data-nav-arrow="down" aria-label="Fechar log"></button>
+          </div>
+          <div class="sheet-title-row">
+            <h2>Log de Batalha</h2>
+          </div>
+        </div>
+        <ul id="battle-log" class="battle-log-list game-scroll"></ul>
+      </section>
+    </div>
+
+    <div id="battle-stats-overlay" class="battle-log-overlay battle-stats-overlay hidden" aria-hidden="true">
+      <div class="battle-log-backdrop" data-battle-stats-close></div>
+      <section class="battle-log-floating battle-stats-floating" aria-label="Estatísticas de batalha">
+        <div class="battle-log-header systems-sheet-header">
+          <div class="systems-sheet-toolbar">
+            <div class="systems-menu-icons" data-systems-menu-icons></div>
+            <button type="button" class="sheet-dismiss-btn" id="battle-stats-close" data-nav-arrow="down" aria-label="Fechar estatísticas"></button>
+          </div>
+          <div class="sheet-title-row">
+            <h2>Estatísticas</h2>
+          </div>
+        </div>
+        <div id="battle-stats-body" class="battle-stats-body game-scroll"></div>
+      </section>
+    </div>
+
+    <div id="hero-drawer-root" class="hero-drawer-root hidden" aria-hidden="true">
+      <div class="hero-drawer-backdrop" data-drawer-close></div>
+      <aside class="hero-drawer-panel" role="dialog" aria-modal="true" aria-labelledby="hero-drawer-title">
+        <header class="hero-drawer-header">
+          <div class="systems-sheet-toolbar">
+            <div class="systems-menu-icons" data-systems-menu-icons></div>
+            <button type="button" class="sheet-dismiss-btn" data-drawer-close data-nav-arrow="down" aria-label="Fechar"></button>
+          </div>
+          <div class="hero-drawer-title-row">
+            <button type="button" class="hero-drawer-nav" data-hero-drawer-prev data-nav-arrow="prev" aria-label="Herói anterior"></button>
+            <h2 id="hero-drawer-title" class="hero-drawer-title"></h2>
+            <button type="button" class="hero-drawer-nav" data-hero-drawer-next data-nav-arrow="next" aria-label="Próximo herói"></button>
+          </div>
+        </header>
+        <div id="hero-drawer-body" class="hero-drawer-body game-scroll"></div>
+      </aside>
+    </div>
+
+    <div id="modal-root" class="modal-root hidden" aria-hidden="true">
+      <div class="modal-backdrop" data-modal-close></div>
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <header class="modal-header">
+          <div class="systems-sheet-toolbar">
+            <button type="button" class="modal-back hidden" data-modal-back data-nav-arrow="prev" aria-label="Voltar"></button>
+            <div class="systems-menu-icons" data-systems-menu-icons></div>
+            <button type="button" class="sheet-dismiss-btn" data-modal-close data-nav-arrow="down" aria-label="Fechar"></button>
+          </div>
+          <div id="modal-title" class="modal-title" role="heading" aria-level="2">
+            <div class="sheet-title-row">
+              <div id="modal-title-main" class="modal-title-main"></div>
+            </div>
+          </div>
+        </header>
+        <div id="modal-body" class="modal-body game-scroll"></div>
+      </div>
+    </div>
+
+    <div id="destroy-gear-confirm-root" class="confirm-dialog-root hidden" aria-hidden="true">
+      <div class="confirm-dialog-backdrop" data-destroy-confirm-cancel></div>
+      <div
+        class="confirm-dialog destroy-gear-confirm-dialog"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="destroy-confirm-title"
+        aria-describedby="destroy-confirm-body"
+      >
+        <header class="confirm-dialog-header">
+          <h2 id="destroy-confirm-title" class="confirm-dialog-title">Destruir item</h2>
+        </header>
+        <div id="destroy-confirm-body" class="confirm-dialog-body"></div>
+        <footer class="confirm-dialog-actions">
+          <button type="button" class="gear-unequip-btn" data-destroy-confirm-cancel>Cancelar</button>
+          <button type="button" class="confirm-dialog-btn confirm-dialog-btn--danger gear-destroy-btn" data-destroy-confirm-accept>Destruir</button>
+        </footer>
+      </div>
+    </div>
+
+    <div id="forge-confirm-root" class="confirm-dialog-root hidden" aria-hidden="true">
+      <div class="confirm-dialog-backdrop" data-forge-confirm-cancel></div>
+      <div
+        class="confirm-dialog forge-confirm-dialog"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="forge-confirm-title"
+        aria-describedby="forge-confirm-body"
+      >
+        <header class="confirm-dialog-header forge-confirm-dialog__header">
+          <span class="forge-confirm-dialog__eyebrow">Forja Divina</span>
+          <h2 id="forge-confirm-title" class="confirm-dialog-title forge-confirm-dialog__title"></h2>
+        </header>
+        <div id="forge-confirm-body" class="confirm-dialog-body forge-confirm-dialog__body"></div>
+        <footer class="confirm-dialog-actions forge-confirm-dialog__actions">
+          <button type="button" class="forge-game-btn forge-game-btn--ghost" data-forge-confirm-cancel>Cancelar</button>
+          <button type="button" class="forge-game-btn forge-game-btn--fuse forge-confirm-accept" data-forge-confirm-accept>Confirmar</button>
+        </footer>
+      </div>
+    </div>
+
+    <div id="ascend-confirm-root" class="confirm-dialog-root hidden" aria-hidden="true">
+      <div class="confirm-dialog-backdrop" data-ascend-confirm-cancel></div>
+      <div
+        class="confirm-dialog ascend-confirm-dialog"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="ascend-confirm-title"
+        aria-describedby="ascend-confirm-body"
+      >
+        <header class="confirm-dialog-header ascend-confirm-dialog__header">
+          <span class="ascend-confirm-dialog__eyebrow">Ascensão</span>
+          <h2 id="ascend-confirm-title" class="confirm-dialog-title ascend-confirm-dialog__title"></h2>
+        </header>
+        <div id="ascend-confirm-body" class="confirm-dialog-body ascend-confirm-dialog__body"></div>
+        <footer class="confirm-dialog-actions ascend-confirm-dialog__actions">
+          <button type="button" class="gear-unequip-btn" data-ascend-confirm-cancel>Cancelar</button>
+          <button type="button" class="gear-equip-btn" data-ascend-confirm-accept>Confirmar</button>
+        </footer>
+      </div>
+    </div>
+
+    <div id="improvement-reset-confirm-root" class="confirm-dialog-root hidden" aria-hidden="true">
+      <div class="confirm-dialog-backdrop" data-improvement-reset-confirm-cancel></div>
+      <div
+        class="confirm-dialog"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="improvement-reset-confirm-title"
+        aria-describedby="improvement-reset-confirm-body"
+      >
+        <header class="confirm-dialog-header">
+          <h2 id="improvement-reset-confirm-title" class="confirm-dialog-title"></h2>
+        </header>
+        <div id="improvement-reset-confirm-body" class="confirm-dialog-body"></div>
+        <footer class="confirm-dialog-actions">
+          <button type="button" class="gear-unequip-btn" data-improvement-reset-confirm-cancel>Cancelar</button>
+          <button type="button" class="gear-equip-btn" data-improvement-reset-confirm-accept>Resetar</button>
+        </footer>
+      </div>
+    </div>
+
+    <div id="import-save-confirm-root" class="confirm-dialog-root hidden" aria-hidden="true">
+      <div class="confirm-dialog-backdrop" data-import-save-confirm-cancel></div>
+      <div
+        class="confirm-dialog"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="import-save-confirm-title"
+        aria-describedby="import-save-confirm-body"
+      >
+        <header class="confirm-dialog-header">
+          <h2 id="import-save-confirm-title" class="confirm-dialog-title">Importar save</h2>
+        </header>
+        <div id="import-save-confirm-body" class="confirm-dialog-body"></div>
+        <footer class="confirm-dialog-actions">
+          <button type="button" class="gear-unequip-btn" data-import-save-confirm-cancel>Cancelar</button>
+          <button type="button" class="gear-equip-btn" data-import-save-confirm-accept>Escolher arquivo</button>
+        </footer>
+      </div>
+    </div>
+
+    <div id="toast-root" class="toast-root" aria-live="polite" aria-atomic="true"></div>
+
+    <div id="donation-prompt-root" class="confirm-dialog-root donation-prompt-root hidden" aria-hidden="true">
+      <div class="confirm-dialog-backdrop" data-donation-dismiss></div>
+      <div
+        class="confirm-dialog donation-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="donation-card-title"
+        aria-describedby="donation-card-body"
+      >
+        <header class="confirm-dialog-header donation-card__header">
+          <span class="donation-card__eyebrow">Apoio voluntário</span>
+          <h2 id="donation-card-title" class="confirm-dialog-title donation-card__title">Apoie o Side Hero</h2>
+        </header>
+        <div id="donation-card-body" class="confirm-dialog-body donation-card__body"></div>
+        <footer class="confirm-dialog-actions donation-card__actions">
+          <button type="button" class="donation-card__ghost" data-donation-dismiss>Agora não</button>
+        </footer>
+      </div>
+    </div>
+
+    <div
+      id="splash-screen-root"
+      class="splash-screen-root"
+      role="presentation"
+      aria-hidden="false"
+    >
+      <img
+        id="splash-screen-image"
+        class="splash-screen-image"
+        alt=""
+        decoding="async"
+      />
+    </div>
+
+    <script type="module" src="panel.js"></script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" style="background: transparent; width: 100%; height: 100%;">
+  <defs>
+    <filter id="slashGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#slashGlow)">
+    
+    <g fill="#df73ff">
+      <path d="M 220,130 C 270,220 370,280 500,280 C 440,250 340,210 260,140 Z" />
+      <path d="M 460,200 Q 520,210 560,195 Q 500,215 450,205 Z" />
+      <path d="M 510,230 Q 560,235 610,215 Q 550,240 500,235 Z" />
+      <path d="M 530,250 Q 580,255 640,230 Q 570,260 520,252 Z" />
+      <path d="M 245,115 Q 252,100 248,118 Z" />
+      
+      <animateTransform attributeName="transform" type="translate"
+                        values="0,0; -3,2; 2,-1; 0,0" dur="0.2s" repeatCount="indefinite" />
+    </g>
+
+    <path d="M 190,140 C 210,250 340,340 580,310 C 660,300 710,250 720,220 C 650,280 550,300 430,280 C 290,255 210,180 195,150 Z" fill="#00f3ff">
+      <animate attributeName="opacity" values="0.9; 1; 0.9" dur="0.15s" repeatCount="indefinite" />
+    </path>
+
+    <path d="M 180,160 C 185,270 310,360 590,325 C 675,315 725,260 735,230 C 730,245 670,305 580,312 C 320,340 200,260 188,175 Z" fill="#ffffff">
+      <animate attributeName="opacity" values="1; 0.8; 1" dur="0.1s" repeatCount="indefinite" />
+    </path>
+
+  </g>
+
+  <animate attributeName="opacity" values="0; 1; 1; 0" times="0; 0.1; 0.8; 1" dur="0.5s" repeatCount="indefinite" />
+</svg>

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-16T00:43:00.384Z",
+  "upgrades": {
+    "battle_stats_1": {
+      "cost": 20
+    }
+  }
+}

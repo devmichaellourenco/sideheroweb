@@ -1,0 +1,2798 @@
+[
+  {
+    "id": "worn_sword",
+    "name": "Espada Gastada (common)",
+    "slot": "weapon",
+    "rarity": "common",
+    "attackBonus": 2,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 1,
+      "str": 0
+    },
+    "spriteId": "worn_sword",
+    "sprite": "gear/items/worn_sword.png",
+    "basePrice": 6
+  },
+  {
+    "id": "recruit_blade",
+    "name": "Lâmina do Recruta (uncommon)",
+    "slot": "weapon",
+    "rarity": "uncommon",
+    "attackBonus": 10,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 3,
+      "str": 0
+    },
+    "spriteId": "recruit_blade",
+    "sprite": "gear/items/recruit_blade.png",
+    "basePrice": 21
+  },
+  {
+    "id": "patrol_sword",
+    "name": "Espada do Patrulheiro (rare)",
+    "slot": "weapon",
+    "rarity": "rare",
+    "attackBonus": 24,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 6,
+      "str": 3
+    },
+    "spriteId": "patrol_sword",
+    "sprite": "gear/items/patrol_sword.png",
+    "basePrice": 60
+  },
+  {
+    "id": "valiant_blade",
+    "name": "Lâmina dos Valentes (epic)",
+    "slot": "weapon",
+    "rarity": "epic",
+    "attackBonus": 58,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 8,
+    "physicalDamagePercentBonus": 4,
+    "requirements": {
+      "minLevel": 10,
+      "str": 6
+    },
+    "spriteId": "valiant_blade",
+    "sprite": "gear/items/valiant_blade.png",
+    "basePrice": 278
+  },
+  {
+    "id": "champion_sword",
+    "name": "Espada do Campeão de Guerra (legendary)",
+    "slot": "weapon",
+    "rarity": "legendary",
+    "attackBonus": 100,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 10,
+    "physicalDamagePercentBonus": 5,
+    "critChanceBonus": 0.026000000000000002,
+    "requirements": {
+      "minLevel": 15,
+      "str": 10
+    },
+    "spriteId": "champion_sword",
+    "sprite": "gear/items/champion_sword.png",
+    "basePrice": 603
+  },
+  {
+    "id": "legion_fulgor",
+    "name": "Fulgor da Última Legião (mythic)",
+    "slot": "weapon",
+    "rarity": "mythic",
+    "attackBonus": 156,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 12,
+    "physicalDamagePercentBonus": 6,
+    "critChanceBonus": 0.03,
+    "requirements": {
+      "minLevel": 22,
+      "str": 15
+    },
+    "spriteId": "legion_fulgor",
+    "sprite": "gear/items/legion_fulgor.png",
+    "basePrice": 996
+  },
+  {
+    "id": "field_axe",
+    "name": "Machado de Campo (common)",
+    "slot": "weapon",
+    "rarity": "common",
+    "attackBonus": 1,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 1,
+      "str": 0
+    },
+    "spriteId": "field_axe",
+    "sprite": "gear/items/machado_de_campo.png",
+    "basePrice": 6
+  },
+  {
+    "id": "lumber_axe",
+    "name": "Machado do Lenhador (uncommon)",
+    "slot": "weapon",
+    "rarity": "uncommon",
+    "attackBonus": 9,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 3,
+      "str": 0
+    },
+    "spriteId": "lumber_axe",
+    "sprite": "gear/items/lumber_axe.png",
+    "basePrice": 21
+  },
+  {
+    "id": "scout_axe",
+    "name": "Machado do Batedor (rare)",
+    "slot": "weapon",
+    "rarity": "rare",
+    "attackBonus": 19,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 6,
+      "str": 3
+    },
+    "spriteId": "scout_axe",
+    "sprite": "gear/items/scout_axe.png",
+    "basePrice": 60
+  },
+  {
+    "id": "headsman_axe",
+    "name": "Machado do Carrasco (epic)",
+    "slot": "weapon",
+    "rarity": "epic",
+    "attackBonus": 51,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 8,
+    "physicalDamagePercentBonus": 4,
+    "requirements": {
+      "minLevel": 10,
+      "str": 6
+    },
+    "spriteId": "headsman_axe",
+    "sprite": "gear/items/headsman_axe.png",
+    "basePrice": 278
+  },
+  {
+    "id": "lost_king_axe",
+    "name": "Machado do Rei Perdido (legendary)",
+    "slot": "weapon",
+    "rarity": "legendary",
+    "attackBonus": 89,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 10,
+    "physicalDamagePercentBonus": 5,
+    "critChanceBonus": 0.026000000000000002,
+    "requirements": {
+      "minLevel": 15,
+      "str": 10
+    },
+    "spriteId": "lost_king_axe",
+    "sprite": "gear/items/lost_king_axe.png",
+    "basePrice": 603
+  },
+  {
+    "id": "fallen_titan_axe",
+    "name": "Machado do Titã Caído (mythic)",
+    "slot": "weapon",
+    "rarity": "mythic",
+    "attackBonus": 186,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 12,
+    "physicalDamagePercentBonus": 6,
+    "critChanceBonus": 0.03,
+    "requirements": {
+      "minLevel": 22,
+      "str": 15
+    },
+    "spriteId": "fallen_titan_axe",
+    "sprite": "gear/items/fallen_titan_axe.png",
+    "basePrice": 996
+  },
+  {
+    "id": "birch_staff",
+    "name": "Cajado de Bétula (common)",
+    "slot": "weapon",
+    "rarity": "common",
+    "attackBonus": 1,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "castSpeedBonus": 0.03,
+    "coldDamageFlat": 1,
+    "allElementalDamageBonus": 2,
+    "requirements": {
+      "minLevel": 1
+    },
+    "spriteId": "birch_staff",
+    "sprite": "gear/items/birch_staff.png",
+    "basePrice": 6
+  },
+  {
+    "id": "apprentice_staff",
+    "name": "Cajado do Aprendiz (uncommon)",
+    "slot": "weapon",
+    "rarity": "uncommon",
+    "attackBonus": 15,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "castSpeedBonus": 0.05,
+    "fireDamageBonus": 4,
+    "fireDamageFlat": 1,
+    "requirements": {
+      "minLevel": 3,
+      "int": 1
+    },
+    "spriteId": "apprentice_staff",
+    "sprite": "gear/items/apprentice_staff.png",
+    "basePrice": 21
+  },
+  {
+    "id": "arcanist_staff",
+    "name": "Cajado do Arcanista (rare)",
+    "slot": "weapon",
+    "rarity": "rare",
+    "attackBonus": 16,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "castSpeedBonus": 0.09,
+    "allElementalDamageBonus": 10,
+    "requirements": {
+      "minLevel": 6,
+      "int": 3
+    },
+    "spriteId": "arcanist_staff",
+    "sprite": "gear/items/arcanist_staff.png",
+    "basePrice": 60
+  },
+  {
+    "id": "watchtower_staff",
+    "name": "Cajado da Torre Vigilante (epic)",
+    "slot": "weapon",
+    "rarity": "epic",
+    "attackBonus": 57,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "castSpeedBonus": 0.06,
+    "allElementalDamageBonus": 8,
+    "allElementalResistBonus": 4,
+    "cooldownReductionBonus": 3,
+    "requirements": {
+      "minLevel": 10,
+      "int": 5
+    },
+    "spriteId": "watchtower_staff",
+    "sprite": "gear/items/watchtower_staff.png",
+    "basePrice": 278
+  },
+  {
+    "id": "oracle_staff",
+    "name": "Cajado do Oráculo (legendary)",
+    "slot": "weapon",
+    "rarity": "legendary",
+    "attackBonus": 86,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "castSpeedBonus": 0.08,
+    "allElementalDamageBonus": 10,
+    "cooldownReductionBonus": 8,
+    "healthPercentBonus": 6,
+    "requirements": {
+      "minLevel": 15,
+      "int": 8
+    },
+    "spriteId": "oracle_staff",
+    "sprite": "gear/items/oracle_staff.png",
+    "basePrice": 603
+  },
+  {
+    "id": "archmage_staff",
+    "name": "Archicajado dos Astros (mythic)",
+    "slot": "weapon",
+    "rarity": "mythic",
+    "attackBonus": 213,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "castSpeedBonus": 0.18,
+    "allElementalDamageBonus": 24,
+    "critChanceBonus": 0.04,
+    "fireResistPenetrationBonus": 6,
+    "requirements": {
+      "minLevel": 22,
+      "int": 16
+    },
+    "spriteId": "archmage_staff",
+    "sprite": "gear/items/archmage_staff.png",
+    "basePrice": 996
+  },
+  {
+    "id": "iron_dagger",
+    "name": "Adaga de Ferro (common)",
+    "slot": "weapon",
+    "rarity": "common",
+    "attackBonus": 1,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 1,
+      "str": 0
+    },
+    "spriteId": "iron_dagger",
+    "sprite": "gear/items/iron_dagger.png",
+    "basePrice": 6
+  },
+  {
+    "id": "scout_dagger",
+    "name": "Adaga do Batedor (uncommon)",
+    "slot": "weapon",
+    "rarity": "uncommon",
+    "attackBonus": 14,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 3,
+      "str": 0
+    },
+    "spriteId": "scout_dagger",
+    "sprite": "gear/items/scout_dagger.png",
+    "basePrice": 21
+  },
+  {
+    "id": "assassin_dagger",
+    "name": "Adaga do Assassino (rare)",
+    "slot": "weapon",
+    "rarity": "rare",
+    "attackBonus": 26,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 6,
+      "str": 3
+    },
+    "spriteId": "assassin_dagger",
+    "sprite": "gear/items/assassin_dagger.png",
+    "basePrice": 60
+  },
+  {
+    "id": "shadow_dagger",
+    "name": "Adaga da Sombra Fiel (epic)",
+    "slot": "weapon",
+    "rarity": "epic",
+    "attackBonus": 38,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 8,
+    "physicalDamagePercentBonus": 4,
+    "requirements": {
+      "minLevel": 10,
+      "str": 6
+    },
+    "spriteId": "shadow_dagger",
+    "sprite": "gear/items/shadow_dagger.png",
+    "basePrice": 278
+  },
+  {
+    "id": "thief_king_dagger",
+    "name": "Adaga do Rei dos Ladrões (legendary)",
+    "slot": "weapon",
+    "rarity": "legendary",
+    "attackBonus": 74,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 10,
+    "physicalDamagePercentBonus": 5,
+    "critChanceBonus": 0.026000000000000002,
+    "requirements": {
+      "minLevel": 15,
+      "str": 10
+    },
+    "spriteId": "thief_king_dagger",
+    "sprite": "gear/items/thief_king_dagger.png",
+    "basePrice": 603
+  },
+  {
+    "id": "veil_dagger",
+    "name": "Lâmina do Véu Eterno (mythic)",
+    "slot": "weapon",
+    "rarity": "mythic",
+    "attackBonus": 216,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 12,
+    "physicalDamagePercentBonus": 6,
+    "critChanceBonus": 0.03,
+    "requirements": {
+      "minLevel": 22,
+      "str": 15
+    },
+    "spriteId": "veil_dagger",
+    "sprite": "gear/items/veil_dagger.png",
+    "basePrice": 996
+  },
+  {
+    "id": "scorched_sword",
+    "name": "Espada Calcinada (common)",
+    "slot": "weapon",
+    "rarity": "common",
+    "attackBonus": 1,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 1,
+      "str": 0
+    },
+    "spriteId": "scorched_sword",
+    "sprite": "gear/items/espada_calcinada.png",
+    "basePrice": 6
+  },
+  {
+    "id": "ember_blade",
+    "name": "Lâmina das Brasas (uncommon)",
+    "slot": "weapon",
+    "rarity": "uncommon",
+    "attackBonus": 9,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 3,
+      "str": 0
+    },
+    "spriteId": "ember_blade",
+    "sprite": "gear/items/ember_blade.png",
+    "basePrice": 21
+  },
+  {
+    "id": "igneous_sword",
+    "name": "Espada Ígnea (rare)",
+    "slot": "weapon",
+    "rarity": "rare",
+    "attackBonus": 26,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "fireDamageBonus": 6,
+    "fireDamageFlat": 2,
+    "requirements": {
+      "minLevel": 6,
+      "str": 3
+    },
+    "spriteId": "igneous_sword",
+    "sprite": "gear/items/igneous_sword.png",
+    "basePrice": 60
+  },
+  {
+    "id": "dragonet_brand",
+    "name": "Brandura do Dragão Menor (epic)",
+    "slot": "weapon",
+    "rarity": "epic",
+    "attackBonus": 57,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 8,
+    "physicalDamagePercentBonus": 4,
+    "fireDamageBonus": 10,
+    "fireDamageFlat": 4,
+    "requirements": {
+      "minLevel": 10,
+      "str": 6
+    },
+    "spriteId": "dragonet_brand",
+    "sprite": "gear/items/dragonet_brand.png",
+    "basePrice": 278
+  },
+  {
+    "id": "eternal_pyre_sword",
+    "name": "Espada da Pira Eterna (legendary)",
+    "slot": "weapon",
+    "rarity": "legendary",
+    "attackBonus": 61,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 10,
+    "physicalDamagePercentBonus": 5,
+    "critChanceBonus": 0.026000000000000002,
+    "fireDamageBonus": 14,
+    "fireDamageFlat": 6,
+    "requirements": {
+      "minLevel": 15,
+      "str": 10
+    },
+    "spriteId": "eternal_pyre_sword",
+    "sprite": "gear/items/eternal_pyre_sword.png",
+    "basePrice": 603
+  },
+  {
+    "id": "ignivar_fulgor",
+    "name": "Fulgor de Ignivar (mythic)",
+    "slot": "weapon",
+    "rarity": "mythic",
+    "attackBonus": 235,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 12,
+    "physicalDamagePercentBonus": 6,
+    "critChanceBonus": 0.03,
+    "fireDamageBonus": 18,
+    "fireDamageFlat": 8,
+    "requirements": {
+      "minLevel": 22,
+      "str": 15
+    },
+    "spriteId": "ignivar_fulgor",
+    "sprite": "gear/items/ignivar_fulgor.png",
+    "basePrice": 996
+  },
+  {
+    "id": "chill_blade",
+    "name": "Lâmina Gélida (common)",
+    "slot": "weapon",
+    "rarity": "common",
+    "attackBonus": 1,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 1,
+      "str": 0
+    },
+    "spriteId": "chill_blade",
+    "sprite": "gear/items/chill_blade.png",
+    "basePrice": 6
+  },
+  {
+    "id": "frost_sword",
+    "name": "Espada da Geada (uncommon)",
+    "slot": "weapon",
+    "rarity": "uncommon",
+    "attackBonus": 15,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 3,
+      "str": 0
+    },
+    "spriteId": "frost_sword",
+    "sprite": "gear/items/frost_sword.png",
+    "basePrice": 21
+  },
+  {
+    "id": "winter_blade",
+    "name": "Lâmina do Inverno (rare)",
+    "slot": "weapon",
+    "rarity": "rare",
+    "attackBonus": 24,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "coldDamageBonus": 6,
+    "coldDamageFlat": 2,
+    "requirements": {
+      "minLevel": 6,
+      "str": 3
+    },
+    "spriteId": "winter_blade",
+    "sprite": "gear/items/winter_blade.png",
+    "basePrice": 60
+  },
+  {
+    "id": "north_cleave",
+    "name": "Gélido Corte do Norte (epic)",
+    "slot": "weapon",
+    "rarity": "epic",
+    "attackBonus": 56,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 8,
+    "physicalDamagePercentBonus": 4,
+    "coldDamageBonus": 10,
+    "coldDamageFlat": 4,
+    "requirements": {
+      "minLevel": 10,
+      "str": 6
+    },
+    "spriteId": "north_cleave",
+    "sprite": "gear/items/north_cleave.png",
+    "basePrice": 278
+  },
+  {
+    "id": "aurora_blade",
+    "name": "Espada da Aurora Boreal (legendary)",
+    "slot": "weapon",
+    "rarity": "legendary",
+    "attackBonus": 102,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 10,
+    "physicalDamagePercentBonus": 5,
+    "critChanceBonus": 0.026000000000000002,
+    "coldDamageBonus": 14,
+    "coldDamageFlat": 6,
+    "requirements": {
+      "minLevel": 15,
+      "str": 10
+    },
+    "spriteId": "aurora_blade",
+    "sprite": "gear/items/aurora_blade.png",
+    "basePrice": 603
+  },
+  {
+    "id": "glaciem_lament",
+    "name": "Lamento de Glaciem (mythic)",
+    "slot": "weapon",
+    "rarity": "mythic",
+    "attackBonus": 145,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 12,
+    "physicalDamagePercentBonus": 6,
+    "critChanceBonus": 0.03,
+    "coldDamageBonus": 18,
+    "coldDamageFlat": 8,
+    "requirements": {
+      "minLevel": 22,
+      "str": 15
+    },
+    "spriteId": "glaciem_lament",
+    "sprite": "gear/items/glaciem_lament.png",
+    "basePrice": 996
+  },
+  {
+    "id": "rain_rod",
+    "name": "Cajado da Chuva (common)",
+    "slot": "weapon",
+    "rarity": "common",
+    "attackBonus": 2,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "castSpeedBonus": 0.02,
+    "lightningDamageBonus": 2,
+    "coldDamageFlat": 1,
+    "requirements": {
+      "minLevel": 1
+    },
+    "spriteId": "rain_rod",
+    "sprite": "gear/items/rain_rod.png",
+    "basePrice": 6
+  },
+  {
+    "id": "wind_rod",
+    "name": "Vara do Vento (uncommon)",
+    "slot": "weapon",
+    "rarity": "uncommon",
+    "attackBonus": 9,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "castSpeedBonus": 0.11,
+    "lightningDamageBonus": 3,
+    "requirements": {
+      "minLevel": 3,
+      "int": 1
+    },
+    "spriteId": "wind_rod",
+    "sprite": "gear/items/vara_do_vento.png",
+    "basePrice": 21
+  },
+  {
+    "id": "thunder_rod",
+    "name": "Vara do Trovão (rare)",
+    "slot": "weapon",
+    "rarity": "rare",
+    "attackBonus": 22,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "castSpeedBonus": 0.05,
+    "lightningDamageBonus": 11,
+    "lightningDamageFlat": 3,
+    "requirements": {
+      "minLevel": 6,
+      "int": 4
+    },
+    "spriteId": "thunder_rod",
+    "sprite": "gear/items/thunder_rod.png",
+    "basePrice": 60
+  },
+  {
+    "id": "tempest_staff",
+    "name": "Bastão da Tempestade (epic)",
+    "slot": "weapon",
+    "rarity": "epic",
+    "attackBonus": 34,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 5,
+    "castSpeedBonus": 0.08,
+    "lightningDamageBonus": 14,
+    "lightningDamageFlat": 5,
+    "requirements": {
+      "minLevel": 10,
+      "int": 7
+    },
+    "spriteId": "tempest_staff",
+    "sprite": "gear/items/tempest_staff.png",
+    "basePrice": 278
+  },
+  {
+    "id": "wandering_orb",
+    "name": "Orbe do Trovão Errante (legendary)",
+    "slot": "weapon",
+    "rarity": "legendary",
+    "attackBonus": 112,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "castSpeedBonus": 0.14,
+    "critChanceBonus": 0.045,
+    "critDamageBonus": 0.12,
+    "lightningDamageBonus": 14,
+    "lightningDamageFlat": 4,
+    "requirements": {
+      "minLevel": 15,
+      "int": 12
+    },
+    "spriteId": "wandering_orb",
+    "sprite": "gear/items/wandering_orb.png",
+    "basePrice": 603
+  },
+  {
+    "id": "sky_king_staff",
+    "name": "Cajado do Rei do Céu (mythic)",
+    "slot": "weapon",
+    "rarity": "mythic",
+    "attackBonus": 223,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 8,
+    "castSpeedBonus": 0.12,
+    "lightningDamageBonus": 22,
+    "lightningDamageFlat": 10,
+    "critChanceBonus": 0.028,
+    "requirements": {
+      "minLevel": 22,
+      "int": 14
+    },
+    "spriteId": "sky_king_staff",
+    "sprite": "gear/items/sky_king_staff.png",
+    "basePrice": 996
+  },
+  {
+    "id": "venom_dagger",
+    "name": "Adaga Envenenada (common)",
+    "slot": "weapon",
+    "rarity": "common",
+    "attackBonus": 2,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 1,
+      "str": 0
+    },
+    "spriteId": "venom_dagger",
+    "sprite": "gear/items/adaga_envenenada.png",
+    "basePrice": 6
+  },
+  {
+    "id": "viper_fang",
+    "name": "Presa de Víbora (uncommon)",
+    "slot": "weapon",
+    "rarity": "uncommon",
+    "attackBonus": 12,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 3,
+      "str": 0
+    },
+    "spriteId": "viper_fang",
+    "sprite": "gear/items/presa_de_vibora.png",
+    "basePrice": 21
+  },
+  {
+    "id": "toxic_fang",
+    "name": "Presa Venenosa (rare)",
+    "slot": "weapon",
+    "rarity": "rare",
+    "attackBonus": 30,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "airDamageBonus": 6,
+    "airDamageFlat": 2,
+    "requirements": {
+      "minLevel": 6,
+      "str": 3
+    },
+    "spriteId": "toxic_fang",
+    "sprite": "gear/items/toxic_fang.png",
+    "basePrice": 60
+  },
+  {
+    "id": "black_bile_blade",
+    "name": "Lâmina do Bile Negro (epic)",
+    "slot": "weapon",
+    "rarity": "epic",
+    "attackBonus": 52,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 8,
+    "physicalDamagePercentBonus": 4,
+    "airDamageBonus": 10,
+    "airDamageFlat": 4,
+    "requirements": {
+      "minLevel": 10,
+      "str": 6
+    },
+    "spriteId": "black_bile_blade",
+    "sprite": "gear/items/black_bile_blade.png",
+    "basePrice": 278
+  },
+  {
+    "id": "ancient_serpent_fang",
+    "name": "Presa da Serpente Anciã (legendary)",
+    "slot": "weapon",
+    "rarity": "legendary",
+    "attackBonus": 92,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 10,
+    "physicalDamagePercentBonus": 5,
+    "critChanceBonus": 0.026000000000000002,
+    "airDamageBonus": 14,
+    "airDamageFlat": 6,
+    "requirements": {
+      "minLevel": 15,
+      "str": 10
+    },
+    "spriteId": "ancient_serpent_fang",
+    "sprite": "gear/items/ancient_serpent_fang.png",
+    "basePrice": 603
+  },
+  {
+    "id": "devourer_tooth",
+    "name": "Dente do Devorador (mythic)",
+    "slot": "weapon",
+    "rarity": "mythic",
+    "attackBonus": 201,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 12,
+    "physicalDamagePercentBonus": 6,
+    "critChanceBonus": 0.03,
+    "airDamageBonus": 18,
+    "airDamageFlat": 8,
+    "requirements": {
+      "minLevel": 22,
+      "str": 15
+    },
+    "spriteId": "devourer_tooth",
+    "sprite": "gear/items/devourer_tooth.png",
+    "basePrice": 996
+  },
+  {
+    "id": "wooden_shield",
+    "name": "Escudo de Madeira (common)",
+    "slot": "armor",
+    "rarity": "common",
+    "attackBonus": 0,
+    "defenseBonus": 4,
+    "healthBonus": 8,
+    "requirements": {
+      "minLevel": 1,
+      "dex": 0
+    },
+    "spriteId": "wooden_shield",
+    "sprite": "gear/items/wooden_shield.png",
+    "basePrice": 6
+  },
+  {
+    "id": "reinforced_buckler",
+    "name": "Broquel Reforçado (uncommon)",
+    "slot": "armor",
+    "rarity": "uncommon",
+    "attackBonus": 0,
+    "defenseBonus": 14,
+    "healthBonus": 22,
+    "requirements": {
+      "minLevel": 3,
+      "dex": 0
+    },
+    "spriteId": "reinforced_buckler",
+    "sprite": "gear/items/reinforced_buckler.png",
+    "basePrice": 21
+  },
+  {
+    "id": "guard_shield",
+    "name": "Escudo do Guarda (rare)",
+    "slot": "armor",
+    "rarity": "rare",
+    "attackBonus": 0,
+    "defenseBonus": 20,
+    "healthBonus": 50,
+    "requirements": {
+      "minLevel": 6,
+      "dex": 3
+    },
+    "spriteId": "guard_shield",
+    "sprite": "gear/items/guard_shield.png",
+    "basePrice": 60
+  },
+  {
+    "id": "captain_shield",
+    "name": "Escudo do Capitão (epic)",
+    "slot": "armor",
+    "rarity": "epic",
+    "attackBonus": 0,
+    "defenseBonus": 49,
+    "healthBonus": 75,
+    "defensePercentBonus": 8,
+    "requirements": {
+      "minLevel": 10,
+      "dex": 6
+    },
+    "spriteId": "captain_shield",
+    "sprite": "gear/items/captain_shield.png",
+    "basePrice": 278
+  },
+  {
+    "id": "bastion_aegis",
+    "name": "Égide do Bastião (legendary)",
+    "slot": "armor",
+    "rarity": "legendary",
+    "attackBonus": 0,
+    "defenseBonus": 72,
+    "healthBonus": 188,
+    "defensePercentBonus": 10,
+    "requirements": {
+      "minLevel": 15,
+      "dex": 10
+    },
+    "spriteId": "bastion_aegis",
+    "sprite": "gear/items/bastion_aegis.png",
+    "basePrice": 603
+  },
+  {
+    "id": "unbreakable_bulwark",
+    "name": "Baluarte Inquebrável (mythic)",
+    "slot": "armor",
+    "rarity": "mythic",
+    "attackBonus": 0,
+    "defenseBonus": 140,
+    "healthBonus": 280,
+    "defensePercentBonus": 12,
+    "requirements": {
+      "minLevel": 22,
+      "dex": 15
+    },
+    "spriteId": "unbreakable_bulwark",
+    "sprite": "gear/items/unbreakable_bulwark.png",
+    "basePrice": 996
+  },
+  {
+    "id": "leather_jerkin",
+    "name": "Gibão de Couro (common)",
+    "slot": "armor",
+    "rarity": "common",
+    "attackBonus": 0,
+    "defenseBonus": 4,
+    "healthBonus": 5,
+    "requirements": {
+      "minLevel": 1,
+      "dex": 0
+    },
+    "spriteId": "leather_jerkin",
+    "sprite": "gear/items/leather_jerkin.png",
+    "basePrice": 6
+  },
+  {
+    "id": "chain_mail",
+    "name": "Cota de Malha (uncommon)",
+    "slot": "armor",
+    "rarity": "uncommon",
+    "attackBonus": 0,
+    "defenseBonus": 15,
+    "healthBonus": 23,
+    "requirements": {
+      "minLevel": 3,
+      "dex": 0
+    },
+    "spriteId": "chain_mail",
+    "sprite": "gear/items/chain_mail.png",
+    "basePrice": 21
+  },
+  {
+    "id": "plate_armor",
+    "name": "Armadura de Placas (rare)",
+    "slot": "armor",
+    "rarity": "rare",
+    "attackBonus": 0,
+    "defenseBonus": 17,
+    "healthBonus": 57,
+    "requirements": {
+      "minLevel": 6,
+      "dex": 3
+    },
+    "spriteId": "plate_armor",
+    "sprite": "gear/items/plate_armor.png",
+    "basePrice": 60
+  },
+  {
+    "id": "commander_cuirass",
+    "name": "Couraça do Comandante (epic)",
+    "slot": "armor",
+    "rarity": "epic",
+    "attackBonus": 0,
+    "defenseBonus": 46,
+    "healthBonus": 95,
+    "defensePercentBonus": 8,
+    "requirements": {
+      "minLevel": 10,
+      "dex": 6
+    },
+    "spriteId": "commander_cuirass",
+    "sprite": "gear/items/commander_cuirass.png",
+    "basePrice": 278
+  },
+  {
+    "id": "paladin_plates",
+    "name": "Placas do Paladino (legendary)",
+    "slot": "armor",
+    "rarity": "legendary",
+    "attackBonus": 0,
+    "defenseBonus": 83,
+    "healthBonus": 128,
+    "defensePercentBonus": 10,
+    "requirements": {
+      "minLevel": 15,
+      "dex": 10
+    },
+    "spriteId": "paladin_plates",
+    "sprite": "gear/items/paladin_plates.png",
+    "basePrice": 603
+  },
+  {
+    "id": "war_avatar_armor",
+    "name": "Armadura do Avatar da Guerra (mythic)",
+    "slot": "armor",
+    "rarity": "mythic",
+    "attackBonus": 0,
+    "defenseBonus": 212,
+    "healthBonus": 320,
+    "defensePercentBonus": 12,
+    "requirements": {
+      "minLevel": 22,
+      "dex": 15
+    },
+    "spriteId": "war_avatar_armor",
+    "sprite": "gear/items/war_avatar_armor.png",
+    "basePrice": 996
+  },
+  {
+    "id": "wool_cloak",
+    "name": "Capa de Lã (common)",
+    "slot": "armor",
+    "rarity": "common",
+    "attackBonus": 0,
+    "defenseBonus": 3,
+    "healthBonus": 6,
+    "requirements": {
+      "minLevel": 1,
+      "dex": 0
+    },
+    "spriteId": "wool_cloak",
+    "sprite": "gear/items/wool_cloak.png",
+    "basePrice": 6
+  },
+  {
+    "id": "traveler_mantle",
+    "name": "Manto do Viajante (uncommon)",
+    "slot": "armor",
+    "rarity": "uncommon",
+    "attackBonus": 0,
+    "defenseBonus": 15,
+    "healthBonus": 15,
+    "requirements": {
+      "minLevel": 3,
+      "dex": 0
+    },
+    "spriteId": "traveler_mantle",
+    "sprite": "gear/items/traveler_mantle.png",
+    "basePrice": 21
+  },
+  {
+    "id": "veteran_mantle",
+    "name": "Manto do Veterano (rare)",
+    "slot": "armor",
+    "rarity": "rare",
+    "attackBonus": 0,
+    "defenseBonus": 20,
+    "healthBonus": 40,
+    "requirements": {
+      "minLevel": 6,
+      "dex": 3
+    },
+    "spriteId": "veteran_mantle",
+    "sprite": "gear/items/veteran_mantle.png",
+    "basePrice": 60
+  },
+  {
+    "id": "champion_mantle",
+    "name": "Manto do Campeão (epic)",
+    "slot": "armor",
+    "rarity": "epic",
+    "attackBonus": 0,
+    "defenseBonus": 46,
+    "healthBonus": 103,
+    "defensePercentBonus": 8,
+    "requirements": {
+      "minLevel": 10,
+      "dex": 6
+    },
+    "spriteId": "champion_mantle",
+    "sprite": "gear/items/champion_mantle.png",
+    "basePrice": 278
+  },
+  {
+    "id": "protector_mantle",
+    "name": "Manto do Protetor (legendary)",
+    "slot": "armor",
+    "rarity": "legendary",
+    "attackBonus": 0,
+    "defenseBonus": 93,
+    "healthBonus": 196,
+    "defensePercentBonus": 10,
+    "requirements": {
+      "minLevel": 15,
+      "dex": 10
+    },
+    "spriteId": "protector_mantle",
+    "sprite": "gear/items/protector_mantle.png",
+    "basePrice": 603
+  },
+  {
+    "id": "eternal_sanctuary_mantle",
+    "name": "Manto do Santuário Eterno (mythic)",
+    "slot": "armor",
+    "rarity": "mythic",
+    "attackBonus": 0,
+    "defenseBonus": 206,
+    "healthBonus": 462,
+    "defensePercentBonus": 12,
+    "requirements": {
+      "minLevel": 22,
+      "dex": 15
+    },
+    "spriteId": "eternal_sanctuary_mantle",
+    "sprite": "gear/items/eternal_sanctuary_mantle.png",
+    "basePrice": 996
+  },
+  {
+    "id": "iron_vest",
+    "name": "Colete de Ferro (common)",
+    "slot": "armor",
+    "rarity": "common",
+    "attackBonus": 0,
+    "defenseBonus": 3,
+    "healthBonus": 5,
+    "requirements": {
+      "minLevel": 1,
+      "dex": 0
+    },
+    "spriteId": "iron_vest",
+    "sprite": "gear/items/iron_vest.png",
+    "basePrice": 6
+  },
+  {
+    "id": "riveted_armor",
+    "name": "Armadura Rebitada (uncommon)",
+    "slot": "armor",
+    "rarity": "uncommon",
+    "attackBonus": 0,
+    "defenseBonus": 13,
+    "healthBonus": 21,
+    "requirements": {
+      "minLevel": 3,
+      "dex": 0
+    },
+    "spriteId": "riveted_armor",
+    "sprite": "gear/items/riveted_armor.png",
+    "basePrice": 21
+  },
+  {
+    "id": "sentinel_plate",
+    "name": "Placa do Sentinela (rare)",
+    "slot": "armor",
+    "rarity": "rare",
+    "attackBonus": 0,
+    "defenseBonus": 24,
+    "healthBonus": 33,
+    "requirements": {
+      "minLevel": 6,
+      "dex": 3
+    },
+    "spriteId": "sentinel_plate",
+    "sprite": "gear/items/sentinel_plate.png",
+    "basePrice": 60
+  },
+  {
+    "id": "fortress_cuirass",
+    "name": "Couraça do Forte (epic)",
+    "slot": "armor",
+    "rarity": "epic",
+    "attackBonus": 0,
+    "defenseBonus": 39,
+    "healthBonus": 83,
+    "defensePercentBonus": 8,
+    "requirements": {
+      "minLevel": 10,
+      "dex": 6
+    },
+    "spriteId": "fortress_cuirass",
+    "sprite": "gear/items/fortress_cuirass.png",
+    "basePrice": 278
+  },
+  {
+    "id": "royal_guard_plate",
+    "name": "Placa do Guardião Real (legendary)",
+    "slot": "armor",
+    "rarity": "legendary",
+    "attackBonus": 0,
+    "defenseBonus": 86,
+    "healthBonus": 218,
+    "defensePercentBonus": 10,
+    "requirements": {
+      "minLevel": 15,
+      "dex": 10
+    },
+    "spriteId": "royal_guard_plate",
+    "sprite": "gear/items/royal_guard_plate.png",
+    "basePrice": 603
+  },
+  {
+    "id": "immortal_dawn_cuirass",
+    "name": "Couraça da Aurora Imortal (mythic)",
+    "slot": "armor",
+    "rarity": "mythic",
+    "attackBonus": 0,
+    "defenseBonus": 198,
+    "healthBonus": 392,
+    "defensePercentBonus": 12,
+    "requirements": {
+      "minLevel": 22,
+      "dex": 15
+    },
+    "spriteId": "immortal_dawn_cuirass",
+    "sprite": "gear/items/immortal_dawn_cuirass.png",
+    "basePrice": 996
+  },
+  {
+    "id": "charred_cuirass",
+    "name": "Couraça Chamuscada (common)",
+    "slot": "armor",
+    "rarity": "common",
+    "attackBonus": 0,
+    "defenseBonus": 4,
+    "healthBonus": 10,
+    "requirements": {
+      "minLevel": 1,
+      "dex": 0
+    },
+    "spriteId": "charred_cuirass",
+    "sprite": "gear/items/charred_cuirass.png",
+    "basePrice": 6
+  },
+  {
+    "id": "ember_plate",
+    "name": "Placa das Brasas (uncommon)",
+    "slot": "armor",
+    "rarity": "uncommon",
+    "attackBonus": 0,
+    "defenseBonus": 14,
+    "healthBonus": 30,
+    "requirements": {
+      "minLevel": 3,
+      "dex": 0
+    },
+    "spriteId": "ember_plate",
+    "sprite": "gear/items/ember_plate.png",
+    "basePrice": 21
+  },
+  {
+    "id": "igneous_cuirass",
+    "name": "Couraça Ígnea (rare)",
+    "slot": "armor",
+    "rarity": "rare",
+    "attackBonus": 0,
+    "defenseBonus": 24,
+    "healthBonus": 36,
+    "fireResistBonus": 6,
+    "fireResistFlat": 2,
+    "requirements": {
+      "minLevel": 6,
+      "dex": 3
+    },
+    "spriteId": "igneous_cuirass",
+    "sprite": "gear/items/igneous_cuirass.png",
+    "basePrice": 60
+  },
+  {
+    "id": "living_forge_armor",
+    "name": "Armadura do Forno Vivo (epic)",
+    "slot": "armor",
+    "rarity": "epic",
+    "attackBonus": 0,
+    "defenseBonus": 41,
+    "healthBonus": 85,
+    "defensePercentBonus": 8,
+    "fireResistBonus": 10,
+    "fireResistFlat": 4,
+    "requirements": {
+      "minLevel": 10,
+      "dex": 6
+    },
+    "spriteId": "living_forge_armor",
+    "sprite": "gear/items/living_forge_armor.png",
+    "basePrice": 278
+  },
+  {
+    "id": "ash_dragon_cuirass",
+    "name": "Couraça do Dragão de Cinzas (legendary)",
+    "slot": "armor",
+    "rarity": "legendary",
+    "attackBonus": 0,
+    "defenseBonus": 65,
+    "healthBonus": 207,
+    "defensePercentBonus": 10,
+    "fireResistBonus": 14,
+    "fireResistFlat": 6,
+    "requirements": {
+      "minLevel": 15,
+      "dex": 10
+    },
+    "spriteId": "ash_dragon_cuirass",
+    "sprite": "gear/items/ash_dragon_cuirass.png",
+    "basePrice": 603
+  },
+  {
+    "id": "immortal_flame_aegis",
+    "name": "Égide da Chama Imortal (mythic)",
+    "slot": "armor",
+    "rarity": "mythic",
+    "attackBonus": 0,
+    "defenseBonus": 179,
+    "healthBonus": 444,
+    "defensePercentBonus": 12,
+    "fireResistBonus": 18,
+    "fireResistFlat": 8,
+    "requirements": {
+      "minLevel": 22,
+      "dex": 15
+    },
+    "spriteId": "immortal_flame_aegis",
+    "sprite": "gear/items/immortal_flame_aegis.png",
+    "basePrice": 996
+  },
+  {
+    "id": "cold_jerkin",
+    "name": "Gibão do Frio (common)",
+    "slot": "armor",
+    "rarity": "common",
+    "attackBonus": 0,
+    "defenseBonus": 4,
+    "healthBonus": 10,
+    "requirements": {
+      "minLevel": 1,
+      "dex": 0
+    },
+    "spriteId": "cold_jerkin",
+    "sprite": "gear/items/cold_jerkin.png",
+    "basePrice": 6
+  },
+  {
+    "id": "glacial_mail",
+    "name": "Malha Glacial (uncommon)",
+    "slot": "armor",
+    "rarity": "uncommon",
+    "attackBonus": 0,
+    "defenseBonus": 13,
+    "healthBonus": 29,
+    "requirements": {
+      "minLevel": 3,
+      "dex": 0
+    },
+    "spriteId": "glacial_mail",
+    "sprite": "gear/items/glacial_mail.png",
+    "basePrice": 21
+  },
+  {
+    "id": "ice_mail",
+    "name": "Cota do Gelo (rare)",
+    "slot": "armor",
+    "rarity": "rare",
+    "attackBonus": 0,
+    "defenseBonus": 16,
+    "healthBonus": 50,
+    "coldResistBonus": 6,
+    "coldResistFlat": 2,
+    "requirements": {
+      "minLevel": 6,
+      "dex": 3
+    },
+    "spriteId": "ice_mail",
+    "sprite": "gear/items/ice_mail.png",
+    "basePrice": 60
+  },
+  {
+    "id": "frozen_gale_armor",
+    "name": "Armadura do Ventar Gelado (epic)",
+    "slot": "armor",
+    "rarity": "epic",
+    "attackBonus": 0,
+    "defenseBonus": 45,
+    "healthBonus": 118,
+    "defensePercentBonus": 8,
+    "coldResistBonus": 10,
+    "coldResistFlat": 4,
+    "requirements": {
+      "minLevel": 10,
+      "dex": 6
+    },
+    "spriteId": "frozen_gale_armor",
+    "sprite": "gear/items/frozen_gale_armor.png",
+    "basePrice": 278
+  },
+  {
+    "id": "glacial_aurora_plates",
+    "name": "Placas da Aurora Glacial (legendary)",
+    "slot": "armor",
+    "rarity": "legendary",
+    "attackBonus": 0,
+    "defenseBonus": 104,
+    "healthBonus": 165,
+    "defensePercentBonus": 10,
+    "coldResistBonus": 14,
+    "coldResistFlat": 6,
+    "requirements": {
+      "minLevel": 15,
+      "dex": 10
+    },
+    "spriteId": "glacial_aurora_plates",
+    "sprite": "gear/items/glacial_aurora_plates.png",
+    "basePrice": 603
+  },
+  {
+    "id": "winter_titan_cuirass",
+    "name": "Couraça do Titã do Inverno (mythic)",
+    "slot": "armor",
+    "rarity": "mythic",
+    "attackBonus": 0,
+    "defenseBonus": 166,
+    "healthBonus": 441,
+    "defensePercentBonus": 12,
+    "coldResistBonus": 18,
+    "coldResistFlat": 8,
+    "requirements": {
+      "minLevel": 22,
+      "dex": 15
+    },
+    "spriteId": "winter_titan_cuirass",
+    "sprite": "gear/items/winter_titan_cuirass.png",
+    "basePrice": 996
+  },
+  {
+    "id": "rain_shield",
+    "name": "Escudo da Chuva (common)",
+    "slot": "armor",
+    "rarity": "common",
+    "attackBonus": 0,
+    "defenseBonus": 5,
+    "healthBonus": 10,
+    "requirements": {
+      "minLevel": 1,
+      "dex": 0
+    },
+    "spriteId": "rain_shield",
+    "sprite": "gear/items/escudo_da_chuva.png",
+    "basePrice": 6
+  },
+  {
+    "id": "gale_buckler",
+    "name": "Broquel do Vendaval (uncommon)",
+    "slot": "armor",
+    "rarity": "uncommon",
+    "attackBonus": 0,
+    "defenseBonus": 14,
+    "healthBonus": 22,
+    "requirements": {
+      "minLevel": 3,
+      "dex": 0
+    },
+    "spriteId": "gale_buckler",
+    "sprite": "gear/items/gale_buckler.png",
+    "basePrice": 21
+  },
+  {
+    "id": "thunder_shield",
+    "name": "Escudo do Trovão (rare)",
+    "slot": "armor",
+    "rarity": "rare",
+    "attackBonus": 0,
+    "defenseBonus": 21,
+    "healthBonus": 45,
+    "lightningResistBonus": 6,
+    "lightningResistFlat": 2,
+    "requirements": {
+      "minLevel": 6,
+      "dex": 3
+    },
+    "spriteId": "thunder_shield",
+    "sprite": "gear/items/thunder_shield.png",
+    "basePrice": 60
+  },
+  {
+    "id": "tempest_aegis",
+    "name": "Égide da Tempestade (epic)",
+    "slot": "armor",
+    "rarity": "epic",
+    "attackBonus": 0,
+    "defenseBonus": 30,
+    "healthBonus": 84,
+    "defensePercentBonus": 8,
+    "lightningResistBonus": 10,
+    "lightningResistFlat": 4,
+    "requirements": {
+      "minLevel": 10,
+      "dex": 6
+    },
+    "spriteId": "tempest_aegis",
+    "sprite": "gear/items/tempest_aegis.png",
+    "basePrice": 278
+  },
+  {
+    "id": "sky_king_shield",
+    "name": "Escudo do Rei do Céu (legendary)",
+    "slot": "armor",
+    "rarity": "legendary",
+    "attackBonus": 0,
+    "defenseBonus": 71,
+    "healthBonus": 174,
+    "defensePercentBonus": 10,
+    "lightningResistBonus": 14,
+    "lightningResistFlat": 6,
+    "requirements": {
+      "minLevel": 15,
+      "dex": 10
+    },
+    "spriteId": "sky_king_shield",
+    "sprite": "gear/items/sky_king_shield.png",
+    "basePrice": 603
+  },
+  {
+    "id": "divine_lightning_bulwark",
+    "name": "Baluarte do Relâmpago Divino (mythic)",
+    "slot": "armor",
+    "rarity": "mythic",
+    "attackBonus": 0,
+    "defenseBonus": 236,
+    "healthBonus": 293,
+    "defensePercentBonus": 12,
+    "lightningResistBonus": 18,
+    "lightningResistFlat": 8,
+    "requirements": {
+      "minLevel": 22,
+      "dex": 15
+    },
+    "spriteId": "divine_lightning_bulwark",
+    "sprite": "gear/items/divine_lightning_bulwark.png",
+    "basePrice": 996
+  },
+  {
+    "id": "shadow_mantle",
+    "name": "Manto Sombrio (common)",
+    "slot": "armor",
+    "rarity": "common",
+    "attackBonus": 0,
+    "defenseBonus": 5,
+    "healthBonus": 8,
+    "requirements": {
+      "minLevel": 1,
+      "dex": 0
+    },
+    "spriteId": "shadow_mantle",
+    "sprite": "gear/items/shadow_mantle.png",
+    "basePrice": 6
+  },
+  {
+    "id": "abyss_cloak",
+    "name": "Capa do Abismo (uncommon)",
+    "slot": "armor",
+    "rarity": "uncommon",
+    "attackBonus": 0,
+    "defenseBonus": 11,
+    "healthBonus": 19,
+    "requirements": {
+      "minLevel": 3,
+      "dex": 0
+    },
+    "spriteId": "abyss_cloak",
+    "sprite": "gear/items/abyss_cloak.png",
+    "basePrice": 21
+  },
+  {
+    "id": "air_mantle",
+    "name": "Manto do Ar (rare)",
+    "slot": "armor",
+    "rarity": "rare",
+    "attackBonus": 0,
+    "defenseBonus": 25,
+    "healthBonus": 46,
+    "airResistBonus": 6,
+    "airResistFlat": 2,
+    "requirements": {
+      "minLevel": 6,
+      "dex": 3
+    },
+    "spriteId": "air_mantle",
+    "sprite": "gear/items/air_mantle.png",
+    "basePrice": 60
+  },
+  {
+    "id": "deep_night_veil",
+    "name": "Véu da Noite Profunda (epic)",
+    "slot": "armor",
+    "rarity": "epic",
+    "attackBonus": 0,
+    "defenseBonus": 48,
+    "healthBonus": 87,
+    "defensePercentBonus": 8,
+    "airResistBonus": 10,
+    "airResistFlat": 4,
+    "requirements": {
+      "minLevel": 10,
+      "dex": 6
+    },
+    "spriteId": "deep_night_veil",
+    "sprite": "gear/items/deep_night_veil.png",
+    "basePrice": 278
+  },
+  {
+    "id": "ancient_void_mantle",
+    "name": "Manto do Vazio Antigo (legendary)",
+    "slot": "armor",
+    "rarity": "legendary",
+    "attackBonus": 0,
+    "defenseBonus": 113,
+    "healthBonus": 209,
+    "defensePercentBonus": 10,
+    "airResistBonus": 14,
+    "airResistFlat": 6,
+    "requirements": {
+      "minLevel": 15,
+      "dex": 10
+    },
+    "spriteId": "ancient_void_mantle",
+    "sprite": "gear/items/ancient_void_mantle.png",
+    "basePrice": 603
+  },
+  {
+    "id": "world_devourer_shroud",
+    "name": "Mortalha do Devorador de Mundos (mythic)",
+    "slot": "armor",
+    "rarity": "mythic",
+    "attackBonus": 0,
+    "defenseBonus": 122,
+    "healthBonus": 250,
+    "defensePercentBonus": 12,
+    "airResistBonus": 18,
+    "airResistFlat": 8,
+    "requirements": {
+      "minLevel": 22,
+      "dex": 15
+    },
+    "spriteId": "world_devourer_shroud",
+    "sprite": "gear/items/world_devourer_shroud.png",
+    "basePrice": 996
+  },
+  {
+    "id": "copper_ring",
+    "name": "Anel de Cobre (common)",
+    "slot": "accessory",
+    "rarity": "common",
+    "attackBonus": 2,
+    "defenseBonus": 4,
+    "healthBonus": 6,
+    "requirements": {
+      "minLevel": 1,
+      "int": 0
+    },
+    "spriteId": "copper_ring",
+    "sprite": "gear/items/copper_ring.png",
+    "basePrice": 6
+  },
+  {
+    "id": "bronze_ring",
+    "name": "Anel de Bronze (uncommon)",
+    "slot": "accessory",
+    "rarity": "uncommon",
+    "attackBonus": 14,
+    "defenseBonus": 11,
+    "healthBonus": 19,
+    "requirements": {
+      "minLevel": 3,
+      "int": 0
+    },
+    "spriteId": "bronze_ring",
+    "sprite": "gear/items/bronze_ring.png",
+    "basePrice": 21
+  },
+  {
+    "id": "merchant_ring",
+    "name": "Anel do Mercador (rare)",
+    "slot": "accessory",
+    "rarity": "rare",
+    "attackBonus": 25,
+    "defenseBonus": 22,
+    "healthBonus": 39,
+    "requirements": {
+      "minLevel": 6,
+      "int": 3
+    },
+    "spriteId": "merchant_ring",
+    "sprite": "gear/items/merchant_ring.png",
+    "basePrice": 60
+  },
+  {
+    "id": "noble_ring",
+    "name": "Anel do Nobre (epic)",
+    "slot": "accessory",
+    "rarity": "epic",
+    "attackBonus": 49,
+    "defenseBonus": 50,
+    "healthBonus": 118,
+    "requirements": {
+      "minLevel": 10,
+      "int": 6
+    },
+    "spriteId": "noble_ring",
+    "sprite": "gear/items/noble_ring.png",
+    "basePrice": 278
+  },
+  {
+    "id": "regent_ring",
+    "name": "Anel do Regente (legendary)",
+    "slot": "accessory",
+    "rarity": "legendary",
+    "attackBonus": 98,
+    "defenseBonus": 86,
+    "healthBonus": 226,
+    "healthPercentBonus": 6,
+    "requirements": {
+      "minLevel": 15,
+      "int": 10
+    },
+    "spriteId": "regent_ring",
+    "sprite": "gear/items/regent_ring.png",
+    "basePrice": 603
+  },
+  {
+    "id": "ancient_pact_ring",
+    "name": "Anel do Pacto Antigo (mythic)",
+    "slot": "accessory",
+    "rarity": "mythic",
+    "attackBonus": 167,
+    "defenseBonus": 125,
+    "healthBonus": 253,
+    "healthPercentBonus": 7,
+    "critDamageBonus": 0.18,
+    "requirements": {
+      "minLevel": 22,
+      "int": 15
+    },
+    "spriteId": "ancient_pact_ring",
+    "sprite": "gear/items/ancient_pact_ring.png",
+    "basePrice": 996
+  },
+  {
+    "id": "wood_talisman",
+    "name": "Talismã de Madeira (common)",
+    "slot": "accessory",
+    "rarity": "common",
+    "attackBonus": 1,
+    "defenseBonus": 3,
+    "healthBonus": 9,
+    "requirements": {
+      "minLevel": 1,
+      "int": 0
+    },
+    "spriteId": "wood_talisman",
+    "sprite": "gear/items/wood_talisman.png",
+    "basePrice": 6
+  },
+  {
+    "id": "novice_amulet",
+    "name": "Amuleto do Noviço (uncommon)",
+    "slot": "accessory",
+    "rarity": "uncommon",
+    "attackBonus": 12,
+    "defenseBonus": 9,
+    "healthBonus": 17,
+    "requirements": {
+      "minLevel": 3,
+      "int": 0
+    },
+    "spriteId": "novice_amulet",
+    "sprite": "gear/items/novice_amulet.png",
+    "basePrice": 21
+  },
+  {
+    "id": "faith_amulet",
+    "name": "Amuleto da Fé (rare)",
+    "slot": "accessory",
+    "rarity": "rare",
+    "attackBonus": 15,
+    "defenseBonus": 20,
+    "healthBonus": 45,
+    "requirements": {
+      "minLevel": 6,
+      "int": 3
+    },
+    "spriteId": "faith_amulet",
+    "sprite": "gear/items/faith_amulet.png",
+    "basePrice": 60
+  },
+  {
+    "id": "cleric_amulet",
+    "name": "Amuleto do Clérigo (epic)",
+    "slot": "accessory",
+    "rarity": "epic",
+    "attackBonus": 37,
+    "defenseBonus": 37,
+    "healthBonus": 67,
+    "requirements": {
+      "minLevel": 10,
+      "int": 6
+    },
+    "spriteId": "cleric_amulet",
+    "sprite": "gear/items/cleric_amulet.png",
+    "basePrice": 278
+  },
+  {
+    "id": "saint_amulet",
+    "name": "Amuleto do Santo (legendary)",
+    "slot": "accessory",
+    "rarity": "legendary",
+    "attackBonus": 118,
+    "defenseBonus": 117,
+    "healthBonus": 173,
+    "healthPercentBonus": 6,
+    "requirements": {
+      "minLevel": 15,
+      "int": 10
+    },
+    "spriteId": "saint_amulet",
+    "sprite": "gear/items/saint_amulet.png",
+    "basePrice": 603
+  },
+  {
+    "id": "primordial_relic",
+    "name": "Relíquia dos Primordiais (mythic)",
+    "slot": "accessory",
+    "rarity": "mythic",
+    "attackBonus": 190,
+    "defenseBonus": 210,
+    "healthBonus": 275,
+    "healthPercentBonus": 7,
+    "critDamageBonus": 0.18,
+    "requirements": {
+      "minLevel": 22,
+      "int": 15
+    },
+    "spriteId": "primordial_relic",
+    "sprite": "gear/items/primordial_relic.png",
+    "basePrice": 996
+  },
+  {
+    "id": "bone_pendant",
+    "name": "Pingente de Osso (common)",
+    "slot": "accessory",
+    "rarity": "common",
+    "attackBonus": 1,
+    "defenseBonus": 5,
+    "healthBonus": 5,
+    "requirements": {
+      "minLevel": 1,
+      "int": 0
+    },
+    "spriteId": "bone_pendant",
+    "sprite": "gear/items/bone_pendant.png",
+    "basePrice": 6
+  },
+  {
+    "id": "silver_medallion",
+    "name": "Medalhão de Prata (uncommon)",
+    "slot": "accessory",
+    "rarity": "uncommon",
+    "attackBonus": 12,
+    "defenseBonus": 9,
+    "healthBonus": 25,
+    "requirements": {
+      "minLevel": 3,
+      "int": 0
+    },
+    "spriteId": "silver_medallion",
+    "sprite": "gear/items/silver_medallion.png",
+    "basePrice": 21
+  },
+  {
+    "id": "pilgrim_pendant",
+    "name": "Pingente do Peregrino (rare)",
+    "slot": "accessory",
+    "rarity": "rare",
+    "attackBonus": 29,
+    "defenseBonus": 26,
+    "healthBonus": 47,
+    "requirements": {
+      "minLevel": 6,
+      "int": 3
+    },
+    "spriteId": "pilgrim_pendant",
+    "sprite": "gear/items/pilgrim_pendant.png",
+    "basePrice": 60
+  },
+  {
+    "id": "crusader_medallion",
+    "name": "Medalhão do Cruzado (epic)",
+    "slot": "accessory",
+    "rarity": "epic",
+    "attackBonus": 50,
+    "defenseBonus": 58,
+    "healthBonus": 106,
+    "requirements": {
+      "minLevel": 10,
+      "int": 6
+    },
+    "spriteId": "crusader_medallion",
+    "sprite": "gear/items/crusader_medallion.png",
+    "basePrice": 278
+  },
+  {
+    "id": "dynasty_pendant",
+    "name": "Pingente da Dinastia (legendary)",
+    "slot": "accessory",
+    "rarity": "legendary",
+    "attackBonus": 92,
+    "defenseBonus": 118,
+    "healthBonus": 153,
+    "healthPercentBonus": 6,
+    "requirements": {
+      "minLevel": 15,
+      "int": 10
+    },
+    "spriteId": "dynasty_pendant",
+    "sprite": "gear/items/dynasty_pendant.png",
+    "basePrice": 603
+  },
+  {
+    "id": "eternal_oath_medallion",
+    "name": "Medalhão do Juramento Eterno (mythic)",
+    "slot": "accessory",
+    "rarity": "mythic",
+    "attackBonus": 123,
+    "defenseBonus": 139,
+    "healthBonus": 478,
+    "healthPercentBonus": 7,
+    "critDamageBonus": 0.18,
+    "requirements": {
+      "minLevel": 22,
+      "int": 15
+    },
+    "spriteId": "eternal_oath_medallion",
+    "sprite": "gear/items/eternal_oath_medallion.png",
+    "basePrice": 996
+  },
+  {
+    "id": "tin_brooch",
+    "name": "Broche de Estanho (common)",
+    "slot": "accessory",
+    "rarity": "common",
+    "attackBonus": 1,
+    "defenseBonus": 3,
+    "healthBonus": 9,
+    "requirements": {
+      "minLevel": 1,
+      "int": 0
+    },
+    "spriteId": "tin_brooch",
+    "sprite": "gear/items/tin_brooch.png",
+    "basePrice": 6
+  },
+  {
+    "id": "squire_brooch",
+    "name": "Broche do Escudeiro (uncommon)",
+    "slot": "accessory",
+    "rarity": "uncommon",
+    "attackBonus": 8,
+    "defenseBonus": 13,
+    "healthBonus": 21,
+    "requirements": {
+      "minLevel": 3,
+      "int": 0
+    },
+    "spriteId": "squire_brooch",
+    "sprite": "gear/items/squire_brooch.png",
+    "basePrice": 21
+  },
+  {
+    "id": "order_brooch",
+    "name": "Broche da Ordem (rare)",
+    "slot": "accessory",
+    "rarity": "rare",
+    "attackBonus": 28,
+    "defenseBonus": 15,
+    "healthBonus": 52,
+    "requirements": {
+      "minLevel": 6,
+      "int": 3
+    },
+    "spriteId": "order_brooch",
+    "sprite": "gear/items/order_brooch.png",
+    "basePrice": 60
+  },
+  {
+    "id": "knight_insignia",
+    "name": "Insígnia do Cavaleiro (epic)",
+    "slot": "accessory",
+    "rarity": "epic",
+    "attackBonus": 35,
+    "defenseBonus": 59,
+    "healthBonus": 102,
+    "requirements": {
+      "minLevel": 10,
+      "int": 6
+    },
+    "spriteId": "knight_insignia",
+    "sprite": "gear/items/knight_insignia.png",
+    "basePrice": 278
+  },
+  {
+    "id": "marshal_brooch",
+    "name": "Broche do Marechal (legendary)",
+    "slot": "accessory",
+    "rarity": "legendary",
+    "attackBonus": 74,
+    "defenseBonus": 60,
+    "healthBonus": 165,
+    "healthPercentBonus": 6,
+    "requirements": {
+      "minLevel": 15,
+      "int": 10
+    },
+    "spriteId": "marshal_brooch",
+    "sprite": "gear/items/marshal_brooch.png",
+    "basePrice": 603
+  },
+  {
+    "id": "war_god_insignia",
+    "name": "Insígnia do Deus da Guerra (mythic)",
+    "slot": "accessory",
+    "rarity": "mythic",
+    "attackBonus": 150,
+    "defenseBonus": 182,
+    "healthBonus": 301,
+    "healthPercentBonus": 7,
+    "critDamageBonus": 0.18,
+    "requirements": {
+      "minLevel": 22,
+      "int": 15
+    },
+    "spriteId": "war_god_insignia",
+    "sprite": "gear/items/war_god_insignia.png",
+    "basePrice": 996
+  },
+  {
+    "id": "flawless_ruby_ring",
+    "name": "Anel de Rubi Imaculado (common)",
+    "slot": "accessory",
+    "rarity": "common",
+    "attackBonus": 1,
+    "defenseBonus": 5,
+    "healthBonus": 7,
+    "requirements": {
+      "minLevel": 1,
+      "int": 0
+    },
+    "spriteId": "flawless_ruby_ring",
+    "sprite": "gear/items/flawless_ruby_ring.png",
+    "basePrice": 6
+  },
+  {
+    "id": "ruby_ring",
+    "name": "Anel Rubi (uncommon)",
+    "slot": "accessory",
+    "rarity": "uncommon",
+    "attackBonus": 10,
+    "defenseBonus": 15,
+    "healthBonus": 15,
+    "requirements": {
+      "minLevel": 3,
+      "int": 0
+    },
+    "spriteId": "ruby_ring",
+    "sprite": "gear/items/ruby_ring.png",
+    "basePrice": 21
+  },
+  {
+    "id": "crimson_signet",
+    "name": "Signet Rubro (rare)",
+    "slot": "accessory",
+    "rarity": "rare",
+    "attackBonus": 18,
+    "defenseBonus": 29,
+    "healthBonus": 37,
+    "fireDamageBonus": 4,
+    "fireDamageFlat": 2,
+    "fireResistBonus": 4,
+    "fireResistFlat": 2,
+    "requirements": {
+      "minLevel": 6,
+      "int": 3
+    },
+    "spriteId": "crimson_signet",
+    "sprite": "gear/items/crimson_signet.png",
+    "basePrice": 60
+  },
+  {
+    "id": "ruby_flame_ring",
+    "name": "Anel da Chama Rubi (epic)",
+    "slot": "accessory",
+    "rarity": "epic",
+    "attackBonus": 44,
+    "defenseBonus": 44,
+    "healthBonus": 89,
+    "fireDamageBonus": 8,
+    "fireDamageFlat": 4,
+    "fireResistBonus": 8,
+    "fireResistFlat": 4,
+    "requirements": {
+      "minLevel": 10,
+      "int": 6
+    },
+    "spriteId": "ruby_flame_ring",
+    "sprite": "gear/items/ruby_flame_ring.png",
+    "basePrice": 278
+  },
+  {
+    "id": "ember_king_signet",
+    "name": "Signet do Rei de Brasas (legendary)",
+    "slot": "accessory",
+    "rarity": "legendary",
+    "attackBonus": 64,
+    "defenseBonus": 111,
+    "healthBonus": 127,
+    "healthPercentBonus": 6,
+    "fireDamageBonus": 12,
+    "fireDamageFlat": 6,
+    "fireResistBonus": 12,
+    "fireResistFlat": 6,
+    "requirements": {
+      "minLevel": 15,
+      "int": 10
+    },
+    "spriteId": "ember_king_signet",
+    "sprite": "gear/items/ember_king_signet.png",
+    "basePrice": 603
+  },
+  {
+    "id": "draconic_ruby_pact",
+    "name": "Rubi do Pacto Dracônico (mythic)",
+    "slot": "accessory",
+    "rarity": "mythic",
+    "attackBonus": 184,
+    "defenseBonus": 160,
+    "healthBonus": 461,
+    "healthPercentBonus": 7,
+    "critDamageBonus": 0.18,
+    "fireDamageBonus": 16,
+    "fireDamageFlat": 8,
+    "fireResistBonus": 16,
+    "fireResistFlat": 8,
+    "requirements": {
+      "minLevel": 22,
+      "int": 15
+    },
+    "spriteId": "draconic_ruby_pact",
+    "sprite": "gear/items/draconic_ruby_pact.png",
+    "basePrice": 996
+  },
+  {
+    "id": "sapphire_ring",
+    "name": "Anel de Safira (common)",
+    "slot": "accessory",
+    "rarity": "common",
+    "attackBonus": 1,
+    "defenseBonus": 4,
+    "healthBonus": 7,
+    "requirements": {
+      "minLevel": 1,
+      "int": 0
+    },
+    "spriteId": "sapphire_ring",
+    "sprite": "gear/items/sapphire_ring.png",
+    "basePrice": 6
+  },
+  {
+    "id": "sapphire_amulet",
+    "name": "Amuleto Safira (uncommon)",
+    "slot": "accessory",
+    "rarity": "uncommon",
+    "attackBonus": 12,
+    "defenseBonus": 9,
+    "healthBonus": 17,
+    "requirements": {
+      "minLevel": 3,
+      "int": 0
+    },
+    "spriteId": "sapphire_amulet",
+    "sprite": "gear/items/sapphire_amulet.png",
+    "basePrice": 21
+  },
+  {
+    "id": "frost_charm",
+    "name": "Charme Gélido (rare)",
+    "slot": "accessory",
+    "rarity": "rare",
+    "attackBonus": 24,
+    "defenseBonus": 27,
+    "healthBonus": 32,
+    "coldDamageBonus": 4,
+    "coldDamageFlat": 2,
+    "coldResistBonus": 4,
+    "coldResistFlat": 2,
+    "requirements": {
+      "minLevel": 6,
+      "int": 3
+    },
+    "spriteId": "frost_charm",
+    "sprite": "gear/items/frost_charm.png",
+    "basePrice": 60
+  },
+  {
+    "id": "frozen_lake_amulet",
+    "name": "Amuleto do Lago Congelado (epic)",
+    "slot": "accessory",
+    "rarity": "epic",
+    "attackBonus": 42,
+    "defenseBonus": 58,
+    "healthBonus": 91,
+    "coldDamageBonus": 8,
+    "coldDamageFlat": 4,
+    "coldResistBonus": 8,
+    "coldResistFlat": 4,
+    "requirements": {
+      "minLevel": 10,
+      "int": 6
+    },
+    "spriteId": "frozen_lake_amulet",
+    "sprite": "gear/items/frozen_lake_amulet.png",
+    "basePrice": 278
+  },
+  {
+    "id": "eternal_aurora_sapphire",
+    "name": "Safira da Aurora Eterna (legendary)",
+    "slot": "accessory",
+    "rarity": "legendary",
+    "attackBonus": 97,
+    "defenseBonus": 78,
+    "healthBonus": 159,
+    "healthPercentBonus": 6,
+    "coldDamageBonus": 12,
+    "coldDamageFlat": 6,
+    "coldResistBonus": 12,
+    "coldResistFlat": 6,
+    "requirements": {
+      "minLevel": 15,
+      "int": 10
+    },
+    "spriteId": "eternal_aurora_sapphire",
+    "sprite": "gear/items/eternal_aurora_sapphire.png",
+    "basePrice": 603
+  },
+  {
+    "id": "glaciem_tear",
+    "name": "Lágrima de Glaciem (mythic)",
+    "slot": "accessory",
+    "rarity": "mythic",
+    "attackBonus": 148,
+    "defenseBonus": 186,
+    "healthBonus": 327,
+    "healthPercentBonus": 7,
+    "critDamageBonus": 0.18,
+    "coldDamageBonus": 16,
+    "coldDamageFlat": 8,
+    "coldResistBonus": 16,
+    "coldResistFlat": 8,
+    "requirements": {
+      "minLevel": 22,
+      "int": 15
+    },
+    "spriteId": "glaciem_tear",
+    "sprite": "gear/items/glaciem_tear.png",
+    "basePrice": 996
+  },
+  {
+    "id": "copper_bracelet",
+    "name": "Bracelete de Cobre (common)",
+    "slot": "accessory",
+    "rarity": "common",
+    "attackBonus": 2,
+    "defenseBonus": 5,
+    "healthBonus": 6,
+    "requirements": {
+      "minLevel": 1,
+      "int": 0
+    },
+    "spriteId": "copper_bracelet",
+    "sprite": "gear/items/bracelete_de_cobre.png",
+    "basePrice": 6
+  },
+  {
+    "id": "voltaic_bracelet",
+    "name": "Bracelete Voltaico (uncommon)",
+    "slot": "accessory",
+    "rarity": "uncommon",
+    "attackBonus": 8,
+    "defenseBonus": 13,
+    "healthBonus": 29,
+    "requirements": {
+      "minLevel": 3,
+      "int": 0
+    },
+    "spriteId": "voltaic_bracelet",
+    "sprite": "gear/items/voltaic_bracelet.png",
+    "basePrice": 21
+  },
+  {
+    "id": "thunder_circuit",
+    "name": "Circuito do Trovão (rare)",
+    "slot": "accessory",
+    "rarity": "rare",
+    "attackBonus": 24,
+    "defenseBonus": 27,
+    "healthBonus": 41,
+    "lightningDamageBonus": 4,
+    "lightningDamageFlat": 2,
+    "lightningResistBonus": 4,
+    "lightningResistFlat": 2,
+    "requirements": {
+      "minLevel": 6,
+      "int": 3
+    },
+    "spriteId": "thunder_circuit",
+    "sprite": "gear/items/thunder_circuit.png",
+    "basePrice": 60
+  },
+  {
+    "id": "tempest_bracelet",
+    "name": "Bracelete da Tempestade (epic)",
+    "slot": "accessory",
+    "rarity": "epic",
+    "attackBonus": 42,
+    "defenseBonus": 30,
+    "healthBonus": 75,
+    "lightningDamageBonus": 8,
+    "lightningDamageFlat": 4,
+    "lightningResistBonus": 8,
+    "lightningResistFlat": 4,
+    "requirements": {
+      "minLevel": 10,
+      "int": 6
+    },
+    "spriteId": "tempest_bracelet",
+    "sprite": "gear/items/tempest_bracelet.png",
+    "basePrice": 278
+  },
+  {
+    "id": "lightning_king_torque",
+    "name": "Torque do Relâmpago Rei (legendary)",
+    "slot": "accessory",
+    "rarity": "legendary",
+    "attackBonus": 103,
+    "defenseBonus": 107,
+    "healthBonus": 231,
+    "healthPercentBonus": 6,
+    "lightningDamageBonus": 12,
+    "lightningDamageFlat": 6,
+    "lightningResistBonus": 12,
+    "lightningResistFlat": 6,
+    "requirements": {
+      "minLevel": 15,
+      "int": 10
+    },
+    "spriteId": "lightning_king_torque",
+    "sprite": "gear/items/lightning_king_torque.png",
+    "basePrice": 603
+  },
+  {
+    "id": "divine_thunder_ring",
+    "name": "Anel do Trovão Divino (mythic)",
+    "slot": "accessory",
+    "rarity": "mythic",
+    "attackBonus": 226,
+    "defenseBonus": 163,
+    "healthBonus": 443,
+    "healthPercentBonus": 7,
+    "critDamageBonus": 0.18,
+    "lightningDamageBonus": 16,
+    "lightningDamageFlat": 8,
+    "lightningResistBonus": 16,
+    "lightningResistFlat": 8,
+    "requirements": {
+      "minLevel": 22,
+      "int": 15
+    },
+    "spriteId": "divine_thunder_ring",
+    "sprite": "gear/items/divine_thunder_ring.png",
+    "basePrice": 996
+  },
+  {
+    "id": "obsidian_pendant",
+    "name": "Pingente de Obsidiana (common)",
+    "slot": "accessory",
+    "rarity": "common",
+    "attackBonus": 2,
+    "defenseBonus": 5,
+    "healthBonus": 8,
+    "requirements": {
+      "minLevel": 1,
+      "int": 0
+    },
+    "spriteId": "obsidian_pendant",
+    "sprite": "gear/items/obsidian_pendant.png",
+    "basePrice": 6
+  },
+  {
+    "id": "air_pendant",
+    "name": "Pingente do Ar (uncommon)",
+    "slot": "accessory",
+    "rarity": "uncommon",
+    "attackBonus": 12,
+    "defenseBonus": 9,
+    "healthBonus": 25,
+    "requirements": {
+      "minLevel": 3,
+      "int": 0
+    },
+    "spriteId": "air_pendant",
+    "sprite": "gear/items/air_pendant.png",
+    "basePrice": 21
+  },
+  {
+    "id": "entropy_pendant",
+    "name": "Pingente Entrópico (rare)",
+    "slot": "accessory",
+    "rarity": "rare",
+    "attackBonus": 30,
+    "defenseBonus": 25,
+    "healthBonus": 33,
+    "airDamageBonus": 4,
+    "airDamageFlat": 2,
+    "airResistBonus": 4,
+    "airResistFlat": 2,
+    "requirements": {
+      "minLevel": 6,
+      "int": 3
+    },
+    "spriteId": "entropy_pendant",
+    "sprite": "gear/items/entropy_pendant.png",
+    "basePrice": 60
+  },
+  {
+    "id": "void_medallion",
+    "name": "Medalhão do Vazio (epic)",
+    "slot": "accessory",
+    "rarity": "epic",
+    "attackBonus": 32,
+    "defenseBonus": 54,
+    "healthBonus": 108,
+    "airDamageBonus": 8,
+    "airDamageFlat": 4,
+    "airResistBonus": 8,
+    "airResistFlat": 4,
+    "requirements": {
+      "minLevel": 10,
+      "int": 6
+    },
+    "spriteId": "void_medallion",
+    "sprite": "gear/items/void_medallion.png",
+    "basePrice": 278
+  },
+  {
+    "id": "ancient_abyss_pendant",
+    "name": "Pingente do Abismo Antigo (legendary)",
+    "slot": "accessory",
+    "rarity": "legendary",
+    "attackBonus": 98,
+    "defenseBonus": 78,
+    "healthBonus": 162,
+    "healthPercentBonus": 6,
+    "airDamageBonus": 12,
+    "airDamageFlat": 6,
+    "airResistBonus": 12,
+    "airResistFlat": 6,
+    "requirements": {
+      "minLevel": 15,
+      "int": 10
+    },
+    "spriteId": "ancient_abyss_pendant",
+    "sprite": "gear/items/ancient_abyss_pendant.png",
+    "basePrice": 603
+  },
+  {
+    "id": "forgotten_god_seal",
+    "name": "Selo do Deus Esquecido (mythic)",
+    "slot": "accessory",
+    "rarity": "mythic",
+    "attackBonus": 149,
+    "defenseBonus": 154,
+    "healthBonus": 281,
+    "healthPercentBonus": 7,
+    "critDamageBonus": 0.18,
+    "airDamageBonus": 16,
+    "airDamageFlat": 8,
+    "airResistBonus": 16,
+    "airResistFlat": 8,
+    "requirements": {
+      "minLevel": 22,
+      "int": 15
+    },
+    "spriteId": "forgotten_god_seal",
+    "sprite": "gear/items/forgotten_god_seal.png",
+    "basePrice": 996
+  },
+  {
+    "id": "galneon_recruit_sword",
+    "name": "Espada de Ferro do Recruta (common)",
+    "slot": "weapon",
+    "rarity": "common",
+    "attackBonus": 1,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 1,
+      "str": 0,
+      "heroId": "hero-1"
+    },
+    "spriteId": "galneon_recruit_sword",
+    "sprite": "gear/items/galneon_recruit_sword.png",
+    "basePrice": 6
+  },
+  {
+    "id": "galneon_squire_blade",
+    "name": "Lâmina do Escudeiro (uncommon)",
+    "slot": "weapon",
+    "rarity": "uncommon",
+    "attackBonus": 8,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 3,
+      "str": 0,
+      "heroId": "hero-1"
+    },
+    "spriteId": "galneon_squire_blade",
+    "sprite": "gear/items/galneon_squire_blade.png",
+    "basePrice": 21
+  },
+  {
+    "id": "galneon_knight_sword",
+    "name": "Espada do Cavaleiro (rare)",
+    "slot": "weapon",
+    "rarity": "rare",
+    "attackBonus": 30,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "requirements": {
+      "minLevel": 6,
+      "str": 3,
+      "heroId": "hero-1"
+    },
+    "spriteId": "galneon_knight_sword",
+    "sprite": "gear/items/galneon_knight_sword.png",
+    "basePrice": 60
+  },
+  {
+    "id": "galneon_commander_blade",
+    "name": "Lâmina do Comandante (epic)",
+    "slot": "weapon",
+    "rarity": "epic",
+    "attackBonus": 52,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 8,
+    "physicalDamagePercentBonus": 4,
+    "requirements": {
+      "minLevel": 10,
+      "str": 6,
+      "heroId": "hero-1"
+    },
+    "spriteId": "galneon_commander_blade",
+    "sprite": "gear/items/galneon_commander_blade.png",
+    "basePrice": 278
+  },
+  {
+    "id": "galneon_champion_sword",
+    "name": "Espada do Campeão de Galneon (legendary)",
+    "slot": "weapon",
+    "rarity": "legendary",
+    "attackBonus": 98,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 10,
+    "physicalDamagePercentBonus": 5,
+    "critChanceBonus": 0.026000000000000002,
+    "requirements": {
+      "minLevel": 15,
+      "str": 10,
+      "heroId": "hero-1"
+    },
+    "spriteId": "galneon_champion_sword",
+    "sprite": "gear/items/galneon_champion_sword.png",
+    "basePrice": 603
+  },
+  {
+    "id": "galneon_oath_blade",
+    "name": "Lâmina do Juramento de Galneon (mythic)",
+    "slot": "weapon",
+    "rarity": "mythic",
+    "attackBonus": 126,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackPercentBonus": 12,
+    "physicalDamagePercentBonus": 6,
+    "critChanceBonus": 0.03,
+    "requirements": {
+      "minLevel": 22,
+      "str": 15,
+      "heroId": "hero-1"
+    },
+    "spriteId": "galneon_oath_blade",
+    "sprite": "gear/items/galneon_oath_blade.png",
+    "basePrice": 996
+  },
+  {
+    "id": "ignus_ix",
+    "name": "Ignus Ix",
+    "slot": "accessory",
+    "rarity": "legendary",
+    "fireDamageBonus": 30,
+    "fireResistPenetrationBonus": 30,
+    "requirements": {
+      "minLevel": 30,
+      "int": 28
+    },
+    "namedLegendary": true,
+    "salvageBlocked": true,
+    "spriteId": "ignus_ix",
+    "sprite": "gear/items/ignus_ix.png",
+    "basePrice": 1150,
+    "attackBonus": 74,
+    "defenseBonus": 110,
+    "healthBonus": 123
+  },
+  {
+    "id": "sword_vorpal_lupnus",
+    "name": "Vorpal Lupnus",
+    "slot": "weapon",
+    "rarity": "legendary",
+    "attackBonus": 69,
+    "attackPercentBonus": 12,
+    "physicalDamagePercentBonus": 8,
+    "requirements": {
+      "minLevel": 18,
+      "str": 16
+    },
+    "unique": true,
+    "salvageBlocked": true,
+    "spriteId": "sword_vorpal_lupnus",
+    "sprite": "gear/items/sword_vorpal_lupnus.png",
+    "basePrice": 666,
+    "defenseBonus": 0,
+    "healthBonus": 0
+  },
+  {
+    "id": "soler_plegius",
+    "name": "Soler Plégius",
+    "slot": "weapon",
+    "rarity": "legendary",
+    "attackBonus": 91,
+    "attackPercentBonus": 10,
+    "critChanceBonus": 0.05,
+    "requirements": {
+      "minLevel": 20,
+      "str": 14
+    },
+    "namedLegendary": true,
+    "salvageBlocked": true,
+    "spriteId": "soler_plegius",
+    "sprite": "gear/items/soler_plegius.png",
+    "basePrice": 702,
+    "defenseBonus": 0,
+    "healthBonus": 0
+  },
+  {
+    "id": "morthaven_seal",
+    "name": "Selo de Morthaven",
+    "slot": "accessory",
+    "rarity": "legendary",
+    "lightningDamageBonus": 28,
+    "lightningResistPenetrationBonus": 28,
+    "airDamageBonus": 8,
+    "requirements": {
+      "minLevel": 32,
+      "int": 26
+    },
+    "namedLegendary": true,
+    "salvageBlocked": true,
+    "spriteId": "morthaven_seal",
+    "sprite": "gear/items/morthaven_seal.png",
+    "basePrice": 1230,
+    "attackBonus": 63,
+    "defenseBonus": 96,
+    "healthBonus": 185
+  },
+  {
+    "id": "rain_kontempler_bow",
+    "name": "Arco de Kontempler",
+    "slot": "weapon",
+    "rarity": "legendary",
+    "attackBonus": 112,
+    "defenseBonus": 0,
+    "healthBonus": 0,
+    "attackSpeedBonus": 0.08,
+    "critChanceBonus": 0.06,
+    "critDamageBonus": 0.25,
+    "physicalDamagePercentBonus": 12,
+    "airDamageBonus": 10,
+    "requirements": {
+      "minLevel": 1,
+      "dex": 12
+    },
+    "exclusiveHeroId": "hero-archer",
+    "namedLegendary": true,
+    "salvageBlocked": true,
+    "lootPool": false,
+    "spriteId": "rain_kontempler_bow",
+    "sprite": "gear/items/rain_kontempler_bow.png",
+    "basePrice": 135
+  },
+  {
+    "id": "side_stendra_cache_charm",
+    "name": "Talismã do Esconderijo",
+    "slot": "accessory",
+    "rarity": "rare",
+    "attackBonus": 16,
+    "defenseBonus": 19,
+    "healthBonus": 56,
+    "allElementalResistBonus": 4,
+    "requirements": {
+      "minLevel": 4,
+      "int": 0
+    },
+    "unique": true,
+    "lootPool": false,
+    "salvageBlocked": true,
+    "spriteId": "side_stendra_cache_charm",
+    "sprite": "gear/items/copper_ring.png",
+    "basePrice": 48
+  }
+]

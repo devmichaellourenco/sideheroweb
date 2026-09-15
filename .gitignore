@@ -1,0 +1,8 @@
+node_modules/
+.npm-cache/
+dist/
+dist-web/
+*.log
+./releases/
+releases/
+step-by-step/

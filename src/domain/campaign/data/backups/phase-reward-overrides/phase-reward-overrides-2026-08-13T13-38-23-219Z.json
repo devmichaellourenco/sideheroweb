@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-13T13:35:30.156Z",
+  "overrides": {
+    "1-6": {
+      "targetXp": 15
+    },
+    "1-7": {
+      "targetXp": 10
+    },
+    "1-8": {
+      "targetXp": 10
+    },
+    "1-9": {
+      "targetXp": 10
+    },
+    "1-10": {
+      "targetXp": 30
+    },
+    "1-11": {
+      "targetXp": 15
+    },
+    "1-12": {
+      "targetXp": 15
+    },
+    "1-13": {
+      "targetXp": 15
+    },
+    "1-14": {
+      "targetXp": 15
+    },
+    "1-15": {
+      "targetXp": 50
+    },
+    "1-16": {
+      "targetXp": 25
+    },
+    "1-17": {
+      "targetXp": 25
+    },
+    "1-18": {
+      "targetXp": 25
+    },
+    "1-19": {
+      "targetXp": 25
+    },
+    "1-20": {
+      "targetXp": 65
+    },
+    "1-21": {
+      "targetXp": 35
+    },
+    "1-22": {
+      "targetXp": 35
+    },
+    "1-23": {
+      "targetXp": 35
+    },
+    "1-24": {
+      "targetXp": 35
+    },
+    "1-25": {
+      "targetXp": 35
+    },
+    "1-26": {
+      "targetXp": 75
+    },
+    "1-27": {
+      "targetXp": 45
+    },
+    "1-28": {
+      "targetXp": 45
+    },
+    "1-29": {
+      "targetXp": 45
+    },
+    "1-30": {
+      "targetXp": 90
+    },
+    "1-31": {
+      "targetXp": 55
+    },
+    "1-32": {
+      "targetXp": 55
+    },
+    "1-33": {
+      "targetXp": 55
+    },
+    "1-34": {
+      "targetXp": 55
+    },
+    "1-35": {
+      "targetXp": 110
+    },
+    "1-36": {
+      "targetXp": 70
+    },
+    "1-37": {
+      "targetXp": 70
+    },
+    "1-38": {
+      "targetXp": 70
+    },
+    "1-39": {
+      "targetXp": 70
+    },
+    "1-40": {
+      "targetXp": 130
+    },
+    "1-41": {
+      "targetXp": 80
+    },
+    "1-42": {
+      "targetXp": 80
+    },
+    "1-43": {
+      "targetXp": 80
+    },
+    "1-44": {
+      "targetXp": 80
+    },
+    "1-45": {
+      "targetXp": 150
+    },
+    "1-46": {
+      "targetXp": 90
+    },
+    "1-47": {
+      "targetXp": 90
+    },
+    "1-48": {
+      "targetXp": 90
+    },
+    "1-49": {
+      "targetXp": 90
+    },
+    "1-50": {
+      "targetXp": 200
+    }
+  }
+}

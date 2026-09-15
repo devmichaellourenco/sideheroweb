@@ -1,0 +1,477 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-23T19:13:19.991Z",
+  "items": {
+    "copper_ring": {
+      "stats": {
+        "healthBonus": 10
+      }
+    },
+    "flawless_ruby_ring": {
+      "stats": {
+        "defenseBonus": 1,
+        "healthBonus": 5
+      }
+    },
+    "sapphire_ring": {
+      "stats": {
+        "attackBonus": 0,
+        "defenseBonus": 2,
+        "healthBonus": 15
+      }
+    },
+    "copper_bracelet": {
+      "stats": {
+        "attackBonus": 2,
+        "healthBonus": 5
+      }
+    },
+    "tin_brooch": {
+      "stats": {
+        "attackBonus": 3,
+        "healthBonus": 0
+      }
+    },
+    "obsidian_pendant": {
+      "stats": {
+        "healthBonus": 20
+      }
+    },
+    "bone_pendant": {
+      "stats": {
+        "attackBonus": 2,
+        "healthBonus": 10
+      }
+    },
+    "wood_talisman": {
+      "basePrice": 1,
+      "lootPool": false,
+      "stats": {
+        "attackBonus": 0,
+        "healthBonus": 25
+      }
+    },
+    "wool_cloak": {
+      "stats": {
+        "defenseBonus": 2,
+        "healthBonus": 15
+      }
+    },
+    "iron_vest": {
+      "stats": {
+        "defenseBonus": 5,
+        "healthBonus": 10
+      }
+    },
+    "charred_cuirass": {
+      "stats": {
+        "defenseBonus": 5,
+        "healthBonus": 15
+      }
+    },
+    "rain_shield": {
+      "stats": {
+        "defenseBonus": 10,
+        "healthBonus": 5
+      }
+    },
+    "wooden_shield": {
+      "stats": {
+        "defenseBonus": 5,
+        "healthBonus": 5
+      }
+    },
+    "leather_jerkin": {
+      "stats": {
+        "defenseBonus": 5,
+        "healthBonus": 15
+      }
+    },
+    "cold_jerkin": {
+      "stats": {
+        "defenseBonus": 15,
+        "healthBonus": 5
+      }
+    },
+    "shadow_mantle": {
+      "stats": {
+        "defenseBonus": 3,
+        "healthBonus": 10
+      }
+    },
+    "iron_dagger": {
+      "requirements": {
+        "minLevel": 2
+      },
+      "stats": {
+        "attackBonus": 1
+      }
+    },
+    "venom_dagger": {
+      "requirements": {
+        "minLevel": 2
+      },
+      "stats": {
+        "attackBonus": 1
+      }
+    },
+    "rain_rod": {
+      "stats": {
+        "attackBonus": 1
+      }
+    },
+    "birch_staff": {
+      "stats": {
+        "attackBonus": 1
+      }
+    },
+    "scorched_sword": {
+      "stats": {
+        "attackBonus": 3
+      }
+    },
+    "galneon_recruit_sword": {
+      "stats": {
+        "attackBonus": 2
+      }
+    },
+    "worn_sword": {
+      "stats": {
+        "attackBonus": 2
+      }
+    },
+    "chill_blade": {
+      "stats": {
+        "attackBonus": 3
+      }
+    },
+    "field_axe": {
+      "basePrice": 1,
+      "lootPool": false,
+      "stats": {
+        "attackBonus": 2,
+        "defenseBonus": 7
+      }
+    },
+    "novice_amulet": {
+      "stats": {
+        "attackBonus": 5,
+        "healthBonus": 30
+      }
+    },
+    "sapphire_amulet": {
+      "stats": {
+        "attackBonus": 7,
+        "healthBonus": 25
+      }
+    },
+    "bronze_ring": {
+      "stats": {
+        "attackBonus": 5,
+        "healthBonus": 30
+      }
+    },
+    "ruby_ring": {
+      "stats": {
+        "attackBonus": 8,
+        "healthBonus": 15
+      }
+    },
+    "voltaic_bracelet": {
+      "stats": {
+        "attackBonus": 5,
+        "healthBonus": 30
+      }
+    },
+    "squire_brooch": {
+      "stats": {
+        "attackBonus": 5,
+        "healthBonus": 30
+      }
+    },
+    "silver_medallion": {
+      "stats": {
+        "attackBonus": 5,
+        "healthBonus": 30
+      }
+    },
+    "air_pendant": {
+      "stats": {
+        "attackBonus": 5,
+        "healthBonus": 30
+      }
+    },
+    "riveted_armor": {
+      "stats": {
+        "defenseBonus": 15,
+        "healthBonus": 30
+      }
+    },
+    "gale_buckler": {
+      "stats": {
+        "defenseBonus": 20
+      }
+    },
+    "reinforced_buckler": {
+      "stats": {
+        "defenseBonus": 15,
+        "healthBonus": 30
+      }
+    },
+    "abyss_cloak": {
+      "stats": {
+        "defenseBonus": 20,
+        "healthBonus": 30
+      }
+    },
+    "chain_mail": {
+      "stats": {
+        "defenseBonus": 20
+      }
+    },
+    "glacial_mail": {
+      "stats": {
+        "defenseBonus": 20
+      }
+    },
+    "traveler_mantle": {
+      "stats": {
+        "defenseBonus": 15
+      }
+    },
+    "ember_plate": {
+      "stats": {
+        "defenseBonus": 20
+      }
+    },
+    "scout_dagger": {
+      "stats": {
+        "attackBonus": 15,
+        "defenseBonus": 0
+      }
+    },
+    "apprentice_staff": {
+      "stats": {
+        "attackBonus": 5
+      }
+    },
+    "frost_sword": {
+      "stats": {
+        "attackBonus": 5,
+        "defenseBonus": 0,
+        "healthBonus": -8
+      }
+    },
+    "ember_blade": {
+      "stats": {
+        "attackBonus": 15,
+        "defenseBonus": 0
+      }
+    },
+    "galneon_squire_blade": {
+      "stats": {
+        "attackBonus": 15,
+        "defenseBonus": 0
+      }
+    },
+    "recruit_blade": {
+      "stats": {
+        "attackBonus": 15,
+        "defenseBonus": 0
+      }
+    },
+    "lumber_axe": {
+      "stats": {
+        "attackBonus": 15,
+        "defenseBonus": 0,
+        "healthBonus": -6
+      }
+    },
+    "viper_fang": {
+      "stats": {
+        "attackBonus": 15,
+        "defenseBonus": 0
+      }
+    },
+    "wind_rod": {
+      "basePrice": 1,
+      "lootPool": false,
+      "requirements": {
+        "minLevel": 1,
+        "int": 0
+      },
+      "stats": {
+        "attackBonus": 5,
+        "defenseBonus": -13
+      }
+    },
+    "side_stendra_cache_charm": {
+      "basePrice": 1,
+      "unique": false,
+      "salvageBlocked": false,
+      "requirements": {
+        "minLevel": 1
+      },
+      "stats": {
+        "attackBonus": 0,
+        "defenseBonus": 30,
+        "healthBonus": 50
+      }
+    },
+    "faith_amulet": {
+      "stats": {
+        "attackBonus": 0,
+        "healthBonus": 70
+      }
+    },
+    "merchant_ring": {
+      "stats": {
+        "attackBonus": 10,
+        "defenseBonus": 20,
+        "healthBonus": 50
+      }
+    },
+    "order_brooch": {
+      "stats": {
+        "attackBonus": 10,
+        "defenseBonus": 30,
+        "healthBonus": 60
+      }
+    },
+    "frost_charm": {
+      "stats": {
+        "attackBonus": 0,
+        "defenseBonus": 35,
+        "healthBonus": 50
+      }
+    },
+    "thunder_circuit": {
+      "stats": {
+        "attackBonus": 0,
+        "defenseBonus": 20,
+        "healthBonus": 50
+      }
+    },
+    "pilgrim_pendant": {
+      "stats": {
+        "attackBonus": 0,
+        "defenseBonus": 20,
+        "healthBonus": 50
+      }
+    },
+    "entropy_pendant": {
+      "stats": {
+        "attackBonus": 10,
+        "defenseBonus": 15,
+        "healthBonus": 50
+      }
+    },
+    "crimson_signet": {
+      "stats": {
+        "attackBonus": 10,
+        "defenseBonus": 25,
+        "healthBonus": 60
+      }
+    },
+    "plate_armor": {
+      "stats": {
+        "defenseBonus": 35,
+        "healthBonus": 60
+      }
+    },
+    "ice_mail": {
+      "stats": {
+        "defenseBonus": 30,
+        "healthBonus": 55
+      }
+    },
+    "igneous_cuirass": {
+      "stats": {
+        "defenseBonus": 25,
+        "healthBonus": 55
+      }
+    },
+    "guard_shield": {
+      "stats": {
+        "defenseBonus": 40,
+        "healthBonus": 35
+      }
+    },
+    "thunder_shield": {
+      "stats": {
+        "defenseBonus": 35,
+        "healthBonus": 55
+      }
+    },
+    "air_mantle": {
+      "stats": {
+        "defenseBonus": 25,
+        "healthBonus": 60
+      }
+    },
+    "veteran_mantle": {
+      "stats": {
+        "defenseBonus": 30,
+        "healthBonus": 65
+      }
+    },
+    "sentinel_plate": {
+      "stats": {
+        "defenseBonus": 35,
+        "healthBonus": 50
+      }
+    },
+    "assassin_dagger": {
+      "stats": {
+        "attackBonus": 30,
+        "defenseBonus": 0
+      }
+    },
+    "arcanist_staff": {
+      "stats": {
+        "attackBonus": 20
+      }
+    },
+    "galneon_knight_sword": {
+      "stats": {
+        "attackBonus": 30,
+        "defenseBonus": 0
+      }
+    },
+    "patrol_sword": {
+      "stats": {
+        "attackBonus": 30,
+        "defenseBonus": 0
+      }
+    },
+    "igneous_sword": {
+      "stats": {
+        "attackBonus": 28,
+        "defenseBonus": 0
+      }
+    },
+    "winter_blade": {
+      "stats": {
+        "attackBonus": 28,
+        "defenseBonus": 0
+      }
+    },
+    "scout_axe": {
+      "stats": {
+        "attackBonus": 35,
+        "defenseBonus": 0
+      }
+    },
+    "toxic_fang": {
+      "stats": {
+        "attackBonus": 28,
+        "defenseBonus": 0
+      }
+    },
+    "thunder_rod": {
+      "stats": {
+        "attackBonus": 15
+      }
+    }
+  }
+}

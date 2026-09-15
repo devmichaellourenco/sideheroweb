@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="100%" height="100%">
+  <defs>
+    <!-- Gradiente para o núcleo de cura (Verde Suave) -->
+    <radialGradient id="healCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="30%" stop-color="#ccffcc" />
+      <stop offset="60%" stop-color="#66ff66" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#006600" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Gradiente para a Cruz de Vida -->
+    <linearGradient id="lifeCross" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#ccffcc" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.9" />
+    </linearGradient>
+
+    <!-- Filtro de brilho suave e mágico -->
+    <filter id="healGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Grupo Principal do Efeito (Centralizado no alvo) -->
+  <g transform="translate(200, 300)" filter="url(#healGlow)">
+    
+    <!-- Aura de Cura Esférica (Pulsação central) -->
+    <circle cx="0" cy="0" r="100" fill="url(#healCore)">
+      <animate attributeName="r" values="80;110;80" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.7;0.9;0.7" dur="2s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- Partículas Ascendentes de Vida -->
+    <!-- Partícula 1 -->
+    <circle cx="-50" cy="80" r="6" fill="#ffffff" opacity="0.8">
+      <animate attributeName="cy" values="80; -120" dur="2.5s" repeatCount="indefinite" begin="0s"/>
+      <animate attributeName="opacity" values="0.8; 0" dur="2.5s" repeatCount="indefinite" begin="0s"/>
+    </circle>
+    
+    <!-- Partícula 2 (Mais lenta) -->
+    <circle cx="40" cy="100" r="5" fill="#ccffcc" opacity="0.7">
+      <animate attributeName="cy" values="100; -100" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+      <animate attributeName="opacity" values="0.7; 0" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+    </circle>
+    
+    <!-- Partícula 3 (Média) -->
+    <circle cx="10" cy="60" r="7" fill="#66ff66" opacity="0.9">
+      <animate attributeName="cy" values="60; -150" dur="2s" repeatCount="indefinite" begin="1s"/>
+      <animate attributeName="opacity" values="0.9; 0" dur="2s" repeatCount="indefinite" begin="1s"/>
+    </circle>
+
+    <!-- Partícula 4 -->
+    <circle cx="-20" cy="90" r="4" fill="#ffffff" opacity="0.8">
+      <animate attributeName="cy" values="90; -90" dur="2.8s" repeatCount="indefinite" begin="1.5s"/>
+      <animate attributeName="opacity" values="0.8; 0" dur="2.8s" repeatCount="indefinite" begin="1.5s"/>
+    </circle>
+    
+    <!-- Símbolos de Cruz de Vida (Ícone de RPG) -->
+    <g transform="translate(-100, -100) scale(0.5)">
+      <rect x="90" y="40" width="20" height="120" rx="5" fill="url(#lifeCross)" />
+      <rect x="40" y="90" width="120" height="20" rx="5" fill="url(#lifeCross)" />
+      
+      <animateTransform attributeName="transform" type="translate" values="-100, -100; -100, -140" dur="1.5s" repeatCount="indefinite" additive="sum"/>
+      <animateTransform attributeName="transform" type="scale" values="0.5 0.5; 0.6 0.6; 0.5 0.5" dur="1.5s" repeatCount="indefinite" additive="sum"/>
+      <animate attributeName="opacity" values="0.8; 1; 0.8" dur="1.5s" repeatCount="indefinite" />
+    </g>
+
+    <!-- Feixes de Luz Residual (Sutis) -->
+    <ellipse cx="0" cy="0" rx="130" ry="10" fill="#ccffcc" opacity="0.3">
+      <animate attributeName="ry" values="10; 25; 10" dur="2.5s" repeatCount="indefinite" />
+    </ellipse>
+  </g>
+</svg>

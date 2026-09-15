@@ -1,0 +1,13 @@
+---
+description: Reset de pontos de aprimoramento — unitário e massa via Runas
+globs: src/domain/upgrades/**/*,src/domain/progression/**/*,src/application/**/*Refund*,src/application/**/*Improvement*,src/presentation/components/hero-detail/**/*,src/presentation/flows/HeroDetailFlow.ts
+alwaysApply: false
+---
+
+# Reset de pontos de aprimoramento
+
+- Spec: `specs/improvement-reset.spec.md` · Skill: `.cursor/skills/improvement-reset/SKILL.md`
+- Level 1 (5000, Forja + nv. 12): refund unitário (−)
+- Level 2 (10000, após I + nv. 22): reset em massa
+- Massa: zera skills de aprimoramento (desequipa); attrs até piso de ascensão/itens + toast parcial
+- Sem refund de ascensão; skills de evolução fora do escopo

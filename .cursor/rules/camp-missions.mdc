@@ -1,0 +1,16 @@
+---
+description: Loop acampamento → mapa → missões (principal/secundária/normal); fim de batalha sempre volta ao camp
+globs: src/domain/campaign/missions/**/*,src/application/**/*Mission*,src/presentation/**/*Campaign*,src/presentation/**/*Mission*
+alwaysApply: false
+---
+
+# Camp Missions
+
+- Spec: `specs/camp-missions.spec.md` · Skill: `.cursor/skills/camp-missions/SKILL.md` · Agent: `.cursor/agents/camp-missions.md`
+- Hub = **acampamento**; combate só após iniciar missão no mapa
+- Vitória ou derrota → resultado/recompensas → **acampamento** (sem auto-próxima fase)
+- Principais = marcos `x-1…x-50`; concluídas não repetíveis; board mostra só a próxima
+- Secundárias: unlock graph; várias ativas ok; concluídas não repetíveis
+- Normais: 2–4, template por mapa×estrela; somem na derrota; refresh a cada N visitas ao camp
+- Presentation consome apenas DTOs — sem entidades de domínio
+- Respeitar `CampaignReleaseScope` (v1: mapas 1–4)

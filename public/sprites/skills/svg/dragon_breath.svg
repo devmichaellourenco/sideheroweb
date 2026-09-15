@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="breathFlame" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#ff0000" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#ff4500" stop-opacity="0.85"/>
+      <stop offset="60%" stop-color="#ffd700" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.8"/>
+    </linearGradient>
+    <filter id="breathGlow" x="-10%" y="-15%" width="120%" height="130%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+  <g filter="url(#breathGlow)">
+    <path d="M 40,280 Q 200,220 420,250 Q 580,270 660,240 L 640,320 Q 420,300 200,340 Q 80,360 40,320 Z" fill="url(#breathFlame)">
+      <animate attributeName="d"
+        values="M 40,280 Q 200,220 420,250 Q 580,270 660,240 L 640,320 Q 420,300 200,340 Q 80,360 40,320 Z;
+                M 30,290 Q 190,210 430,245 Q 590,265 670,235 L 650,330 Q 430,310 190,350 Q 70,370 30,330 Z;
+                M 40,280 Q 200,220 420,250 Q 580,270 660,240 L 640,320 Q 420,300 200,340 Q 80,360 40,320 Z"
+        dur="0.25s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 60,300 Q 240,260 440,280 Q 620,295 650,270" fill="none" stroke="#ffffff" stroke-width="5" opacity="0.55"/>
+  </g>
+  <animate attributeName="opacity" values="0;1;1;0" times="0;0.08;0.85;1" dur="0.9s" repeatCount="indefinite"/>
+</svg>

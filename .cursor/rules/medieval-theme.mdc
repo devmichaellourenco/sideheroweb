@@ -1,0 +1,14 @@
+---
+description: Tema medieval — chrome pergaminho claro (exceto batalha/waves)
+globs: src/presentation/panel/panel.css,src/presentation/theme/**/*,src/presentation/onboarding/**
+alwaysApply: false
+---
+
+# Tema medieval
+
+- Spec: `specs/medieval-theme.spec.md` · Skill: `.cursor/skills/medieval-theme/SKILL.md`
+- Chrome = pergaminho claro + tinta escura (padrão do tutorial/onboarding)
+- **Exceção:** `.battle-stage` e `.stage-progress-*` — não forçar pergaminho
+- Tokens em `MedievalThemeTokens.ts` + `:root` em `panel.css`
+- Não reintroduzir rosa neon `#e94560` nem azul cyber como default de chrome
+- Não recolorir raridades nem temas por mapa (`data-campaign-theme`)

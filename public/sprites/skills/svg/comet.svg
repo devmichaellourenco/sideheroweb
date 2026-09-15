@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 360" width="100%" height="100%">
+  <defs>
+    <radialGradient id="cometHead" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="40%" stop-color="#fde68a"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cometTail" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="cometGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+  <g filter="url(#cometGlow)">
+    <ellipse cx="120" cy="180" rx="160" ry="28" fill="url(#cometTail)">
+      <animate attributeName="rx" values="130;180;130" dur="0.22s" repeatCount="indefinite"/>
+    </ellipse>
+    <circle cx="300" cy="180" r="32" fill="url(#cometHead)">
+      <animate attributeName="r" values="26;36;26" dur="0.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="310" cy="172" r="12" fill="#ffffff" opacity="0.9"/>
+  </g>
+  <animate attributeName="opacity" values="0;1;1;0" times="0;0.06;0.8;1" dur="0.48s" repeatCount="indefinite"/>
+</svg>

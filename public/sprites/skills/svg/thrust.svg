@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="lanceShaft" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#94a3b8" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#cbd5e1" stop-opacity="0.8"/>
+      <stop offset="55%" stop-color="#e2e8f0" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="lanceTip" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#64748b"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+    <filter id="thrustGlow" x="-10%" y="-30%" width="120%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#thrustGlow)">
+    <rect x="40" y="148" width="560" height="24" rx="6" fill="url(#lanceShaft)">
+      <animate attributeName="width" values="480;620;480" dur="0.28s" repeatCount="indefinite"/>
+    </rect>
+    <polygon points="600,120 760,160 600,200" fill="url(#lanceTip)">
+      <animateTransform attributeName="transform" type="translate"
+        values="0,0; 24,0; 0,0" dur="0.28s" repeatCount="indefinite"/>
+    </polygon>
+    <ellipse cx="120" cy="160" rx="40" ry="18" fill="#cbd5e1" opacity="0.35">
+      <animate attributeName="rx" values="30;50;30" dur="0.28s" repeatCount="indefinite"/>
+    </ellipse>
+    <path d="M 80,160 Q 200,130 400,160 Q 600,190 720,160" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.5">
+      <animate attributeName="opacity" values="0.2;0.7;0.2" dur="0.28s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <animate attributeName="opacity" values="0;1;1;0" times="0;0.06;0.7;1" dur="0.42s" repeatCount="indefinite"/>
+</svg>

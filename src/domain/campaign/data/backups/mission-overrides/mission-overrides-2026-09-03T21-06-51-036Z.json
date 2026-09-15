@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-03T21:06:40.581Z",
+  "missions": {
+    "normal:custom:vig_lia_da_aldeia": {
+      "id": "normal:custom:vig_lia_da_aldeia",
+      "kind": "normal",
+      "mapId": "stendra",
+      "name": "Vigília da Aldeia",
+      "phaseTemplateId": "1-2",
+      "stars": 1,
+      "unlockAfterMissionIds": []
+    },
+    "normal:custom:trilha_de_cinzas": {
+      "id": "normal:custom:trilha_de_cinzas",
+      "kind": "normal",
+      "mapId": "stendra",
+      "name": "Trilha de Cinzas",
+      "phaseTemplateId": "1-6",
+      "stars": 2,
+      "unlockAfterMissionIds": [
+        "main:1-1"
+      ],
+      "rewards": {
+        "sceneId": "side:stendra_ash_trail"
+      }
+    },
+    "side:posto_avan_ado_stendra": {
+      "id": "side:posto_avan_ado_stendra",
+      "kind": "side",
+      "mapId": "stendra",
+      "name": "Posto avançado · Stendra",
+      "phaseTemplateId": "1-13",
+      "stars": 2,
+      "unlockAfterMissionIds": []
+    },
+    "side:cerco_r_pido_stendra": {
+      "id": "side:cerco_r_pido_stendra",
+      "kind": "side",
+      "mapId": "stendra",
+      "name": "Cerco rápido · Stendra",
+      "phaseTemplateId": "1-23",
+      "stars": 3,
+      "unlockAfterMissionIds": []
+    },
+    "side:guarni_o_inimiga_stendra": {
+      "id": "side:guarni_o_inimiga_stendra",
+      "kind": "side",
+      "mapId": "stendra",
+      "name": "Guarnição inimiga · Stendra",
+      "phaseTemplateId": "1-33",
+      "stars": 4,
+      "unlockAfterMissionIds": []
+    },
+    "side:prova_de_fogo_stendra": {
+      "id": "side:prova_de_fogo_stendra",
+      "kind": "side",
+      "mapId": "stendra",
+      "name": "Prova de fogo · Stendra",
+      "phaseTemplateId": "1-43",
+      "stars": 5,
+      "unlockAfterMissionIds": []
+    }
+  },
+  "deletedMissionIds": [
+    "side:stendra_village_watch",
+    "side:stendra_ash_trail",
+    "normal:1-13",
+    "normal:1-23",
+    "normal:1-33",
+    "normal:1-43"
+  ]
+}

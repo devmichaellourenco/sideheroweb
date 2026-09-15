@@ -1,0 +1,211 @@
+{
+  "rusty_blade": {
+    "common": "worn_sword",
+    "uncommon": "recruit_blade",
+    "rare": "patrol_sword",
+    "epic": "valiant_blade",
+    "legendary": "champion_sword",
+    "mythic": "legion_fulgor"
+  },
+  "pixel_axe": {
+    "common": "field_axe",
+    "uncommon": "lumber_axe",
+    "rare": "scout_axe",
+    "epic": "headsman_axe",
+    "legendary": "lost_king_axe",
+    "mythic": "fallen_titan_axe"
+  },
+  "arcane_staff": {
+    "common": "birch_staff",
+    "uncommon": "apprentice_staff",
+    "rare": "arcanist_staff",
+    "epic": "watchtower_staff",
+    "legendary": "oracle_staff",
+    "mythic": "archmage_staff"
+  },
+  "side_blade": {
+    "common": "iron_dagger",
+    "uncommon": "scout_dagger",
+    "rare": "assassin_dagger",
+    "epic": "shadow_dagger",
+    "legendary": "thief_king_dagger",
+    "mythic": "veil_dagger"
+  },
+  "flame_brand": {
+    "common": "scorched_sword",
+    "uncommon": "ember_blade",
+    "rare": "igneous_sword",
+    "epic": "dragonet_brand",
+    "legendary": "eternal_pyre_sword",
+    "mythic": "ignivar_fulgor"
+  },
+  "frostbite_blade": {
+    "common": "chill_blade",
+    "uncommon": "frost_sword",
+    "rare": "winter_blade",
+    "epic": "north_cleave",
+    "legendary": "aurora_blade",
+    "mythic": "glaciem_lament"
+  },
+  "storm_rod": {
+    "common": "rain_rod",
+    "uncommon": "wind_rod",
+    "rare": "thunder_rod",
+    "epic": "tempest_staff",
+    "legendary": "wandering_orb",
+    "mythic": "sky_king_staff"
+  },
+  "venom_fang": {
+    "common": "venom_dagger",
+    "uncommon": "viper_fang",
+    "rare": "toxic_fang",
+    "epic": "black_bile_blade",
+    "legendary": "ancient_serpent_fang",
+    "mythic": "devourer_tooth"
+  },
+  "wood_shield": {
+    "common": "wooden_shield",
+    "uncommon": "reinforced_buckler",
+    "rare": "guard_shield",
+    "epic": "captain_shield",
+    "legendary": "bastion_aegis",
+    "mythic": "unbreakable_bulwark"
+  },
+  "armor_8bit": {
+    "common": "leather_jerkin",
+    "uncommon": "chain_mail",
+    "rare": "plate_armor",
+    "epic": "commander_cuirass",
+    "legendary": "paladin_plates",
+    "mythic": "war_avatar_armor"
+  },
+  "hero_mantle": {
+    "common": "wool_cloak",
+    "uncommon": "traveler_mantle",
+    "rare": "veteran_mantle",
+    "epic": "champion_mantle",
+    "legendary": "protector_mantle",
+    "mythic": "eternal_sanctuary_mantle"
+  },
+  "chrome_plate": {
+    "common": "iron_vest",
+    "uncommon": "riveted_armor",
+    "rare": "sentinel_plate",
+    "epic": "fortress_cuirass",
+    "legendary": "royal_guard_plate",
+    "mythic": "immortal_dawn_cuirass"
+  },
+  "ember_plate": {
+    "common": "charred_cuirass",
+    "uncommon": "ember_plate",
+    "rare": "igneous_cuirass",
+    "epic": "living_forge_armor",
+    "legendary": "ash_dragon_cuirass",
+    "mythic": "immortal_flame_aegis"
+  },
+  "glacial_mail": {
+    "common": "cold_jerkin",
+    "uncommon": "glacial_mail",
+    "rare": "ice_mail",
+    "epic": "frozen_gale_armor",
+    "legendary": "glacial_aurora_plates",
+    "mythic": "winter_titan_cuirass"
+  },
+  "stormguard": {
+    "common": "rain_shield",
+    "uncommon": "gale_buckler",
+    "rare": "thunder_shield",
+    "epic": "tempest_aegis",
+    "legendary": "sky_king_shield",
+    "mythic": "divine_lightning_bulwark"
+  },
+  "void_shroud": {
+    "common": "shadow_mantle",
+    "uncommon": "abyss_cloak",
+    "rare": "air_mantle",
+    "epic": "deep_night_veil",
+    "legendary": "ancient_void_mantle",
+    "mythic": "world_devourer_shroud"
+  },
+  "copper_ring": {
+    "common": "copper_ring",
+    "uncommon": "bronze_ring",
+    "rare": "merchant_ring",
+    "epic": "noble_ring",
+    "legendary": "regent_ring",
+    "mythic": "ancient_pact_ring"
+  },
+  "idle_amulet": {
+    "common": "wood_talisman",
+    "uncommon": "novice_amulet",
+    "rare": "faith_amulet",
+    "epic": "cleric_amulet",
+    "legendary": "saint_amulet",
+    "mythic": "primordial_relic"
+  },
+  "rpg_pendant": {
+    "common": "bone_pendant",
+    "uncommon": "silver_medallion",
+    "rare": "pilgrim_pendant",
+    "epic": "crusader_medallion",
+    "legendary": "dynasty_pendant",
+    "mythic": "eternal_oath_medallion"
+  },
+  "extension_badge": {
+    "common": "tin_brooch",
+    "uncommon": "squire_brooch",
+    "rare": "order_brooch",
+    "epic": "knight_insignia",
+    "legendary": "marshal_brooch",
+    "mythic": "war_god_insignia"
+  },
+  "ruby_signet": {
+    "common": "flawless_ruby_ring",
+    "uncommon": "ruby_ring",
+    "rare": "crimson_signet",
+    "epic": "ruby_flame_ring",
+    "legendary": "ember_king_signet",
+    "mythic": "draconic_ruby_pact"
+  },
+  "sapphire_charm": {
+    "common": "sapphire_ring",
+    "uncommon": "sapphire_amulet",
+    "rare": "frost_charm",
+    "epic": "frozen_lake_amulet",
+    "legendary": "eternal_aurora_sapphire",
+    "mythic": "glaciem_tear"
+  },
+  "voltaic_loop": {
+    "common": "copper_bracelet",
+    "uncommon": "voltaic_bracelet",
+    "rare": "thunder_circuit",
+    "epic": "tempest_bracelet",
+    "legendary": "lightning_king_torque",
+    "mythic": "divine_thunder_ring"
+  },
+  "entropy_pendant": {
+    "common": "obsidian_pendant",
+    "uncommon": "air_pendant",
+    "rare": "entropy_pendant",
+    "epic": "void_medallion",
+    "legendary": "ancient_abyss_pendant",
+    "mythic": "forgotten_god_seal"
+  },
+  "galneon_standard_sword": {
+    "common": "galneon_recruit_sword",
+    "uncommon": "galneon_squire_blade",
+    "rare": "galneon_knight_sword",
+    "epic": "galneon_commander_blade",
+    "legendary": "galneon_champion_sword",
+    "mythic": "galneon_oath_blade"
+  },
+  "ignus_ix": {
+    "legendary": "ignus_ix"
+  },
+  "sword_vorpal_lupnus": {
+    "legendary": "sword_vorpal_lupnus"
+  },
+  "soler_plegius": {
+    "legendary": "soler_plegius"
+  }
+}

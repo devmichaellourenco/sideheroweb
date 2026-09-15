@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-13T14:38:06.648Z",
+  "overrides": {
+    "1-5": {
+      "displayName": "Alerta nas Fronteiras",
+      "statMultiplier": 1,
+      "waves": [
+        {
+          "id": "w1",
+          "goldMultiplier": 1,
+          "slots": [
+            {
+              "enemyType": "giant_rat",
+              "role": "trash",
+              "count": 1,
+              "level": 1
+            }
+          ]
+        }
+      ]
+    },
+    "2-1": {
+      "statMultiplier": 1,
+      "waves": [
+        {
+          "id": "w1",
+          "goldMultiplier": 1.2,
+          "slots": [
+            {
+              "enemyType": "orc_berserker",
+              "role": "boss",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "1-1": {
+      "displayName": "Aventuras na Estrada",
+      "statMultiplier": 1,
+      "waves": [
+        {
+          "id": "w1",
+          "goldMultiplier": 1.2,
+          "slots": [
+            {
+              "enemyType": "giant_rat",
+              "role": "trash",
+              "count": 1,
+              "level": 1
+            }
+          ]
+        }
+      ]
+    },
+    "1-2": {
+      "statMultiplier": 1,
+      "waves": [
+        {
+          "id": "w1",
+          "goldMultiplier": 1,
+          "slots": [
+            {
+              "enemyType": "giant_rat",
+              "role": "trash",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "1-3": {
+      "statMultiplier": 1,
+      "waves": [
+        {
+          "id": "w1",
+          "goldMultiplier": 1,
+          "slots": [
+            {
+              "enemyType": "cave_bat",
+              "role": "trash",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "1-4": {
+      "statMultiplier": 1,
+      "waves": [
+        {
+          "id": "w1",
+          "goldMultiplier": 1,
+          "slots": [
+            {
+              "enemyType": "cave_bat",
+              "role": "trash",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "1-10": {
+      "displayName": "Emboscada na Estrada",
+      "statMultiplier": 0.9,
+      "waves": [
+        {
+          "id": "w1",
+          "goldMultiplier": 1,
+          "slots": [
+            {
+              "enemyType": "goblin_raider",
+              "role": "trash",
+              "count": 2
+            },
+            {
+              "enemyType": "gray_wolf",
+              "role": "trash",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

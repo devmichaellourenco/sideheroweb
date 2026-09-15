@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="fireCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="20%" stop-color="#ffdf00" />
+      <stop offset="50%" stop-color="#ff6a00" />
+      <stop offset="80%" stop-color="#ff0000" />
+      <stop offset="100%" stop-color="#ff0000" stop-opacity="0" />
+    </radialGradient>
+
+    <linearGradient id="fireTail" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="0%" stop-color="#ff6a00" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#ff3c00" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#ff0000" stop-opacity="0" />
+    </linearGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#glow)">
+    
+    <path d="M 50,200 Q 150,150 300,200 Q 150,250 50,200 Z" fill="url(#fireTail)">
+      <animate attributeName="d" 
+               values="M 50,200 Q 150,140 300,200 Q 150,260 50,200 Z;
+                       M 30,200 Q 150,160 300,200 Q 150,240 300,200 Z;
+                       M 50,200 Q 150,140 300,200 Q 150,260 50,200 Z" 
+               dur="0.15s" repeatCount="indefinite" />
+    </path>
+
+    <path d="M 120,180 L 280,195 L 140,210 L 290,200 Z" fill="#ffaa00" opacity="0.6">
+      <animate attributeName="transform" type="scale"
+               values="1 1; 1 1.2; 1 0.9; 1 1"
+               additive="sum" dur="0.2s" repeatCount="indefinite" />
+    </path>
+
+    <circle cx="280" cy="200" r="45" fill="url(#fireCore)">
+      <animate attributeName="r" values="42;48;42" dur="0.1s" repeatCount="indefinite" />
+    </circle>
+
+    <circle cx="200" cy="170" r="4" fill="#ffdd00">
+      <animate attributeName="cx" values="200;80" dur="0.3s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="170;150" dur="0.3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;0" dur="0.3s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="220" cy="230" r="3" fill="#ffdd00">
+      <animate attributeName="cx" values="220;100" dur="0.25s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="230;255" dur="0.25s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;0" dur="0.25s" repeatCount="indefinite" />
+    </circle>
+
+    <circle cx="250" cy="195" r="5" fill="#ffffff">
+      <animate attributeName="cx" values="250;120" dur="0.2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.9;0" dur="0.2s" repeatCount="indefinite" />
+    </circle>
+
+    <animateTransform attributeName="transform" type="translate"
+                      from="-300, 0" to="600, 0" 
+                      dur="1.2s" repeatCount="indefinite" charset="es-dir" />
+  </g>
+</svg>

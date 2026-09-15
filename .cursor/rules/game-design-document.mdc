@@ -1,0 +1,16 @@
+---
+description: Precisão e sincronização do GDD e materiais de apresentação do Side Hero
+globs: "{docs/game-design/**/*.md,specs/game-design-document.spec.md,.cursor/agents/game-design-document.md,.cursor/skills/game-design-document/SKILL.md}"
+alwaysApply: false
+---
+
+# Side Hero — documentação de game design
+
+- Trate specs, catálogos de domínio, `package.json` e testes como fontes canônicas.
+- Escreva em português para público híbrido: investidores e desenvolvimento.
+- Apresente a visão final, mas identifique planos e hipóteses quando isso for material.
+- Não invente métricas, mercado, receita, orçamento, cronograma ou resultados.
+- Não expanda lore além do conteúdo confirmado sem solicitação explícita.
+- Mantenha `docs/game-design/GDD.md` e `docs/game-design/PITCH.md` consistentes.
+- Use o termo oficial de cada sistema e confirme números antes de publicá-los.
+- Atualize `specs/game-design-document.spec.md` quando o escopo editorial mudar.

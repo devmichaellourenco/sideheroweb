@@ -1,0 +1,16 @@
+---
+description: Stage Progress Bar — timeline de waves da fase (Idle RPG)
+globs: src/presentation/**/*StageProgress*,src/application/**/*StageProgress*,src/presentation/panel/panel.html,src/presentation/panel/panel.css
+alwaysApply: false
+---
+
+# Stage Progress Bar
+
+- Spec: `specs/stage-progress-bar.spec.md` · Skill: `.cursor/skills/stage-progress-bar/SKILL.md`
+- Só leitura de progresso de fase — não alterar combate/loot
+- Presentation consome `StageProgressDto` (ou campo em `GameStateDto`) — sem entidades de domínio
+- Slot no topo de `.battle-stage`, **colado** à strip (sem gap)
+- Marcadores só com ícone (sem texto W1/Elite/Boss); boss no extremo direito da trilha
+- Fill até a wave atual, com lead-in antes do 1º marcador (`[---(1)---(boss)]`)
+- Ícones centralizados na vertical; diâmetro do medalhão > altura do trilho
+- v1: trilha horizontal reta; Adventure Path curvo fora de escopo

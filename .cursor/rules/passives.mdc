@@ -1,0 +1,13 @@
+---
+description: Passivas sempre ativas — catálogo, resolver e hooks de combate
+globs: src/domain/passives/**/*,src/application/**/*Passive*,src/presentation/**/*Passive*,src/domain/progression/ClassAscension*
+alwaysApply: false
+---
+
+# Passivas
+
+- Spec: `specs/passives.spec.md` · Skill: `.cursor/skills/passives/SKILL.md`
+- Sempre ativas e cumulativas (classe + cadeia de ascensão + gear + inimigo)
+- **Não** misturar com `unique-effects` nem com skills passivas de slot (`PassiveSkillEffects`)
+- Novas passivas = entrada no `PassiveCatalog` + effect tipado + teste de fórmula
+- UI via DTO (`activePassives`); presentation não importa domain

@@ -1,0 +1,14 @@
+---
+description: Infra HTML5 itch.io — dist/, cliente in-process, localStorage
+globs: src/infrastructure/**/*,src/presentation/panel/**/*,src/presentation/assets/AssetCatalog.ts,scripts/build.mjs,scripts/pack-release.mjs
+alwaysApply: false
+---
+
+# Infra itch.io
+
+- Spec: `specs/web-infra.spec.md` · Skill: `.cursor/skills/web-infra/SKILL.md`
+- Único target: HTML5 (`dist/`) — sem extensão Chrome
+- Novas ações = case em `handleGameMessage.ts`
+- `InProcessGameClient` + `localStorage`; assets `./assets/…`
+- Sem `chrome.*`, pin ou janelas destacadas
+- **Não** gerar `npm run release` até o usuário pedir

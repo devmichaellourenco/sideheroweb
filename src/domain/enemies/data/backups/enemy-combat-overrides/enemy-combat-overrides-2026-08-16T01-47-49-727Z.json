@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-16T01:46:10.158Z",
+  "identities": {
+    "giant_rat": {
+      "healthPerLevel": 2,
+      "levelUpHealthGain": 1
+    }
+  },
+  "monsterSkills": {}
+}

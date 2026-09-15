@@ -1,0 +1,13 @@
+---
+description: Achievements — catálogo, progresso persistente e Wow
+globs: src/domain/achievements/**/*,src/application/**/*Achievement*,src/infrastructure/storage/*Achievement*,src/presentation/**/*Achievement*
+alwaysApply: false
+---
+
+# Achievements
+
+- Spec: `specs/achievements.spec.md` · Skill: `.cursor/skills/achievements/SKILL.md`
+- Progresso em storage separado (`side_hero_achievements`), não no `GameState`
+- Novos achievements = entrada no `AchievementCatalog` + evento/hook
+- Wow via `AchievementUpdateDto` no tick (progresso e unlock)
+- Lista via `GET_ACHIEVEMENTS` + modal; botão usa `ui/book-open.png`

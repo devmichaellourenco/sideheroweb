@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Side Hero · Balance Lab</title>
+    <link rel="stylesheet" href="./lab.css" />
+  </head>
+  <body>
+    <header class="lab-header">
+      <div>
+        <h1>Balance Lab</h1>
+        <p class="lab-sub">
+          Simulador local, editor de batalhas, XP por fase, XP por nível, itens,
+          lojas e recursos dos heróis.
+          Overrides gravam em JSON com backup automático. Não entra no release.
+        </p>
+      </div>
+      <nav class="lab-tabs" aria-label="Seções do lab">
+        <button type="button" class="lab-tab is-active" data-lab-tab="sim">Simulador</button>
+        <button type="button" class="lab-tab" data-lab-tab="missions">Missões</button>
+        <button type="button" class="lab-tab" data-lab-tab="xp">XP por fase</button>
+        <button type="button" class="lab-tab" data-lab-tab="levels">XP por nível</button>
+        <button type="button" class="lab-tab" data-lab-tab="gear">Itens</button>
+        <button type="button" class="lab-tab" data-lab-tab="shops">Lojas</button>
+        <button type="button" class="lab-tab" data-lab-tab="heroes">Personagens</button>
+        <button type="button" class="lab-tab" data-lab-tab="enemies">Inimigos</button>
+        <button type="button" class="lab-tab" data-lab-tab="upgrades">Melhorias</button>
+        <button type="button" class="lab-tab" data-lab-tab="economy">Economia</button>
+        <button type="button" class="lab-tab" data-lab-tab="maintenance">Manutenção</button>
+      </nav>
+    </header>
+
+    <div id="lab-panel-sim" class="lab-panel">
+      <div class="lab-header-actions lab-sim-toolbar">
+        <label class="lab-mode">
+          Modo
+          <select id="lab-mode">
+            <option value="single">1 combatente</option>
+            <option value="compare">Lado a lado</option>
+          </select>
+        </label>
+        <button type="button" class="lab-btn--info" id="btn-export-json">Export JSON</button>
+        <button type="button" class="lab-btn--create" id="btn-import-json">Import JSON</button>
+        <input type="file" id="import-file" accept="application/json,.json" hidden />
+      </div>
+
+      <main id="lab-main" class="lab-main lab-main--single"></main>
+
+      <section class="lab-io">
+        <h2>Export / Import</h2>
+        <p class="lab-hint">
+          JSON completo do cenário (modo + combatentes + identidade). Snippet TS com
+          <code>identity</code> para colar em <code>HeroCombatIdentityCatalog</code> /
+          <code>EnemyCombatIdentityCatalog</code>.
+        </p>
+        <div class="lab-io-grid">
+          <label class="lab-field lab-field--full">
+            JSON
+            <textarea id="io-json" rows="10" spellcheck="false"></textarea>
+          </label>
+          <label class="lab-field lab-field--full">
+            Snippet TS (combatente ativo / esquerda)
+            <textarea id="io-snippet" rows="10" spellcheck="false" readonly></textarea>
+          </label>
+        </div>
+        <div class="lab-io-actions">
+          <button type="button" class="lab-btn--primary" id="btn-apply-json">Aplicar JSON da caixa</button>
+          <button type="button" class="lab-btn--info" id="btn-copy-json">Copiar JSON</button>
+          <button type="button" class="lab-btn--info" id="btn-copy-snippet">Copiar snippet</button>
+        </div>
+        <p id="lab-status" class="lab-status" role="status"></p>
+      </section>
+    </div>
+
+    <div id="lab-panel-missions" class="lab-panel" hidden>
+      <section id="lab-missions" class="lab-missions" aria-label="Editor de batalhas"></section>
+    </div>
+
+    <div id="lab-panel-xp" class="lab-panel" hidden>
+      <section id="lab-xp-rewards" class="lab-xp-rewards" aria-label="Distribuição de XP por fase"></section>
+    </div>
+
+    <div id="lab-panel-levels" class="lab-panel" hidden>
+      <section id="lab-level-xp" class="lab-xp-rewards" aria-label="Progressão de XP por nível"></section>
+    </div>
+
+    <div id="lab-panel-gear" class="lab-panel" hidden>
+      <section id="lab-gear-items" class="lab-gear-items" aria-label="Editor de itens"></section>
+    </div>
+
+    <div id="lab-panel-shops" class="lab-panel" hidden>
+      <section id="lab-shops" class="lab-shops" aria-label="Editor de lojas"></section>
+    </div>
+
+    <div id="lab-panel-heroes" class="lab-panel" hidden>
+      <section id="lab-hero-combat" class="lab-hero-combat" aria-label="Editor de recursos dos heróis"></section>
+    </div>
+
+    <div id="lab-panel-enemies" class="lab-panel" hidden>
+      <section id="lab-enemy-combat" class="lab-enemy-combat" aria-label="Editor de inimigos"></section>
+    </div>
+
+    <div id="lab-panel-upgrades" class="lab-panel" hidden>
+      <section id="lab-upgrades" class="lab-upgrades" aria-label="Editor de melhorias"></section>
+    </div>
+
+    <div id="lab-panel-economy" class="lab-panel" hidden>
+      <section id="lab-economy-audit" class="lab-economy-audit" aria-label="Auditoria de economia"></section>
+    </div>
+
+    <div id="lab-panel-maintenance" class="lab-panel" hidden>
+      <section id="lab-maintenance" class="lab-maintenance" aria-label="Manutenção e promoção"></section>
+    </div>
+
+    <!-- Banner de mudança externa (auto-reload) -->
+    <div id="lab-external-change-banner" class="lab-external-change-banner" hidden>
+      <span id="lab-external-change-msg">⚠ Mudança externa detectada nos arquivos de override.</span>
+      <button type="button" id="btn-reload-data" class="lab-btn--info">Atualizar dados</button>
+      <button type="button" id="btn-dismiss-banner" class="lab-btn--muted">Ignorar</button>
+    </div>
+
+    <script type="module" src="./lab.js"></script>
+  </body>
+</html>
