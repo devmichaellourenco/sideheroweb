@@ -1,5 +1,7 @@
 // @vitest-environment happy-dom
 
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { describe, expect, it, vi } from 'vitest';
 import { GameStateDto, GearDto } from '../../application/dto/GameStateDto';
 import { ShopModalRenderer } from './ShopModalRenderer';
@@ -162,5 +164,26 @@ describe('ShopModalRenderer', () => {
     ).toBeNull();
 
     container.remove();
+  });
+
+  it('slots de equipamento do herói na loja ficam compactos (48px)', () => {
+    const css = readFileSync(resolve(__dirname, '../panel/panel.css'), 'utf8');
+    expect(css).toMatch(
+      /\.shop-panel \.inventory-loadout-slots \{[\s\S]*?grid-template-columns:\s*repeat\(3, 48px\)/,
+    );
+    expect(css).toMatch(
+      /\.shop-panel \.inventory-loadout-slot\.equipment-slot--icon-only \{[\s\S]*?width:\s*48px/,
+    );
+  });
+
+  it('grade de ofertas usa 6 colunas e o card preenche a célula', () => {
+    const css = readFileSync(resolve(__dirname, '../panel/panel.css'), 'utf8');
+    expect(css).toMatch(
+      /\.shop-offers-grid \{[\s\S]*?grid-template-columns:\s*repeat\(6, minmax\(0, 1fr\)\)/,
+    );
+    expect(css).toMatch(
+      /\.shop-offers-grid \{[\s\S]*?grid-template-columns:\s*repeat\(6, minmax\(0, 1fr\)\)[\s\S]*?\.shop-offer-tile \{[\s\S]*?width:\s*100%/,
+    );
+    expect(css).not.toMatch(/\.shop-offers-grid \{[\s\S]{0,120}repeat\(4,/);
   });
 });

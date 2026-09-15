@@ -22,7 +22,7 @@ O jogador gerencia **equipe ativa** (até 3 slots) e **reserva**, desbloqueia cl
 - [x] Detalhe do herói: modal com abas Loadout / Status / Skills / Classe
 - [x] Aba Status lista skills de batalha equipadas (efeitos + DPS estimado) e bônus/únicos do equipamento
 - [x] Aba Inventário do herói **sem** hint estático de equipamento; slots clicáveis e picker inline comunicam a ação
-- [x] Aba Inventário: **sem** abas texto Todos/Armas/Armaduras/Acessórios; categoria só via ícones do loadout; grid único com ordenação compartilhada; slot ativo filtra o mesmo grid in-place
+- [x] Aba Inventário: **sem** abas texto Todos/Armas/Armaduras/Acessórios; categoria só via ícones do loadout; grid único com ordenação compartilhada; slot ativo filtra o mesmo grid in-place; slots da grid na **metade da dimensão** da faixa de 6 colunas (12 colunas em `.hero-inventory-host`)
 - [x] Header do modal exibe level destacado + título atual (ex.: `Lv.25` + `Arquimaga`); aba Classe **sem** retrato/classe atual — só próxima(s) ascensão(ões) e skills de evolução
 - [x] Aba Classe apresenta título compacto **Escolha seu destino** + cards temáticos; detalhes do momento de ascensão ficam no tooltip do título; requisitos e CTA dos cards ficam no tooltip do card
 - [x] Ícones padronizados de estatística (`StatIconCatalog`, assets em `ui/stats/*`): chips STR/DEX/INT, linhas da ficha de combate (rows + título do tooltip) e linhas de bônus de gear em cards/tooltips; tingidos por tema via `--stat-icon-filter`
@@ -55,7 +55,7 @@ O jogador gerencia **equipe ativa** (até 3 slots) e **reserva**, desbloqueia cl
 
 - [x] `PartyService.test.ts`, `PartyEditPolicy.test.ts`, `PartyValidator.test.ts`
 - [x] `HeroUnlockService.test.ts`, `PartyDragDropPresentation.test.ts`
-- [x] `HeroDetailModalRenderer.test.ts` — aba Inventário sem parágrafo “Toque em um slot de equipamento…”; slot ativo destacado no loadout
+- [x] `HeroDetailModalRenderer.test.ts` — aba Inventário sem parágrafo “Toque em um slot de equipamento…”; slot ativo destacado no loadout; grid de itens em 12 colunas (metade da dimensão)
 - [x] `InventoryModalRenderer.test.ts` — embedded sem filtros texto de categoria; modo slot ativo filtra grid in-place
 - [x] `HeroDetailHeaderRenderer.test.ts` — level destacado + título atual no topo
 - [x] `HeroClassTabRenderer.test.ts` — aba Classe sem retrato/classe atual; só ascensões disponíveis

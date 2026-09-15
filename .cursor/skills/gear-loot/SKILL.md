@@ -21,6 +21,7 @@ description: Gear, inventário, baús e equipamento no Side Hero. Use para loot,
 - Abrir todos: preenche inventário, depois baú de itens; restante fica pendente (`GearStorageService.resolveLootDestination`)
 - Auto-abrir baús / auto-abrir todos: **desativados** (2026-08) — flags sempre off; nós `auto_open_chests_1` / `open_all_chests_2` fora do catálogo
 - Badge no ícone da grid: ▲ / ▼ / ▲▼ conforme deltas por status (`resolveGridCompareBadge`); tooltip com números coloridos (`listGearStatDeltas`)
+- Aba Inventário do herói: grid de itens em 12 colunas (`.hero-inventory-host`) — metade da dimensão da faixa de 6 colunas do inventário global/forja/baú
 - Inline equip no drawer sem modal empilhado quando possível
 - Mythic: loja/loot de área só a partir do Ato 3 de Valdris (`MythicGearAccessPolicy`)
 - Balance Lab (aba **Itens**): overrides de nome, `basePrice`, stats e requisitos em `gear-item-overrides.json`, mesclados por `getGearCatalogItem` — não editar o JSON canônico pelo lab

@@ -12,7 +12,7 @@ export type SystemsMenuId =
   | 'achievements'
   | 'settings';
 
-/** Ordem visual da `actions-icon-bar` em panel.html. */
+/** Ordem visual da `actions-icon-bar` no rail inferior (`panel.html`). */
 export const SYSTEMS_MENU_ORDER: readonly SystemsMenuId[] = [
   'heroes',
   'formation',
@@ -41,6 +41,7 @@ export type SystemsMenuSurface = {
   drawerOpen: boolean;
   modalOpen: boolean;
   modalStackRootType: string | null;
+  /** Modal expandido do mapa — não inclui o mapa embutido do hub. */
   campaignOpen: boolean;
   trackedId: SystemsMenuId | null;
 };
@@ -132,13 +133,47 @@ export function resolveCurrentSystemsMenu(surface: SystemsMenuSurface): SystemsM
   }
 
   if (surface.modalOpen) {
+    const fromStack = surface.modalStackRootType
+      ? systemsMenuFromModalViewType(surface.modalStackRootType)
+      : null;
+    if (fromStack) return fromStack;
     if (surface.campaignOpen || !surface.modalStackRootType) {
       return 'campaign';
     }
-    const fromStack = systemsMenuFromModalViewType(surface.modalStackRootType);
-    if (fromStack) return fromStack;
     if (surface.trackedId) return surface.trackedId;
   }
 
   return surface.trackedId;
+}
+
+/** True quando o sheet daquele menu do rail já está aberto (segundo clique fecha). */
+export function isSystemsSurfaceOpen(
+  id: SystemsMenuId,
+  surface: SystemsMenuSurface,
+): boolean {
+  switch (id) {
+    case 'log':
+      return surface.logVisible;
+    case 'stats':
+      return surface.statsVisible;
+    case 'heroes':
+    case 'inventory':
+      return surface.drawerOpen && surface.trackedId === id;
+    case 'campaign':
+      return (
+        surface.modalOpen &&
+        surface.campaignOpen &&
+        !(
+          surface.modalStackRootType &&
+          systemsMenuFromModalViewType(surface.modalStackRootType)
+        )
+      );
+    default: {
+      if (!surface.modalOpen) return false;
+      const fromStack = surface.modalStackRootType
+        ? systemsMenuFromModalViewType(surface.modalStackRootType)
+        : null;
+      return fromStack === id || surface.trackedId === id;
+    }
+  }
 }

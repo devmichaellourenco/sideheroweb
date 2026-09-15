@@ -30,4 +30,43 @@ describe('battle-hud-deck layout', () => {
     const deckInner = html.slice(deckClose + 1, deckEnd);
     expect(deckInner.trim()).toBe('');
   });
+
+  it('coloca combate em largura total, sistemas no palco central e menus no rodapé', () => {
+    expect(html).toContain('class="app-combat-column"');
+    expect(html).toContain('id="systems-dock-stage"');
+    expect(html).toContain('class="systems-stage"');
+    expect(html).not.toContain('id="systems-dock"');
+    expect(html).toContain('class="actions app-shell-rail"');
+    expect(html).not.toContain('data-systems-menu-icons');
+    const stageStart = html.indexOf('id="systems-dock-stage"');
+    const railStart = html.indexOf('class="actions app-shell-rail"');
+    const modalRoot = html.indexOf('id="modal-root"');
+    const drawerRoot = html.indexOf('id="hero-drawer-root"');
+    const logRoot = html.indexOf('id="battle-log-overlay"');
+    const statsRoot = html.indexOf('id="battle-stats-overlay"');
+    expect(stageStart).toBeGreaterThan(-1);
+    expect(logRoot).toBeGreaterThan(stageStart);
+    expect(statsRoot).toBeGreaterThan(stageStart);
+    expect(drawerRoot).toBeGreaterThan(stageStart);
+    expect(modalRoot).toBeGreaterThan(stageStart);
+    expect(railStart).toBeGreaterThan(modalRoot);
+    for (const id of [
+      'open-chest-btn',
+      'open-heroes-btn',
+      'open-formation-btn',
+      'open-battle-log-btn',
+      'open-battle-stats-btn',
+      'open-campaign-btn',
+      'open-shop-btn',
+      'open-inventory-btn',
+      'open-stash-btn',
+      'open-forge-btn',
+      'open-upgrades-btn',
+      'open-achievements-btn',
+      'open-settings-btn',
+    ]) {
+      expect(html).toContain(`id="${id}"`);
+      expect(html.indexOf(`id="${id}"`)).toBeGreaterThan(railStart);
+    }
+  });
 });

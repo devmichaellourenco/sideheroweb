@@ -28,8 +28,13 @@ const LEGACY_STORAGE_KEY = 'taskbar_hero_game_state';
 /**
  * Hub do acampamento: `loadoutEditOpen` sem exigir `phaseRestartOnResume`.
  * Saves antigos (AND com restart) ou hub sem flag: se não há missão/combate, abre o acampamento.
+ * Intermissão terminal (CLEAR/DEFEAT) nunca reabre o hub — o Continuar chama enterCampHub.
  */
 function resolveLoadoutEditOpenOnLoad(raw: Record<string, unknown>): boolean {
+  const hasIntermission = Boolean(
+    raw.combatIntermission && typeof raw.combatIntermission === 'object',
+  );
+  if (hasIntermission) return false;
   if (raw.loadoutEditOpen === true) return true;
   const hasPhaseRun = Boolean(raw.phaseRun && typeof raw.phaseRun === 'object');
   const hasCombat = Boolean(raw.combat && typeof raw.combat === 'object');

@@ -11,7 +11,7 @@ Desbloquear automações e QoL comprando nós na **árvore única** com ouro, de
 
 ## Critérios de aceite
 
-- [x] Canvas único: pan, zoom, legenda por ramo
+- [x] Canvas único: pan, zoom, legenda por ramo; o viewport **preenche** a altura útil do sheet de Runas (sem teto 560/580px)
 - [x] Cada nó tem `parents[]` válidos; `UpgradeService.areParentsOwned` bloqueia compra
 - [x] Layout colinear (H/V/45°) em `UpgradeTreeLayout.ts`
 - [x] Ramos integrados à raiz `battle_skill_slot_2`: combate, baús (abrir todos manual), slots, loja, heróis; log via `auto_battle_3` (otimizar equipe e auto-abrir baús desativados)
@@ -65,7 +65,7 @@ O tooltip continua informativo no hover; a compra ocorre pelo **clique no nó** 
 - [x] `UpgradeTreeGraphPresentation.test.ts`
 - [x] `UpgradeTreeModalRenderer.test.ts`, `UpgradeTreeViewportBinder.test.ts`
 - [x] `UpgradeTreeViewportBinder.test.ts` — restaurar `UpgradeTreeViewportState` (`scale`, `panX`, `panY`) após re-bind
-- [x] `UpgradeTreeModalRenderer.test.ts` — clique no nó disponível dispara compra; tooltip sem `data-upgrade-buy` e com preço; segundo `render()` após compra **não** chama foco automático nem reseta transform; **sem** parágrafo `upgrade-intro`
+- [x] `UpgradeTreeModalRenderer.test.ts` — clique no nó disponível dispara compra; tooltip sem `data-upgrade-buy` e com preço; segundo `render()` após compra **não** chama foco automático nem reseta transform; **sem** parágrafo `upgrade-intro`; viewport do sheet preenche altura (sem max 560/580)
 - [x] `UpgradeNodeTooltipBinder.test.ts` — hover informativo; clique compra se `available`; pin só fora de compra
 - [x] `tools/balance-lab/upgradeTreeCatalog.test.ts` — valida edição de dependências e rejeita grafos inválidos
 - [x] `UpgradeTreeGraphPresentation.test.ts` — `buildEdgePath` só emite `M ... L ...`; `findSiblingBranchConflicts` acusa irmãos no mesmo ângulo
@@ -73,7 +73,7 @@ O tooltip continua informativo no hover; a compra ocorre pelo **clique no nó** 
 
 ## Notas de implementação (orientação)
 
-Implementado via `captureUpgradeTreeViewport`, `bindUpgradeTreeViewport({ initialState })` e `UpgradeTreeModalRenderer.beginSession()` na abertura do modal. Auto-foco só na primeira montagem da sessão.
+Implementado via `captureUpgradeTreeViewport`, `bindUpgradeTreeViewport({ initialState })` e `UpgradeTreeModalRenderer.beginSession()` na abertura do modal. Auto-foco só na primeira montagem da sessão. O viewport preenche o `#modal-body` (`flex` + sem max-height 560/580).
 
 ## Notas
 

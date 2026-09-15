@@ -151,6 +151,7 @@ export function applyMissionVictory(params: {
     .withStage(progress.highestTierReached)
     .withPhaseRun(null)
     .withCombat(null)
+    .withLoadoutEditOpen(false)
     .withCombatIntermission(
       CombatIntermission.create({
         variant: 'phase-clear',
@@ -210,6 +211,7 @@ export function applyMissionDefeat(params: {
     .withCampaignProgress(progress)
     .withPhaseRun(null)
     .withCombat(null)
+    .withLoadoutEditOpen(false)
     .withCombatIntermission(
       CombatIntermission.create({
         variant: 'defeat',

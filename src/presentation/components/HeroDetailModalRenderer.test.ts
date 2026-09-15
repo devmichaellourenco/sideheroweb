@@ -1,5 +1,7 @@
 // @vitest-environment happy-dom
 
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { GameStateDto, HeroDto } from '../../application/dto/GameStateDto';
 import { HeroDetailModalHandlers, HeroDetailModalRenderer } from './HeroDetailModalRenderer';
@@ -127,5 +129,12 @@ describe('HeroDetailModalRenderer', () => {
 
     expect(container.innerHTML).toContain('loadout-slot--active');
     expect(container.innerHTML).toContain('data-slot="weapon"');
+  });
+
+  it('grid de itens da aba Inventário usa metade da dimensão (12 colunas)', () => {
+    const css = readFileSync(resolve(__dirname, '../panel/panel.css'), 'utf8');
+    expect(css).toMatch(
+      /\.hero-inventory-host \.inventory-grid \{[\s\S]*?grid-template-columns:\s*repeat\(12, minmax\(0, 1fr\)\)/,
+    );
   });
 });

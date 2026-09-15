@@ -53,6 +53,7 @@ describe('ResolveMissionOutcome', () => {
     expect(result.state.combatIntermission?.variant).toBe('phase-clear');
     expect(result.state.combatIntermission?.nextPhaseId).toBeNull();
     expect(result.state.phaseRun).toBeNull();
+    expect(result.state.loadoutEditOpen).toBe(false);
   });
 
   it('vitória normal remove da oferta sem marcar main', () => {
@@ -100,6 +101,7 @@ describe('ResolveMissionOutcome', () => {
       missionId,
     );
     expect(defeat.state.combatIntermission?.variant).toBe('defeat');
+    expect(defeat.state.loadoutEditOpen).toBe(false);
     // XP só na vitória (orçamento da fase); derrota não paga conclusão nem XP.
     expect(defeat.state.gold.value()).toBe(goldBefore);
     expect(defeat.state.heroes[0]!.toProps().experience.current).toBe(xpBefore);

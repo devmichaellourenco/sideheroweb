@@ -38,7 +38,9 @@ npm run release    # zip itch.io → releases/ — só quando o usuário pedir
 
 ## Layout
 
-Coluna centrada (~420px). Sem pin/janelas destacadas.
+Shell 960×740: combate + rail na base; sistemas em overlay central. Sem pin/janelas destacadas.
+
+Publicação itch: Embed in page, viewport **960×740**, Fullscreen off, Mobile friendly off, SharedArrayBuffer off, scrollbars off, Click to play on. Zip só com `npm run release` quando o usuário pedir.
 
 ## Testes
 

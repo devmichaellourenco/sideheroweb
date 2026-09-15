@@ -102,6 +102,8 @@ describe('applyBattleScene', () => {
     expect(stripBg.dataset.mapId).toBe('stendra');
     const sky = stripBg.querySelector('.strip-bg__sky') as HTMLElement;
     expect(sky.style.backgroundImage).toContain('cenario_stendra.jpeg');
+    expect(sky.style.backgroundRepeat).toBe('no-repeat');
+    expect(sky.style.backgroundSize).toBe('100% 100%');
     expect((stripBg.querySelector('.strip-bg__left') as HTMLElement).style.backgroundImage).toBe('');
     expect(stripFloor.classList.contains('strip-floor--tiled')).toBe(false);
   });
@@ -178,6 +180,8 @@ describe('applyBattleScene', () => {
     expect(stripBg.classList.contains('strip-bg--unified')).toBe(false);
     expect(stripBg.dataset.mapId).toBeUndefined();
     expect(sky.style.backgroundImage).toBe('');
+    expect(sky.style.backgroundSize).toBe('');
+    expect(sky.style.backgroundRepeat).toBe('');
     expect(stripFloor.classList.contains('strip-floor--tiled')).toBe(false);
     expect(stripFloor.style.getPropertyValue('--strip-floor-tile-image')).toBe('');
   });

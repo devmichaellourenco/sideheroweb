@@ -1,5 +1,5 @@
 export interface CampaignSceneAssets {
-  /** Imagem única de fundo da battle strip (333×133 ou proporcional). */
+  /** Imagem única de fundo da battle strip (preenche 666×266; arte nova na mesma medida). */
   battleBackground?: string;
   battleLeft?: string;
   battleRight?: string;

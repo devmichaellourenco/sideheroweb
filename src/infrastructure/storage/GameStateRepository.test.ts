@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
+import { CombatIntermission } from '../../domain/campaign/CombatIntermission';
 import { PhaseRun } from '../../domain/campaign/PhaseRun';
 import { GameState } from '../../domain/entities/GameState';
 import { Gear } from '../../domain/entities/Gear';
@@ -78,6 +79,28 @@ describe('GameStateRepository', () => {
 
     const loaded = await repository.load();
     expect(loaded.loadoutEditOpen).toBe(true);
+  });
+
+  it('não reabre o hub no load enquanto CLEAR/DEFEAT está pendente', async () => {
+    const repository = new GameStateRepository(store);
+    const pending = GameState.initial()
+      .withLoadoutEditOpen(false)
+      .withCombatIntermission(
+        CombatIntermission.create({
+          variant: 'phase-clear',
+          clearedPhaseId: '1-1',
+          clearedPhaseName: 'Fase 1-1',
+        }),
+      );
+
+    await repository.save(pending);
+    const corrupted = (await store.get(STORAGE_KEY))[STORAGE_KEY] as Record<string, unknown>;
+    await store.set({
+      [STORAGE_KEY]: { ...corrupted, loadoutEditOpen: true },
+    });
+    const loaded = await repository.load();
+    expect(loaded.loadoutEditOpen).toBe(false);
+    expect(loaded.combatIntermission?.variant).toBe('phase-clear');
   });
 
   it('migra save legado taskbar_hero_game_state para side_hero_game_state', async () => {

@@ -22,7 +22,7 @@ description: Gerencia heróis, party ativa, reserva, unlock e formação no Side
 - Herói imutável: `Hero` com `toProps()` / métodos que retornam novo `Hero`
 - Modal de herói via pilha de modais (`GameViewController`)
 - Aba Status: chips STR/DEX/INT + ficha de combate + skills de batalha (`activeSkills`/`battleStats`) + equipamento/únicos
-- Aba Inventário: sem hint de texto nos slots; equipar via clique no slot + picker inline
+- Aba Inventário: sem hint de texto nos slots; equipar via clique no slot + picker inline; grid de itens em 12 colunas (metade da dimensão da faixa de 6 colunas do inventário global)
 - Header do modal: level destacado (`Lv.{n}`) + título atual via `HeroClassLinePresentation` / `getHeroEvolutionLabel`
 - Aba Classe: título compacto + tooltip (`HeroAscensionMomentTooltipBinder`) + cards temáticos (`HeroClassAscensionPresentation`)
 - Reset de atributos (− e massa): `specs/improvement-reset.spec.md` + skill `improvement-reset`

@@ -84,13 +84,12 @@ import { SkillCooldownDisplayAnimator, shouldAnimateBattleStripTimers } from './
 import { DivineForgeFlow } from '../flows/DivineForgeFlow';
 import {
   isSystemsMenuAvailable,
-  listAvailableSystemsMenus,
-  resolveCurrentSystemsMenu,
+  isSystemsSurfaceOpen,
   systemsMenuFromModalViewType,
   type SystemsMenuAvailability,
   type SystemsMenuId,
+  type SystemsMenuSurface,
 } from '../flows/SystemsMenuNavigation';
-import { renderSystemsMenuIconStrip } from './SystemsMenuIconPresentation';
 import { InlineEquipController, InlineEquipHandlers } from '../gear/InlineEquipController';
 import { bindGearDragDrop } from '../gear/GearDragDropBinder';
 import { OnboardingController } from '../onboarding/OnboardingController';
@@ -103,6 +102,7 @@ import {
 } from '../onboarding/OnboardingPolicy';
 import { UiOverlayOrchestrator } from '../overlays/UiOverlayOrchestrator';
 import { bindBattleChromeLayout } from '../layout/BattleChromeLayout';
+import { shouldShowEmbeddedCampaignMap } from '../policies/EmbeddedCampaignMapPolicy';
 import { detectPendingActSceneDto, detectSeasonFinaleEpilogueDto, detectPendingMissionSceneDto, actSceneDtoFromId } from '../../application/mappers/ActScenePresentationMapper';
 import { ActSceneDto } from '../../application/dto/CampaignDto';
 
@@ -114,10 +114,11 @@ export class GameViewController {
   private readonly autoBattleController = new AutoBattleController();
   private readonly gearMutations = new GearMutationQueue();
   private trackedSystemsMenuId: SystemsMenuId | null = null;
+  private systemsMenuOpeningId: SystemsMenuId | null = null;
+  private systemsMenuOpenSeq = 0;
   private campaignModalOpen = false;
   private campaignEmbeddedActive = false;
   private embeddedCampaignLoadPromise: Promise<void> | null = null;
-  private systemsIconsSignature = '';
   private readonly client: IGameClient;
   private refreshTimer: number | null = null;
   private contextInvalidated = false;
@@ -415,8 +416,9 @@ export class GameViewController {
     bindCampaignTooltip(this.campaignContextBtn);
     bindMenuTooltips();
     bindBattleChromeLayout(
-      root.querySelector('.battle-combat-bar') as HTMLElement,
-      root.querySelector('#app') as HTMLElement | null,
+      root.querySelector('#systems-dock-stage') as HTMLElement,
+      this.appRoot,
+      this.battleStageEl,
     );
 
     this.hud = new GameHudController(
@@ -1273,6 +1275,8 @@ export class GameViewController {
   private beginMissionBattleWithStart(options?: { skipStartCue?: boolean }): void {
     if (!this.isManualLoadoutPause(this.state)) return;
     if (this.battleStartFlow.isActive() || this.victoryFlow.isActive()) return;
+    if (this.isBattleResultPending()) return;
+    if (this.state?.combatIntermission) return;
 
     this.stopAutoBattle();
     this.hideBattlePauseOverlay();
@@ -1440,10 +1444,12 @@ export class GameViewController {
       }
       this.shownIntermissionKey = key;
       this.stopAutoBattle();
+      this.hideEmbeddedCampaignMap();
 
       const presentResult = () => {
         this.battleResultRevealTimer = null;
         if (this.victoryFlow.isActive()) return;
+        this.hideEmbeddedCampaignMap();
         this.victoryFlow.show(payload, () => {
           this.overlayOrchestrator.release('battle_result', key);
           void this.resumeCombatIntermission();
@@ -1490,7 +1496,11 @@ export class GameViewController {
         return;
       }
 
-      if (!options.restartCurrentPhase && this.isAdvanceBlocked(response.state)) {
+      if (
+        !options.restartCurrentPhase &&
+        this.isAdvanceBlocked(response.state) &&
+        !response.state.combatIntermission
+      ) {
         return;
       }
 
@@ -1960,13 +1970,6 @@ export class GameViewController {
       return;
     }
 
-    if (
-      this.modal.isOpen() &&
-      this.modalStack[this.modalStack.length - 1]?.type === 'formation'
-    ) {
-      return;
-    }
-
     this.closeHeroDrawer();
     this.battleLogPanel.hide();
     this.battleStatsPanel.hide();
@@ -2276,76 +2279,25 @@ export class GameViewController {
     };
   }
 
-  private resolveSystemsMenuCurrent(): SystemsMenuId | null {
+  private getSystemsMenuSurface(): SystemsMenuSurface {
     const rootType =
       this.modalStack.find((view) => systemsMenuFromModalViewType(view.type) !== null)?.type ??
       this.modalStack[0]?.type ??
       null;
 
-    return resolveCurrentSystemsMenu({
+    return {
       logVisible: this.battleLogPanel.isVisible(),
       statsVisible: this.battleStatsPanel.isVisible(),
       drawerOpen: this.heroDrawer.isOpen(),
       modalOpen: this.modal.isOpen(),
       modalStackRootType: rootType,
-      campaignOpen: this.campaignModalOpen || this.campaignEmbeddedActive,
+      campaignOpen: this.campaignModalOpen,
       trackedId: this.trackedSystemsMenuId,
-    });
+    };
   }
 
   private syncSystemsNavChrome(): void {
-    const sheetOpen =
-      this.modal.isOpen() ||
-      this.heroDrawer.isOpen() ||
-      this.battleLogPanel.isVisible() ||
-      this.battleStatsPanel.isVisible();
-
-    if (!sheetOpen) {
-      this.systemsIconsSignature = '';
-      document.querySelectorAll('[data-systems-menu-icons]').forEach((host) => {
-        (host as HTMLElement).replaceChildren();
-      });
-      return;
-    }
-
-    const current = this.resolveSystemsMenuCurrent();
-    const available = listAvailableSystemsMenus(this.getSystemsAvailability());
-    const signature = [
-      available.join(','),
-      current ?? '',
-      this.modal.isOpen() ? '1' : '0',
-      this.heroDrawer.isOpen() ? '1' : '0',
-      this.battleLogPanel.isVisible() ? '1' : '0',
-      this.battleStatsPanel.isVisible() ? '1' : '0',
-    ].join('|');
-
-    if (signature === this.systemsIconsSignature) return;
-    this.systemsIconsSignature = signature;
-
-    document.querySelectorAll<HTMLElement>('[data-systems-menu-icons]').forEach((host) => {
-      const inModal = Boolean(host.closest('#modal-root'));
-      const inDrawer = Boolean(host.closest('#hero-drawer-root'));
-      const inLog = Boolean(host.closest('#battle-log-overlay'));
-      const inStats = Boolean(host.closest('#battle-stats-overlay'));
-      const active =
-        (inModal && this.modal.isOpen()) ||
-        (inDrawer && this.heroDrawer.isOpen()) ||
-        (inLog && this.battleLogPanel.isVisible()) ||
-        (inStats && this.battleStatsPanel.isVisible());
-
-      if (!active) {
-        host.replaceChildren();
-        return;
-      }
-
-      renderSystemsMenuIconStrip(host, {
-        available,
-        current,
-        onSelect: (id) => {
-          void this.openSystemsSurface(id);
-        },
-      });
-    });
+    /* Menus ficam só no rodapé do shell; os sheets não repetem a faixa de ícones. */
   }
 
   private async openSystemsSurface(id: SystemsMenuId): Promise<void> {
@@ -2354,13 +2306,31 @@ export class GameViewController {
       return;
     }
 
-    if (this.isSystemsSurfaceOpen(id)) {
+    if (
+      isSystemsSurfaceOpen(id, this.getSystemsMenuSurface()) ||
+      this.systemsMenuOpeningId === id
+    ) {
+      this.systemsMenuOpeningId = null;
+      this.systemsMenuOpenSeq += 1;
       this.closeSystemsSurfaceLocal(id);
       this.syncSystemsNavChrome();
       return;
     }
 
-    await this.openSystemsMenu(id);
+    const seq = ++this.systemsMenuOpenSeq;
+    this.systemsMenuOpeningId = id;
+    try {
+      await this.openSystemsMenu(id);
+    } finally {
+      if (this.systemsMenuOpeningId === id) {
+        this.systemsMenuOpeningId = null;
+      }
+    }
+
+    if (seq !== this.systemsMenuOpenSeq && isSystemsSurfaceOpen(id, this.getSystemsMenuSurface())) {
+      this.closeSystemsSurfaceLocal(id);
+      this.syncSystemsNavChrome();
+    }
   }
 
   private notifySystemsMenuUnavailable(id: SystemsMenuId): void {
@@ -2384,20 +2354,6 @@ export class GameViewController {
     }
   }
 
-  private isSystemsSurfaceOpen(id: SystemsMenuId): boolean {
-    switch (id) {
-      case 'log':
-        return this.battleLogPanel.isVisible();
-      case 'stats':
-        return this.battleStatsPanel.isVisible();
-      case 'heroes':
-      case 'inventory':
-        return this.heroDrawer.isOpen() && this.trackedSystemsMenuId === id;
-      default:
-        return this.resolveSystemsMenuCurrent() === id;
-    }
-  }
-
   private closeSystemsSurfaceLocal(id: SystemsMenuId): void {
     switch (id) {
       case 'log':
@@ -2412,8 +2368,15 @@ export class GameViewController {
           this.closeHeroDrawer();
         }
         break;
+      case 'campaign':
+        if (this.campaignModalOpen && this.modal.isOpen()) {
+          this.modalStack.length = 0;
+          this.campaignModalOpen = false;
+          this.modal.close('action');
+        }
+        break;
       default:
-        if (this.resolveSystemsMenuCurrent() === id && this.modal.isOpen()) {
+        if (this.modal.isOpen()) {
           this.modalStack.length = 0;
           this.campaignModalOpen = false;
           this.modal.close('action');
@@ -2539,13 +2502,20 @@ export class GameViewController {
     this.battlePauseOverlay.classList.remove('battle-pause-overlay--battle');
   }
 
-  private shouldShowEmbeddedCampaignMap(state: GameStateDto): boolean {
+  private isBattleResultPending(): boolean {
     return (
-      this.isCampHubOpen(state) &&
-      !this.battleStartFlow.isActive() &&
-      !this.victoryFlow.isActive() &&
-      !this.campaignModalOpen
+      this.battleResultRevealTimer !== null ||
+      this.overlayOrchestrator.getActiveKind() === 'battle_result'
     );
+  }
+
+  private shouldShowEmbeddedCampaignMap(state: GameStateDto): boolean {
+    return shouldShowEmbeddedCampaignMap(state, {
+      battleStartActive: this.battleStartFlow.isActive(),
+      victoryOverlayActive: this.victoryFlow.isActive(),
+      battleResultPending: this.isBattleResultPending(),
+      campaignModalOpen: this.campaignModalOpen,
+    });
   }
 
   private syncEmbeddedCampaignMap(state: GameStateDto): void {
@@ -2558,7 +2528,7 @@ export class GameViewController {
     this.battleStageEl.classList.add('battle-stage--camp-map');
     this.battleFieldEl.classList.add('battle-field--camp-map');
     this.campCampaignMapRoot.classList.remove('hidden');
-    if (!this.campaignEmbeddedActive && !this.embeddedCampaignLoadPromise) {
+    if (!this.campaignEmbeddedActive && !this.embeddedCampaignLoadPromise && !this.modal.isOpen()) {
       this.trackedSystemsMenuId = 'campaign';
     }
     void this.ensureEmbeddedCampaignMap();
@@ -2593,10 +2563,12 @@ export class GameViewController {
         (nextState) => this.render(nextState),
       )
       .then(() => {
-        this.campaignEmbeddedActive = true;
-        if (this.state) {
-          this.syncOnboarding(this.state);
+        if (!this.state || !this.shouldShowEmbeddedCampaignMap(this.state)) {
+          this.hideEmbeddedCampaignMap();
+          return;
         }
+        this.campaignEmbeddedActive = true;
+        this.syncOnboarding(this.state);
         this.syncSystemsNavChrome();
       })
       .finally(() => {
@@ -2638,8 +2610,11 @@ export class GameViewController {
 
     this.showCombatIntermissionOverlay(previous, mergedState);
 
-    if (!mergedState.combatIntermission) {
-      this.clearBattleResultRevealTimer();
+    if (
+      !mergedState.combatIntermission &&
+      !this.victoryFlow.isActive() &&
+      this.battleResultRevealTimer === null
+    ) {
       this.shownIntermissionKey = null;
     }
 

@@ -2,7 +2,7 @@
 
 ## Papel
 
-UI compacta HTML5, battle strip, modais, Wow, onboarding.
+UI HTML5 itch.io (shell 960×740, sheets centrais, rail inferior), battle strip, modais, Wow, onboarding.
 
 ## Antes de codar
 
@@ -24,6 +24,6 @@ UI compacta HTML5, battle strip, modais, Wow, onboarding.
 
 ## Checklist
 
-- [ ] Modais não cobrem battle strip
+- [ ] Sistemas: overlay central (exceto Log/Stats abaixo da batalha); menus no rodapé
 - [ ] Só DTOs na presentation
 - [ ] Testes de apresentação criados/atualizados (`144-testes-apresentacao.md`)

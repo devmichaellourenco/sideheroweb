@@ -24,7 +24,7 @@ description: Loja, ofertas e economia de ouro no Side Hero. Use para shop, loja,
 - Cap de raridade por **mains** (`getShopMaxRarityIndex`); mythic só Ato 3 Valdris (`main:3-21` / tier ≥ 121)
 - Preço: `basePrice` do item × `priceMultiplier` da loja + `flatPriceAdjustment`
 - common/uncommon/rare podem voltar após refresh; epic/legendary/mythic comprados nunca retornam naquela loja
-- UI da loja: grade **4 colunas**; card = ícone + preço; detalhes no tooltip; badge ▲/▼; seletor + loadout (`shop`); drag da oferta paga → slot (`BuyAndEquipShopOfferUseCase`)
+- UI da loja: grade **6 colunas**; card preenche a célula (ícone + preço); detalhes no tooltip; badge ▲/▼; seletor + loadout (`shop`) com slots equipados **48px** (não esticam no sheet); drag da oferta paga → slot (`BuyAndEquipShopOfferUseCase`)
 
 ## Testes
 

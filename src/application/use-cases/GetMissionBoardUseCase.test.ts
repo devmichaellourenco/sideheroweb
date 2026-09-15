@@ -73,6 +73,8 @@ describe('ResolveMissionOutcomeUseCase', () => {
 
     const afterVictory = await useCase.execute('victory', '1-1');
     expect(afterVictory.combatIntermission?.variant).toBe('phase-clear');
+    expect(afterVictory.loadoutEditOpen).toBe(false);
+    expect(afterVictory.canEditParty).toBe(false);
 
     const camp = await useCase.execute('enter_camp');
     expect(camp.loadoutEditOpen).toBe(true);

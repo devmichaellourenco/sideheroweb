@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { CombatIntermission } from '../campaign/CombatIntermission';
 import { PhaseRun } from '../campaign/PhaseRun';
 import { CombatState } from '../entities/CombatState';
 import { GameState } from '../entities/GameState';
@@ -8,6 +9,17 @@ import { PartyEditPolicy } from './PartyEditPolicy';
 describe('PartyEditPolicy', () => {
   it('permite edição sem combate nem phaseRun', () => {
     expect(PartyEditPolicy.canEdit(GameState.initial())).toBe(true);
+  });
+
+  it('bloqueia edição durante CLEAR/DEFEAT (intermissão terminal)', () => {
+    const state = GameState.initial().withCombatIntermission(
+      CombatIntermission.create({
+        variant: 'phase-clear',
+        clearedPhaseId: '1-1',
+        clearedPhaseName: 'Fase 1-1',
+      }),
+    );
+    expect(PartyEditPolicy.canEdit(state)).toBe(false);
   });
 
   it('bloqueia edição com combate ativo', () => {

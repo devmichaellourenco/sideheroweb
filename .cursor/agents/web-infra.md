@@ -28,4 +28,5 @@ Fora: lógica de combate/campanha (outros agents); polish mobile.
 - [ ] `dist/index.html` na raiz, sem manifest/SW
 - [ ] Save só em localStorage
 - [ ] Sem `chrome.*`
+- [ ] Shell 960×740 (Embed in page; Fullscreen/Mobile friendly off)
 - [ ] Testes da spec criados/atualizados (não executar automaticamente)

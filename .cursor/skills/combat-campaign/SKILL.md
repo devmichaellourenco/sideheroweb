@@ -33,7 +33,7 @@ description: Implementa combate em tempo real, campanha por fases/waves, tick e 
 - Identidade de mapa: `MapCombatIdentityCatalog` + `pickCommonForMapPhase` (bias soft) + resists via `resolveEnemyInnateResists(..., mapId)`
 - **Loop de produto (novo):** skill `camp-missions` — fim de missão → CLEAR/DEFEAT → detalhes de recompensa → Continuar → camp; sem auto-próxima fase; tick com `phaseRun` nulo é no-op
 - Auto-batalha 1×: intervalo de tick = `COMBAT_DELTA_SECONDS × 1000` ms (TTA/CD alinhados ao tempo real); 2×/3× dividem o intervalo
-- Overlay terminal (`phase-clear` / `defeat`): `BattleVictoryFlow` anima CLEAR/DEFEAT, depois troca para tela só de recompensas (sem Ocultar); Continuar → camp + abre o mapa; waves intermediárias ainda auto-dismiss
+- Overlay terminal (`phase-clear` / `defeat`): `BattleVictoryFlow` anima CLEAR/DEFEAT, depois troca para tela só de recompensas (sem Ocultar); Continuar → camp + abre o mapa; waves intermediárias ainda auto-dismiss. Save/load **não** força hub enquanto a intermissão terminal existe.
 
 ## Arquivos frequentes
 

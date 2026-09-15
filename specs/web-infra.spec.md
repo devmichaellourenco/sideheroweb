@@ -17,7 +17,7 @@
 - [x] `npm run build` gera `dist/` com `index.html` na raiz + JS/CSS/assets — sem manifest nem service worker
 - [x] Zip itch.io via `npm run release` (conteúdo de `dist/`, sem `.map`) — **só quando o usuário pedir**
 - [x] Sem janelas destacadas / pin; menus abrem na própria página
-- [x] Layout jogável em iframe itch: coluna centrada (~420px)
+- [x] Layout jogável em iframe itch: shell **960×740**, combate, rail de menus na **base**, sistemas em overlay central
 - [x] Backup export/import (`.sidehero`) via `ISaveBackupStore` + Web Crypto
 
 ## Camadas e arquivos-chave
@@ -49,8 +49,8 @@
 1. `npm run build` (e `npm run release` só sob pedido)
 2. Kind of project: **HTML**
 3. Zip com `index.html` na raiz
-4. Viewport sugerido: 420×740
-5. Sem SharedArrayBuffer
+4. Viewport: **960×740**
+5. Embed in page; Fullscreen button off; Mobile friendly off; SharedArrayBuffer off; scrollbars off; Click to play on
 
 ## Testes obrigatórios
 

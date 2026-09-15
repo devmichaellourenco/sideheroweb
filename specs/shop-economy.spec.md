@@ -19,9 +19,9 @@ Gastar **ouro** em ofertas da loja ativa (gear consumível/equipável) com renov
 - [x] Raridade **mythic** só entra no estoque a partir do Ato 3 de Valdris (`main:3-21` ou tier ≥ 121)
 - [x] Modal da loja: tooltip com preview grande + comparação vs herói selecionável (sem fechar a loja)
 - [x] Arrastar oferta (só se puder pagar) para o slot do herói: compra + equipa; troca exige espaço no inventário/baú
-- [x] Grade de ofertas em **4 colunas**; card compacto = ícone + botão de preço (detalhes só no tooltip)
+- [x] Grade de ofertas em **6 colunas**; card preenche a célula (ícone + botão de preço; detalhes só no tooltip)
 - [x] Botão de preço ≤ largura do ícone; badge ▲/▼ de comparação no canto superior esquerdo (mesmo padrão do inventário)
-- [x] Seletor “Comparar com” + loadout do herói no contexto `shop` (sem fechar a loja)
+- [x] Seletor “Comparar com” + loadout do herói no contexto `shop` (sem fechar a loja); slots de equipamento compactos (48px, sem esticar na largura do sheet)
 - [x] Cada item possui `basePrice` fixo no catálogo; a loja calcula o preço final exclusivamente como preço base + seus modificadores explícitos (tier/raridade não precificam mais o item)
 - [x] Lojas são definições configuráveis (`id`, nome, `unlockAfterMainId`, pool explícito, `priceMultiplier`/`flatPriceAdjustment`); só a mais recente desbloqueada após o marco fica ativa
 - [x] Estoque persistido por loja; ofertas compradas somem; common/uncommon/rare podem voltar no refresh; epic/legendary/mythic comprados nunca reaparecem naquela loja
@@ -55,5 +55,5 @@ Gastar **ouro** em ofertas da loja ativa (gear consumível/equipável) com renov
 - [x] `BuyShopOfferUseCase.test.ts` — oferta comprada não reaparece
 - [x] `ShopRefreshRules.test.ts` — cota de renovação por loja
 - [x] `RefreshShopUseCase.test.ts` — renovar consome `refreshUses` do estoque da loja e bloqueia no limite
-- [x] `ShopModalRenderer.test.ts` — preview no tooltip + seletor de herói / comparação / drag / grade
+- [x] `ShopModalRenderer.test.ts` — preview no tooltip + seletor de herói / comparação / drag / grade 6 colunas; slots equipados compactos (48px)
 - [x] `BuyAndEquipShopOfferUseCase.test.ts` — compra+equipa, troca com espaço, erro sem espaço

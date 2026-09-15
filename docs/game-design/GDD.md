@@ -1,15 +1,15 @@
 # Side Hero — Game Design Document
 
 **Produto:** Side Hero — Idle RPG  
-**Plataforma:** HTML5 no itch.io (coluna compacta ~420px)  
+**Plataforma:** HTML5 no itch.io (shell 960×740)  
 **Versão de referência:** 0.8.7  
 **Propósito:** visão de produto para investidores, desenvolvimento e colaboradores
 
 ## 1. Resumo executivo
 
-Side Hero é um RPG idle jogável no navegador. Uma party de heróis enfrenta waves, derrota chefes, coleta baús e avança por uma campanha medieval numa interface compacta, pensada para sessões curtas e acompanhamento contínuo.
+Side Hero é um RPG idle jogável no navegador. Uma party de heróis enfrenta waves, derrota chefes, coleta baús e avança por uma campanha medieval numa interface widescreen compacta (batalha visível, menus no rodapé, sistemas no centro), pensada para sessões curtas e acompanhamento contínuo.
 
-O diferencial é a baixa exigência de atenção com profundidade de construção de equipe: a batalha permanece visível numa faixa compacta, enquanto decisões de formação, equipamento, skills e progressão acontecem no acampamento.
+O diferencial é a baixa exigência de atenção com profundidade de construção de equipe: a batalha permanece visível numa faixa compacta, enquanto decisões de formação, equipamento, skills e progressão ocupam o painel ao lado.
 
 O jogador pode acompanhar a ação continuamente ou intervir apenas quando deseja abrir baús, otimizar o grupo, escolher uma fase ou investir recursos.
 
@@ -40,17 +40,17 @@ Liderar uma pequena companhia de aventureiros que cresce de aprendizes a campeõ
 
 ### Necessidade atendida
 
-Jogos tradicionais competem pela tela e atenção total. Side Hero oferece companhia, progressão e decisões de RPG numa coluna compacta, sem exigir sessão de ação contínua.
+Jogos tradicionais competem pela tela e atenção total. Side Hero oferece companhia, progressão e decisões de RPG num shell compacto de batalha e menus, sem exigir sessão de ação contínua.
 
 ### Posicionamento
 
-Um idle RPG HTML5 no itch.io, com campanha finita, party, builds e progressão até o final, numa interface vertical compacta.
+Um idle RPG HTML5 no itch.io, com campanha finita, party, builds e progressão até o final, numa interface widescreen com batalha à vista e sistemas no centro.
 
 ## 4. Pilares de design
 
-### 4.1 A aventura cabe numa coluna
+### 4.1 A aventura cabe no palco de combate
 
-A battle strip permanece visível no topo da coluna de jogo. O jogo deve comunicar estado, progresso e perigo em pouco espaço.
+A battle strip permanece visível. O jogo deve comunicar estado, progresso e perigo na faixa 666×266; os sistemas abrem no centro do shell e os menus ficam no rodapé.
 
 ### 4.2 Automação conquistada
 
@@ -209,11 +209,12 @@ Objetivo de retenção: o jogador quer **continuar até o fim** (Morthaven), nã
 
 ## 13. UX e apresentação
 
-A interface é organizada em três níveis:
+A interface é um shell 960×740:
 
-- **Battle strip:** combate e progresso sempre visíveis.
-- **Acampamento:** acesso seguro à formação, heróis, inventário, loja, baús e melhorias.
-- **Modais e drawers:** decisões detalhadas sem encobrir permanentemente a batalha.
+- **Combate:** header, trilha da campanha, battle strip (666×266) e barra de combate.
+- **Rodapé:** rail de menus do jogo, sempre visível.
+- **Sistemas:** loja, heróis, runas e afins no centro (podem cobrir a batalha); log e estatísticas abaixo da tela de combate; o rail permanece clicável.
+- **Overlays interruptivos:** Wow, cenas, splash, onboarding e confirmações continuam centrados sobre o shell.
 
 Interações principais usam clique, hover, tooltips e drag-and-drop. Ações imediatas, como abrir baú e otimizar equipe, são visualmente separadas de botões que abrem telas.
 
@@ -225,7 +226,7 @@ O onboarding é contextual e pausa entre dicas. Celebrações “Wow” destacam
 
 A identidade combina pergaminho, tinta, madeira, ouro de selo e acentos de floresta. O tema escuro é padrão e o tema claro permanece disponível. Regiões têm banners e acentos próprios; raridades mantêm linguagem cromática consistente.
 
-Sprites 2D, retratos, ícones e cenas reforçam leitura rápida no espaço vertical. A battle strip conserva tratamento visual próprio para garantir legibilidade durante a ação.
+Sprites 2D, retratos, ícones e cenas reforçam leitura rápida no palco de combate. A battle strip conserva tratamento visual próprio e dimensões fixas para garantir legibilidade durante a ação.
 
 ### Som — direção a validar
 

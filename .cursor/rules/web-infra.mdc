@@ -11,4 +11,5 @@ alwaysApply: false
 - Novas ações = case em `handleGameMessage.ts`
 - `InProcessGameClient` + `localStorage`; assets `./assets/…`
 - Sem `chrome.*`, pin ou janelas destacadas
+- Layout: shell 960×740, combate, menus na base, sistemas em overlay central
 - **Não** gerar `npm run release` até o usuário pedir

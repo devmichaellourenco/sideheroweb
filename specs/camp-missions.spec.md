@@ -78,7 +78,7 @@ Evoluir o mapa de campanha (`CampaignFlow` / `CampaignModalRenderer`):
 
 ## Critérios de aceite
 
-- [x] Fim de batalha (vitória ou derrota) mostra CLEAR/DEFEAT, depois tela só de recompensas (sem scroll; Continuar no deck); Continuar → hub com **mapa embutido** no battle-field
+- [x] Fim de batalha (vitória ou derrota) mostra CLEAR/DEFEAT, depois tela só de recompensas (sem scroll; Continuar no deck); Continuar → hub com **mapa embutido** no battle-field. Load/refresh não abre o mapa enquanto o resultado está pendente
 - [x] **Iniciar missão** no mapa → combate imediato (sem overlay START; o CTA já confirma); painel **Estatísticas** abre automaticamente
 - [x] Preview do pin (quest card) mostra ouro esperado, XP de vitória e bônus (item/cena com nome) quando houver
 - [x] Hub / Acampamento sem reinício via Batalhar (`phaseRestartOnResume: false`); combate só pelo mapa
@@ -166,6 +166,7 @@ Ouro de cada fase vem do orçamento `targetGold` (pago via kills). XP vem do or�
 - [x] `BattleVictoryDetector.test.ts` — vitória com rewards; derrota normal com ouro/XP da tentativa (baseline do START, não só o último tick)
 - [x] `BattleAttemptRewardBaseline.test.ts` — captura/limpa snapshot da tentativa
 - [x] `BattleVictoryFlow.test.ts` — CLEAR/DEFEAT → tela de recompensas e Continuar (ver também `battle-ui` / `combat-campaign`)
+- [x] `EmbeddedCampaignMapPolicy.test.ts` — mapa só no hub após Continuar
 - [x] `BattleStartFlow.test.ts` — START antes do combate (ver também `battle-ui`)
 - [x] Migração de save: progresso linear → marcos concluídos + board
 

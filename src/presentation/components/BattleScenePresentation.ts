@@ -3,6 +3,9 @@ import { getCampaignScene, hasCampaignScene } from '../assets/CampaignSceneCatal
 
 function clearSceneLayer(el: HTMLElement | null): void {
   el?.style.removeProperty('background-image');
+  el?.style.removeProperty('background-size');
+  el?.style.removeProperty('background-repeat');
+  el?.style.removeProperty('background-position');
 }
 
 function applyBattleFloor(
@@ -68,6 +71,9 @@ export function applyBattleScene(
     stripBg.classList.add('strip-bg--scenic', 'strip-bg--unified');
     stripBg.dataset.mapId = mapId;
     skyEl.style.backgroundImage = `url('${getAssetUrl(scene.battleBackground)}')`;
+    skyEl.style.backgroundRepeat = 'no-repeat';
+    skyEl.style.backgroundSize = '100% 100%';
+    skyEl.style.backgroundPosition = 'center';
     clearSceneLayer(centerEl);
     clearSceneLayer(leftEl);
     clearSceneLayer(rightEl);

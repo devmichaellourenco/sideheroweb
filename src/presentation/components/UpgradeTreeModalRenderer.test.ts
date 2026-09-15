@@ -1,6 +1,8 @@
 // @vitest-environment happy-dom
 
 import { describe, expect, it, vi } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { UpgradeNodeDto } from '../../application/dto/UpgradeNodeDto';
 import { UpgradeTreeModalRenderer } from './UpgradeTreeModalRenderer';
 import * as UpgradeTreeViewportBinder from './UpgradeTreeViewportBinder';
@@ -122,5 +124,14 @@ describe('UpgradeTreeModalRenderer', () => {
     expect(focusSpy).not.toHaveBeenCalled();
 
     focusSpy.mockRestore();
+  });
+
+  it('preenche a altura do sheet sem teto 560/580 no viewport', () => {
+    const css = readFileSync(resolve(__dirname, '../panel/panel.css'), 'utf8');
+    expect(css).toMatch(/\.modal-body:has\(\.upgrade-tree-shell\)/);
+    expect(css).toMatch(/\.upgrade-tree-shell \{[\s\S]*?flex:\s*1/);
+    expect(css).toMatch(/\.upgrade-tree-viewport \{[\s\S]*?flex:\s*1 1 auto/);
+    expect(css).not.toMatch(/\.upgrade-tree-viewport \{[\s\S]*?min\(62vh,\s*560px\)/);
+    expect(css).not.toMatch(/#systems-dock-stage \.upgrade-tree-viewport[\s\S]{0,80}max-height:\s*580px/);
   });
 });

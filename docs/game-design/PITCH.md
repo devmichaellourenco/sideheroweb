@@ -18,9 +18,9 @@ O resultado é uma experiência de RPG simples para acompanhar, profunda para do
 
 ### Slide 1 — Uma aventura compacta
 
-**Mensagem:** Side Hero é um idle RPG HTML5 no itch.io, numa coluna compacta.
+**Mensagem:** Side Hero é um idle RPG HTML5 no itch.io, num shell widescreen com batalha à vista e menus no rodapé.
 
-**Mostrar:** battle strip e acampamento na coluna de jogo.
+**Mostrar:** battle strip, rail de menus no rodapé e um sistema aberto no centro.
 
 **Fala:** “Combate automático na faixa, decisões de RPG quando você quiser parar no acampamento.”
 
@@ -88,7 +88,7 @@ O resultado é uma experiência de RPG simples para acompanhar, profunda para do
 
 **Pontos:**
 
-- Interface vertical compacta (~420px).
+- Interface widescreen 960×740 (batalha, menus no rodapé, sistemas no centro).
 - Save local-first, sem conta obrigatória.
 - Interações rápidas no acampamento.
 - Jogo avança enquanto a página está aberta.
@@ -159,7 +159,7 @@ O resultado é uma experiência de RPG simples para acompanhar, profunda para do
 
 **Imagem:** página do jogo no itch; battle strip e acampamento.
 
-**Narração:** “E se uma campanha inteira de RPG idle coubesse numa coluna compacta no navegador?”
+**Narração:** “E se uma campanha inteira de RPG idle coubesse num shell compacto no navegador?”
 
 ### 10–25s — Conceito
 
@@ -193,7 +193,7 @@ O resultado é uma experiência de RPG simples para acompanhar, profunda para do
 
 ## 5. Versão curta — 30 segundos
 
-“Side Hero é um idle RPG HTML5 no itch.io. Uma party enfrenta waves, chefes e quatro regiões numa coluna compacta. Quando quiser interagir, abra baús, monte builds, evolua skills e desbloqueie automações. Complete a jornada até Morthaven.”
+“Side Hero é um idle RPG HTML5 no itch.io. Uma party enfrenta waves, chefes e quatro regiões num shell 960×740: batalha à vista, menus no rodapé e sistemas no centro. Quando quiser interagir, abra baús, monte builds, evolua skills e desbloqueie automações. Complete a jornada até Morthaven.”
 
 ## 6. Ideias de vídeos
 

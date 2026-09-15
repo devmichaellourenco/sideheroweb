@@ -25,7 +25,7 @@ description: Árvore de melhorias com grafo, layout e UI no Side Hero. Use para 
 
 ## UI
 
-- `UpgradeTreeModalRenderer` — canvas único; sem hint estático de pan/zoom
+- `UpgradeTreeModalRenderer` — canvas único; sem hint estático de pan/zoom; viewport preenche o corpo do sheet (`flex: 1`, sem max-height 560/580)
 - `UpgradeTreeViewportBinder` — pan/zoom; exporta `UpgradeTreeViewportState`
 - `buildEdgePath` — sempre linha reta (`M ... L ...`); nunca curva
 - `findSiblingBranchConflicts` — acusa filhos do mesmo pai que saem no mesmo ângulo (arestas sobrepostas)

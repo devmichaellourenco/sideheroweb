@@ -314,7 +314,7 @@
   --toast-loot-bg: linear-gradient(135deg, var(--toast-loot-start) 0%, var(--toast-loot-end) 100%);
   --toast-idle-bg: linear-gradient(135deg, var(--forest) 0%, var(--forest-hi) 100%);
   --panel-sheet-top: 42%;
-  --battle-stage-width: 333px;
+  --battle-stage-width: 666px;
 }
 /* —— Tema escuro (chrome). Canônico: MEDIEVAL_THEME_DARK / specs/ui-theme.spec.md —— */
 html[data-ui-theme='dark'] {
@@ -539,7 +539,7 @@ html[data-ui-theme='dark'] {
   --toast-loot-bg: linear-gradient(135deg, var(--toast-loot-start) 0%, var(--toast-loot-end) 100%);
   --toast-idle-bg: linear-gradient(135deg, var(--forest) 0%, var(--forest-hi) 100%);
   --panel-sheet-top: 42%;
-  --battle-stage-width: 333px;
+  --battle-stage-width: 666px;
 }
 
 /* Batalha + waves: permanecem no tema claro canônico.
@@ -759,7 +759,7 @@ html[data-ui-theme='dark'] .battle-stage:not(.battle-stage--camp-map) {
   --toast-loot-bg: linear-gradient(135deg, var(--toast-loot-start) 0%, var(--toast-loot-end) 100%);
   --toast-idle-bg: linear-gradient(135deg, var(--forest) 0%, var(--forest-hi) 100%);
   --panel-sheet-top: 42%;
-  --battle-stage-width: 333px;
+  --battle-stage-width: 666px;
 }
 
 html[data-ui-theme='dark'] body {
@@ -789,6 +789,8 @@ body {
 }
 
 body {
+  display: flex;
+  justify-content: center;
   font-family: var(--font-body);
   background:
     url('assets/backgrounds/top-principal.png') top center / 100% auto no-repeat,
@@ -798,22 +800,116 @@ body {
 }
 
 #app {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 0;
+  padding: 0;
+  position: relative;
   height: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
+  max-height: 740px;
+  overflow: hidden;
   background: transparent;
-  width: min(100%, 420px);
+  width: min(100%, 960px);
   margin-inline: auto;
   box-shadow: 0 0 48px rgba(20, 12, 6, 0.45);
 }
 
-body {
+.app-combat-column {
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 1;
+  isolation: isolate;
+  position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 12px;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.systems-stage {
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 1400;
+  isolation: isolate;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  pointer-events: none;
+}
+
+.app-shell-rail {
+  grid-column: 1;
+  grid-row: 2;
+  z-index: 1500;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+  margin-top: 0;
+  padding: 6px 10px 8px;
+  border-top: 1px solid var(--panel-border-soft);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--parchment-0) 94%, transparent),
+    color-mix(in srgb, var(--parchment-1) 96%, transparent)
+  );
+}
+
+.app-shell-rail .quick-action-bar {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 220px;
+  padding-bottom: 0;
+  border-bottom: none;
+  flex-wrap: nowrap;
+}
+
+.app-shell-rail .quick-action-bar::before {
+  display: none;
+}
+
+.app-shell-rail .quick-action-btn {
+  flex: 0 1 auto;
+  min-height: 48px;
+  padding: 4px 8px;
+}
+
+.app-shell-rail .actions-icon-bar {
+  flex: 1 1 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4px;
+  width: auto;
+  grid-template-columns: none;
+}
+
+.app-shell-rail .action-icon-btn--menu {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 48px;
+  padding: 4px 2px;
+  gap: 2px;
+}
+
+.app-shell-rail .action-icon-btn--menu .btn-icon,
+.app-shell-rail .action-icon-btn--menu .action-icon-glyph {
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+}
+
+#systems-dock-stage .campaign-mission-stage {
+  height: min(100%, 580px);
+  max-height: 580px;
 }
 
 .battle-stage {
@@ -1305,16 +1401,16 @@ h2 {
 }
 
 .battle-field {
-  --battle-strip-height: 133px;
+  --battle-strip-height: 266px;
   --strip-stack-gap: 4px;
-  --strip-sprite-lift: 2px;
+  --strip-sprite-lift: 4px;
   --strip-health-outer: 9px;
   --strip-action-outer: 4px;
   --strip-floor-skill-inset: 4px;
-  --strip-actor-gap: 2px;
-  --strip-hero-slot: 46px;
-  --strip-enemy-slot: 50px;
-  --strip-enemy-boss-slot: 67px;
+  --strip-actor-gap: 4px;
+  --strip-hero-slot: 92px;
+  --strip-enemy-slot: 100px;
+  --strip-enemy-boss-slot: 134px;
   --strip-sprite-zoom: 1.22;
   --strip-skill-size: 16px;
   --strip-skill-wrap: 18px;
@@ -1324,9 +1420,9 @@ h2 {
     var(--strip-stack-gap) + var(--strip-health-outer) + var(--strip-stack-gap) +
       var(--strip-action-outer) + var(--strip-stack-gap) + var(--strip-skill-outer)
   );
-  /* Elevação legada dos sprites na cena 133px (não acompanha o gap do deck). */
-  --strip-scene-reserve: 36px;
-  --strip-scenic-floor-height: 34px;
+  /* Elevação dos sprites na cena 266px (dobro da arte 133px). */
+  --strip-scene-reserve: 72px;
+  --strip-scenic-floor-height: 68px;
   /* Deck opaco abaixo da cena. */
   --battle-hud-deck-height: 50px;
   /* HUD centralizado verticalmente no deck. */
@@ -1561,11 +1657,11 @@ h2 {
 }
 
 .battle-field--crowded {
-  --strip-hero-slot: 40px;
-  --strip-enemy-slot: 44px;
-  --strip-enemy-boss-slot: 60px;
+  --strip-hero-slot: 80px;
+  --strip-enemy-slot: 88px;
+  --strip-enemy-boss-slot: 120px;
   --strip-sprite-zoom: 1.12;
-  --strip-actor-gap: 2px;
+  --strip-actor-gap: 4px;
   --strip-skill-size: 14px;
   --strip-skill-wrap: 16px;
 }
@@ -1621,8 +1717,8 @@ h2 {
   inset: 0;
   background: linear-gradient(180deg, var(--strip-sky-start) 0%, var(--strip) 60%, var(--floor) 100%);
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center bottom;
+  background-size: 100% 100%;
+  background-position: center;
 }
 
 .strip-bg__center {
@@ -1662,11 +1758,11 @@ h2 {
   background-position: right bottom;
 }
 
-.strip-bg--scenic .strip-bg__sky {
+.strip-bg--scenic:not(.strip-bg--unified) .strip-bg__sky {
   background: linear-gradient(180deg, var(--strip-scenic-sky-top) 0%, var(--strip-scenic-sky-mid) 52%, var(--strip-scenic-sky-end) 100%);
 }
 
-.strip-bg--scenic[data-map-id='stendra'] .strip-bg__sky {
+.strip-bg--scenic:not(.strip-bg--unified)[data-map-id='stendra'] .strip-bg__sky {
   background: linear-gradient(180deg, var(--strip-scenic-sky-top) 0%, var(--strip-scenic-stendra-mid) 48%, var(--strip-scenic-stendra-end) 100%);
 }
 
@@ -1678,8 +1774,8 @@ h2 {
 
 .strip-bg--unified .strip-bg__sky {
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center bottom;
+  background-size: 100% 100%;
+  background-position: center;
 }
 
 .battle-strip:has(.strip-bg--unified) .strip-floor {
@@ -2033,10 +2129,15 @@ h2 {
 .battle-field--camp-map .battle-hud-deck,
 .battle-field--camp-map .heroes-row,
 .battle-field--camp-map .enemy-slot,
-.battle-field--camp-map .battle-float-layer,
-.battle-field--camp-map .battle-victory-overlay {
+.battle-field--camp-map .battle-float-layer {
   visibility: hidden;
   pointer-events: none;
+}
+
+.battle-field--camp-map .battle-victory-overlay:not(.hidden) {
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 12;
 }
 
 .camp-campaign-map-root {
@@ -2155,7 +2256,7 @@ h2 {
 }
 
 .battle-stats-floating {
-  max-height: min(70vh, 520px);
+  max-height: 100%;
 }
 
 /* Janela popup destacável de Estatísticas */
@@ -6191,6 +6292,25 @@ button.hero-skill-chip:hover {
   gap: 10px;
 }
 
+.shop-panel .inventory-loadout {
+  align-items: center;
+}
+
+.shop-panel .inventory-loadout-slots {
+  flex: 0 0 auto;
+  width: auto;
+  grid-template-columns: repeat(3, 48px);
+  gap: 6px;
+}
+
+.shop-panel .inventory-loadout-slot.equipment-slot--icon-only {
+  width: 48px;
+  height: 48px;
+  min-height: 0;
+  padding: 4px;
+  aspect-ratio: auto;
+}
+
 .shop-balance {
   margin: 0;
   font-size: 12px;
@@ -6229,23 +6349,24 @@ button.hero-skill-chip:hover {
 
 .shop-offers-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 4px;
 }
 
 .shop-offer-tile {
-  --shop-offer-icon-size: 64px;
+  --shop-offer-icon-size: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 6px;
+  align-items: stretch;
+  gap: 4px;
   min-height: 0;
-  width: fit-content;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 8px;
-  border-radius: 10px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 4px;
+  box-sizing: border-box;
+  border-radius: 8px;
   border: 1px solid var(--panel-border);
   background: var(--panel-card);
   color: var(--ink);
@@ -6254,9 +6375,10 @@ button.hero-skill-chip:hover {
 
 .shop-offer-icon-wrap {
   position: relative;
-  width: var(--shop-offer-icon-size);
-  height: var(--shop-offer-icon-size);
-  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  margin: 0;
   background-image: var(--gear-frame);
   background-size: contain;
   background-repeat: no-repeat;
@@ -6280,8 +6402,8 @@ button.hero-skill-chip:hover {
 }
 
 .shop-offer-icon {
-  width: 48px;
-  height: 48px;
+  width: 80%;
+  height: 80%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -6331,9 +6453,9 @@ button.hero-skill-chip:hover {
 .shop-offer-actions {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 4px;
-  width: var(--shop-offer-icon-size);
+  width: 100%;
   margin-top: auto;
 }
 
@@ -6432,16 +6554,16 @@ button.hero-skill-chip:hover {
   flex-shrink: 0;
   box-sizing: border-box;
   width: 100%;
-  max-width: var(--shop-offer-icon-size);
+  max-width: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
-  min-height: 28px;
-  font-size: 11px;
+  min-height: 32px;
+  font-size: 12px;
   font-weight: 700;
-  padding: 4px 2px;
-  align-self: center;
+  padding: 5px 2px;
+  align-self: stretch;
   border: 1px solid rgba(47, 107, 56, 0.45);
   background: linear-gradient(180deg, var(--forest-hi) 0%, var(--forest) 100%);
   color: var(--forest-cta-label);
@@ -6487,15 +6609,33 @@ button.hero-skill-chip:hover {
 .upgrade-tree-shell {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  position: relative;
 }
 
 .upgrade-tree-toolbar {
+  position: absolute;
+  z-index: 3;
+  top: 8px;
+  left: 8px;
+  right: 8px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 6px 8px;
+  padding: 4px 6px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--upgrade-tree-bg-top) 88%, transparent);
+  pointer-events: none;
+}
+
+.upgrade-tree-toolbar .upgrade-tree-focus-btn,
+.upgrade-tree-toolbar .upgrade-tree-legend {
+  pointer-events: auto;
 }
 
 .upgrade-tree-focus-btn {
@@ -6640,8 +6780,9 @@ button.hero-skill-chip:hover {
   position: relative;
   width: 100%;
   max-width: 100%;
-  height: min(52vh, 420px);
+  flex: 1 1 auto;
   min-height: 220px;
+  height: auto;
   padding: 0;
   border-radius: 14px;
   border: 1px solid rgba(201, 162, 39, 0.28);
@@ -7561,24 +7702,46 @@ body.modal-open {
   overflow: hidden;
 }
 
-/* Painéis secundários ocupam a área abaixo dos botões Pausar/Acampamento. */
-.modal-root,
-.hero-drawer-root,
-.confirm-dialog-root,
-.battle-log-overlay {
-  position: fixed;
-  top: var(--panel-sheet-top);
-  right: 0;
-  bottom: 0;
-  left: 0;
+/* Painéis de sistema: overlay central acima do rail. Confirms continuam overlay da viewport. */
+#systems-dock-stage .modal-root,
+#systems-dock-stage .hero-drawer-root,
+#systems-dock-stage .battle-log-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 12px 20px 10px;
+  pointer-events: auto;
 }
 
-.modal-backdrop,
-.hero-drawer-backdrop,
-.confirm-dialog-backdrop,
-.battle-log-backdrop {
-  background: transparent;
-  backdrop-filter: none;
+#systems-dock-stage .battle-log-overlay {
+  top: var(--systems-below-battle-top, 58%);
+  right: 20px;
+  bottom: 8px;
+  left: 20px;
+  padding: 0;
+}
+
+#systems-dock-stage .modal-dialog,
+#systems-dock-stage .hero-drawer-panel,
+#systems-dock-stage .battle-log-floating {
+  width: min(920px, 100%);
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+  border-radius: 14px;
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.45),
+    0 0 0 1px color-mix(in srgb, var(--seal-gold) 35%, transparent);
+}
+
+#systems-dock-stage .modal-backdrop,
+#systems-dock-stage .hero-drawer-backdrop {
+  display: block;
+  background: rgba(6, 4, 2, 0.52);
+}
+
+#systems-dock-stage .battle-log-backdrop {
+  display: none;
 }
 
 .modal-root {
@@ -7593,6 +7756,8 @@ body.modal-open {
 }
 
 .confirm-dialog-root {
+  position: fixed;
+  inset: 0;
   z-index: 1700;
   display: flex;
   align-items: center;
@@ -8032,8 +8197,13 @@ body.modal-open {
 .systems-sheet-toolbar {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 4px;
   min-height: 22px;
+}
+
+.systems-sheet-toolbar .modal-back {
+  margin-right: auto;
 }
 
 .systems-menu-icons {
@@ -8181,6 +8351,21 @@ body.modal-open {
   min-height: 0;
   overflow-y: auto;
   padding: 12px;
+}
+
+.modal-body:has(.upgrade-tree-shell) {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+
+.modal-body:has(.upgrade-tree-shell) .upgrade-tree-viewport {
+  min-height: 0;
+  border-radius: 0 0 12px 12px;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
 }
 
 .modal-body:has(.hero-detail-layout) {
@@ -9164,6 +9349,15 @@ body.modal-open {
 
 .hero-inventory-host {
   min-height: 0;
+}
+
+.hero-inventory-host .inventory-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.hero-inventory-host .inventory-grid-slot-icon-wrap {
+  padding: 2px;
 }
 
 .hero-inventory-host .inventory-panel--embedded {
@@ -12585,7 +12779,7 @@ body.skill-drag-active * {
 .act-scene-stage {
   position: relative;
   z-index: 1;
-  width: min(100%, 420px);
+  width: min(100%, 560px);
   max-height: min(88vh, 720px);
   overflow: auto;
 }
@@ -14039,7 +14233,7 @@ body.wow-celebration-open {
 .wow-celebration-stage {
   position: relative;
   z-index: 1;
-  width: min(100%, 440px);
+  width: min(100%, 560px);
   min-height: min(72vh, 540px);
   border-radius: 16px;
   overflow: hidden;
@@ -15325,7 +15519,7 @@ body.party-drag-active * {
 
 /* Boas-vindas da primeira sessão: card central, sem âncora */
 .onboarding-card[data-variant='welcome'] {
-  width: min(420px, calc(100vw - 20px));
+  width: min(560px, calc(100vw - 20px));
   padding: 26px 24px 20px;
   border-width: 3px;
   box-shadow:
@@ -15501,10 +15695,5 @@ body.splash-screen-open #donation-prompt-root,
 body.splash-screen-open #wow-inbox-root {
   visibility: hidden !important;
   pointer-events: none !important;
-}
-  outline: 3px solid color-mix(in srgb, var(--seal-gold) 98%, transparent);
-  outline-offset: 3px;
-  box-shadow: 0 0 0 8px color-mix(in srgb, var(--seal-gold) 28%, transparent);
-  border-radius: 10px;
 }
 

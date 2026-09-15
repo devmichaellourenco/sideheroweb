@@ -11,12 +11,12 @@ Cada região da campanha tem **cenário de batalha** (painéis L/R + céu elást
 
 ## Critérios de aceite
 
-- [x] `stendra`: battle strip com fundo único `cenario_stendra.jpeg` (333×133) + banner
+- [x] `stendra`: battle strip com fundo único `cenario_stendra.jpeg` (arte 333×133, exibida em 666×266) + banner
 - [x] `stendra`: mapa de locais com arte de fundo `map_1.png` (pins de missão; ver `camp-missions`)
 - [x] `gruftall`: battle strip com fundo único `cenario_grutfall.png` + banner
 - [x] `valdris`: battle strip com fundo único `cenario_valdris.png` + banner
 - [x] `morthaven`: battle strip com fundo único `cenario_morthaven.png` + banner
-- [x] Battle strip com fundo único nas quatro regiões base
+- [x] Fundo único da battle strip **preenche** 666×266 (`background-size: 100% 100%`, sem repeat) — arte atual 333×133 estica até novos assets na dimensão do palco
 - [ ] Layout da strip escala de ~280px a ~900px sem cortar zona central de combate
 - [ ] Fallback: gradiente genérico quando mapa não tem cena cadastrada
 - [ ] Assets em `public/sprites/campaign/{mapId}/` copiados no build
@@ -30,7 +30,7 @@ Mapas `broken_sky` … `void_throne` seguem o mesmo padrão de assets quando cad
 
 | Arquivo | Uso |
 |---------|-----|
-| `cenario_{mapId}.png` / `.jpeg` | *(preferencial)* Fundo único da battle strip (333×133) |
+| `cenario_{mapId}.png` / `.jpeg` | *(preferencial)* Fundo único da battle strip (alvo 666×266; arte 333×133 estica até a substituição) |
 | `battle_{mapId}_left.png` | Painel esquerdo da battle strip (legado / mapas sem fundo único) |
 | `battle_{mapId}_right.png` | Painel direito da battle strip |
 | `battle_{mapId}_center.png` | *(opcional)* Faixa central (horizonte entre os painéis) |
@@ -69,6 +69,6 @@ Mapas `broken_sky` … `void_throne` seguem o mesmo padrão de assets quando cad
 
 ## Notas
 
-- PNGs atuais de Stendra são alta resolução (~1.5k×1k); o CSS escala para 128px de altura. Otimizar tamanho de arquivo em release futura se necessário.
+- Fundo único (`strip-bg--unified`) preenche o palco 666×266 sem repetir o bitmap.
 - O vão central aparece porque os painéis L/R cobrem ~52% cada; preencher com `battle_{mapId}_center.png` (~400–600×128) ou `battle_{mapId}_backdrop.png` (largura total ~900×128). Registrar paths opcionais em `CampaignSceneCatalog.ts`.
 - Personagens ancorados no chão via `--strip-actors-bottom` (14px); HP e skills agrupados acima da faixa de piso.
