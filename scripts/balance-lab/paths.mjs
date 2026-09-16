@@ -105,8 +105,10 @@ export const SHOP_CATALOG_PATH = join(
 
 // ── Assets ─────────────────────────────────────────────────────────────────
 
-export const PANEL_ASSETS_DIR = join(root, 'dist/panel/assets');
+export const PANEL_ASSETS_DIR = join(root, 'dist/assets');
 export const PUBLIC_ENEMY_SPRITES_DIR = join(root, 'public/sprites/enemies');
+export const PUBLIC_HERO_SPRITES_DIR = join(root, 'public/sprites/heroes');
+export const PUBLIC_SKILL_SPRITES_DIR = join(root, 'public/sprites/skills');
 
 /**
  * Mapa de scopes monitorados: chave → { override, backupsDir, catalog? }.

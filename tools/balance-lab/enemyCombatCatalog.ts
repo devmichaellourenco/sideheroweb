@@ -23,20 +23,17 @@ import {
 } from '../../src/domain/enemies/EnemyCombatOverrides';
 import { ENEMY_MONSTER_COMBAT_SKILL_CATALOG } from '../../src/domain/progression/combat/EnemyMonsterCombatSkillCatalog';
 import { enemySpriteUrlForLab } from './enemySprites';
-import { IDENTITY_EDIT_FIELDS } from './heroCombatCatalog';
+import { IDENTITY_EDIT_FIELDS, SKILL_EDIT_FIELDS } from './heroCombatCatalog';
+import { labSkillIconFallbackUrl, labSkillIconUrl } from './labAssetUrl';
+import { getEnemySkillDisplay } from '../../src/domain/progression/combat/EnemySkillDisplayCatalog';
 
-export const ENEMY_SKILL_EDIT_FIELDS = [
-  { key: 'basePower', label: 'basePower', step: 1 },
-  { key: 'powerPerRank', label: 'powerPerRank', step: 1 },
-  { key: 'attributeFactor', label: 'attr ×', step: 0.01 },
-  { key: 'cooldownTurns', label: 'CD turns', step: 1 },
-  { key: 'initialCooldown', label: 'CD inicial', step: 1 },
-  { key: 'actionRecoverySeconds', label: 'recovery s', step: 0.05 },
-  { key: 'cooldownSecondsPerRank', label: 'CD −s/rank', step: 0.1 },
-  { key: 'maxCooldownReduction', label: 'CDR teto', step: 0.05 },
-  { key: 'minCooldownReduction', label: 'CDR piso', step: 0.05 },
-  { key: 'usePriority', label: 'prioridade', step: 1 },
-] as const;
+export const ENEMY_SKILL_EDIT_FIELDS = SKILL_EDIT_FIELDS;
+
+export const ENEMY_ROLE_LABEL: Record<string, string> = {
+  common: 'Comum',
+  subboss: 'Elite',
+  boss: 'Chefe',
+};
 
 export interface EnemyIdentityLabRow {
   enemyType: EnemyType;
@@ -47,7 +44,12 @@ export interface EnemyIdentityLabRow {
 
 export interface EnemyMonsterSkillLabRow {
   skillId: string;
+  name: string;
+  description: string;
   kind: string;
+  usesAttackStat: boolean;
+  iconUrl: string;
+  iconFallbackUrl: string;
   baseline: Record<string, number>;
   effective: Record<string, number>;
   hasOverride: boolean;
@@ -58,6 +60,8 @@ export interface EnemyLabEntry {
   name: string;
   powerTier: number;
   rosterRole: string;
+  roleLabel: string;
+  dexNo: number;
   spriteUrl: string;
   skillIds: readonly string[];
   identity: EnemyIdentityLabRow;
@@ -107,9 +111,15 @@ function buildMonsterSkillRows(
     if (!catalog) continue;
     const override = diskMonsterSkills[skillId] ?? null;
     const effective = applyEnemyMonsterSkillOverride(catalog, override);
+    const display = getEnemySkillDisplay(skillId);
     rows.push({
       skillId,
+      name: display?.name ?? skillId,
+      description: display?.description ?? '',
       kind: catalog.kind,
+      usesAttackStat: Boolean(catalog.usesAttackStat),
+      iconUrl: labSkillIconUrl(skillId),
+      iconFallbackUrl: labSkillIconFallbackUrl(skillId),
       baseline: skillNumbers(catalog),
       effective: skillNumbers(effective),
       hasOverride: Boolean(normalizeEnemyMonsterSkillOverride(override)),
@@ -126,7 +136,7 @@ export function buildEnemyCombatLabPayload(filters?: {
 
   setRuntimeEnemyCombatOverrides(null);
 
-  const enemies: EnemyLabEntry[] = ENEMY_ROSTER.map((entry) => {
+  const enemies: EnemyLabEntry[] = ENEMY_ROSTER.map((entry, index) => {
     const enemyType = entry.id as EnemyType;
     const catalogIdentity = getCatalogEnemyCombatIdentity(enemyType);
     const override = disk.identities[enemyType];
@@ -137,6 +147,8 @@ export function buildEnemyCombatLabPayload(filters?: {
       name: entry.name,
       powerTier: entry.powerTier,
       rosterRole: entry.rosterRole,
+      roleLabel: ENEMY_ROLE_LABEL[entry.rosterRole] ?? entry.rosterRole,
+      dexNo: index + 1,
       spriteUrl: enemySpriteUrlForLab(entry.id),
       skillIds: entry.skillIds,
       identity: {

@@ -74,7 +74,7 @@ Evoluir o mapa de campanha (`CampaignFlow` / `CampaignModalRenderer`):
 
 1. **Hub:** mapa **embutido** no `battle-field` — **somente** o board com pins e scroll (sem header Stendra/bioma, sem toggle mapa-mundo).
 2. **Expandir:** ícone Mapa abre modal com mapa-mundo/trilha completa; ao clicar numa região no mapa-mundo, fecha o modal e mostra só os pins dessa região no hub.
-3. **Preview do pin:** quest card ancorado no pin — badge de tipo, faixa de recompensas (`expectedGold` / `victoryXp` + item/cena), ameaça (waves/tier/hint), inimigos e CTA Iniciar.
+3. **Preview do pin:** quest card ancorado no pin — badge de tipo, faixa de recompensas (`expectedGold` / `victoryXp` + item/cena), ameaça (waves/tier/hint), inimigos e CTA Iniciar. Superfície de **carta selada** (`--tooltip-*`; tinta no pergaminho, inclusive no tema escuro); CTA floresta.
 
 ## Critérios de aceite
 

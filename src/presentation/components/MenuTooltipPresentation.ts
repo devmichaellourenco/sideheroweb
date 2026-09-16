@@ -1,9 +1,4 @@
-import {
-  getMenuTooltipCopy,
-  isMenuTooltipId,
-  MENU_TOOLTIP_KIND_LABEL,
-  type MenuTooltipId,
-} from './MenuTooltipCatalog';
+import { getMenuTooltipCopy, isMenuTooltipId, type MenuTooltipId } from './MenuTooltipCatalog';
 
 function escapeHtml(text: string): string {
   return text
@@ -17,7 +12,6 @@ export type MenuTooltipContent = {
   id: MenuTooltipId;
   title: string;
   flavor: string;
-  kindLabel: string;
   detail?: string;
 };
 
@@ -33,21 +27,19 @@ export function resolveMenuTooltipContent(anchor: HTMLElement): MenuTooltipConte
     id: rawId,
     title,
     flavor: copy.flavor,
-    kindLabel: MENU_TOOLTIP_KIND_LABEL[copy.kind],
     detail,
   };
 }
 
 export function renderMenuTooltipHtml(content: MenuTooltipContent): string {
   const detail = content.detail
-    ? `<p class="menu-tooltip-detail">${escapeHtml(content.detail)}</p>`
+    ? `<p class="menu-tooltip-detail game-tooltip__stat"><span></span><strong>${escapeHtml(content.detail)}</strong></p>`
     : '';
 
   return `
     <div class="menu-tooltip-card">
-      <span class="menu-tooltip-kind">${escapeHtml(content.kindLabel)}</span>
-      <strong class="menu-tooltip-title">${escapeHtml(content.title)}</strong>
-      <p class="menu-tooltip-flavor">${escapeHtml(content.flavor)}</p>
+      <strong class="menu-tooltip-title game-tooltip__title">${escapeHtml(content.title)}</strong>
+      <p class="menu-tooltip-flavor game-tooltip__lead">${escapeHtml(content.flavor)}</p>
       ${detail}
     </div>
   `;

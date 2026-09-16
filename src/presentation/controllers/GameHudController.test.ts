@@ -56,6 +56,7 @@ function createHud(): {
     continue: createButton('continue-loadout-btn'),
     battleStats: createButton('open-battle-stats-btn'),
   };
+  buttons.battleStats.classList.add('hidden');
 
   const hud = new GameHudController(
     campaign,

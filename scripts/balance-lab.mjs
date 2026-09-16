@@ -43,6 +43,8 @@ import {
   UPGRADE_BACKUPS_DIR,
   PANEL_ASSETS_DIR,
   PUBLIC_ENEMY_SPRITES_DIR,
+  PUBLIC_HERO_SPRITES_DIR,
+  PUBLIC_SKILL_SPRITES_DIR,
   SCOPE_MAP,
 } from './balance-lab/paths.mjs';
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -130,7 +132,7 @@ async function tryReadFile(filePath) {
   }
 }
 
-/** Serve sprites do build do painel, com fallback em public/sprites/enemies. */
+/** Serve sprites do build HTML5 (`dist/assets`), com fallback em public/sprites. */
 async function servePanelAsset(pathname, res) {
   const relative = pathname.replace(/^\/panel\/assets\//, '');
   if (relative.includes('..')) {
@@ -147,9 +149,22 @@ async function servePanelAsset(pathname, res) {
   let body = await tryReadFile(primary);
   if (!body && relative.startsWith('characters/')) {
     const basename = relative.slice('characters/'.length);
-    const fallback = join(PUBLIC_ENEMY_SPRITES_DIR, basename);
-    if (fallback.startsWith(PUBLIC_ENEMY_SPRITES_DIR)) {
-      body = await tryReadFile(fallback);
+    const heroFallback = join(PUBLIC_HERO_SPRITES_DIR, basename);
+    if (heroFallback.startsWith(PUBLIC_HERO_SPRITES_DIR)) {
+      body = await tryReadFile(heroFallback);
+    }
+    if (!body) {
+      const enemyFallback = join(PUBLIC_ENEMY_SPRITES_DIR, basename);
+      if (enemyFallback.startsWith(PUBLIC_ENEMY_SPRITES_DIR)) {
+        body = await tryReadFile(enemyFallback);
+      }
+    }
+  }
+  if (!body && relative.startsWith('skills/')) {
+    const skillRelative = relative.slice('skills/'.length);
+    const skillFallback = join(PUBLIC_SKILL_SPRITES_DIR, skillRelative);
+    if (skillFallback.startsWith(PUBLIC_SKILL_SPRITES_DIR)) {
+      body = await tryReadFile(skillFallback);
     }
   }
   if (!body && relative.startsWith('characters/')) {

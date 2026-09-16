@@ -390,8 +390,9 @@ export class GameHudController {
     this.continueLoadoutBtn.classList.add('hidden');
     this.continueLoadoutBtn.disabled = true;
 
+    this.openBattleStatsBtn.classList.remove('hidden');
     applyMenuTooltipAnchor(this.openBattleStatsBtn, 'stats', {
-      detail: 'Pode abrir em janela destacada',
+      detail: 'Totais desta batalha',
     });
   }
 }

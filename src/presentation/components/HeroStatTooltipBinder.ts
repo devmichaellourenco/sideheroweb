@@ -1,3 +1,5 @@
+import { gameTooltipClassName } from './GameTooltipSurface';
+
 const PORTAL_ID = 'hero-stat-tooltip-portal';
 
 function ensurePortal(): HTMLElement {
@@ -6,7 +8,7 @@ function ensurePortal(): HTMLElement {
 
   portal = document.createElement('div');
   portal.id = PORTAL_ID;
-  portal.className = 'hero-stat-tooltip-portal hidden';
+  portal.className = gameTooltipClassName('hero-stat-tooltip-portal', 'hidden');
   portal.setAttribute('role', 'tooltip');
   document.body.appendChild(portal);
   return portal;
@@ -46,7 +48,7 @@ function showPortal(row: HTMLElement): void {
   if (!tooltip) return;
 
   const portal = ensurePortal();
-  portal.className = 'hero-stat-tooltip-portal';
+  portal.className = gameTooltipClassName('hero-stat-tooltip-portal');
   portal.innerHTML = tooltip.innerHTML;
   positionPortal(portal, row.getBoundingClientRect());
 }

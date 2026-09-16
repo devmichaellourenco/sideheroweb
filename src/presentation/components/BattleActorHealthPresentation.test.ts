@@ -25,7 +25,8 @@ describe('renderStripActorBars', () => {
     expect(html).toContain('strip-action-time-label');
     expect(html).toContain('>80<');
     expect(html).not.toContain('>80/100<');
-    expect(html).toContain('data-bar-label="80/100"');
+    expect(html).toContain('Atual / máximo');
+    expect(html).toContain('80/100');
     expect(html).toContain('ASPD 0.50/s');
     expect(html).toContain('TTA = 1 ÷ 0.50 = 2.00s');
     expect(html).toContain('width: 40%');

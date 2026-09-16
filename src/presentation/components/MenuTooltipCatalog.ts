@@ -4,95 +4,71 @@ export type MenuTooltipQuickActionId = 'chest' | 'chest-all' | 'optimize';
 
 export type MenuTooltipId = SystemsMenuId | MenuTooltipQuickActionId;
 
-export type MenuTooltipKind = 'sistema' | 'acao' | 'registro';
-
 export type MenuTooltipCopy = {
   title: string;
   flavor: string;
-  kind: MenuTooltipKind;
-};
-
-export const MENU_TOOLTIP_KIND_LABEL: Record<MenuTooltipKind, string> = {
-  sistema: 'Sistema',
-  acao: 'Ação',
-  registro: 'Registro',
 };
 
 export const MENU_TOOLTIP_COPY: Record<MenuTooltipId, MenuTooltipCopy> = {
   heroes: {
     title: 'Heróis',
-    flavor: 'Fichas, skills e ascensões da companhia.',
-    kind: 'sistema',
+    flavor: 'Abre as fichas, skills e ascensões da companhia.',
   },
   formation: {
     title: 'Formação',
-    flavor: 'Escolha quem luta na linha de frente.',
-    kind: 'sistema',
+    flavor: 'Escolhe quem luta na linha de frente.',
   },
   log: {
-    title: 'Crônica de batalha',
-    flavor: 'Golpes, curas e recompensas registrados em pergaminho.',
-    kind: 'registro',
+    title: 'Log de batalha',
+    flavor: 'Mostra golpes, curas e recompensas desta luta.',
   },
   stats: {
     title: 'Estatísticas',
-    flavor: 'Dano, cura e desempenho detalhado por skill.',
-    kind: 'registro',
+    flavor: 'Mostra dano, cura e recarga desta batalha.',
   },
   campaign: {
-    title: 'Mapa da campanha',
-    flavor: 'Missões, rotas e próximos desafios da jornada.',
-    kind: 'sistema',
+    title: 'Mapa',
+    flavor: 'Abre missões e o próximo desafio da jornada.',
   },
   shop: {
     title: 'Loja',
-    flavor: 'Ofertas do acampamento trocadas por ouro.',
-    kind: 'sistema',
+    flavor: 'Compra ofertas do acampamento com ouro.',
   },
   inventory: {
     title: 'Inventário',
-    flavor: 'Equipamentos prontos para vestir na party.',
-    kind: 'sistema',
+    flavor: 'Equipa o que os heróis vão vestir.',
   },
   stash: {
-    title: 'Baú de itens',
-    flavor: 'Reserva extra além da mochila dos heróis.',
-    kind: 'sistema',
+    title: 'Baús',
+    flavor: 'Guarda itens além da mochila dos heróis.',
   },
   forge: {
     title: 'Forja Divina',
-    flavor: 'Fundir relíquias em gear superior.',
-    kind: 'sistema',
+    flavor: 'Funde relíquias em equipamento superior.',
   },
   upgrades: {
     title: 'Runas',
-    flavor: 'Melhorias permanentes gravadas no acampamento.',
-    kind: 'sistema',
+    flavor: 'Compra melhorias permanentes do acampamento.',
   },
   achievements: {
-    title: 'Conquistas',
-    flavor: 'Marcos da jornada e feitos memoráveis.',
-    kind: 'registro',
+    title: 'Achievements',
+    flavor: 'Mostra marcos e feitos da jornada.',
   },
   settings: {
     title: 'Configurações',
-    flavor: 'Automações, tema do painel e backup do save.',
-    kind: 'sistema',
+    flavor: 'Ajusta automações, tema do painel e backup.',
   },
   chest: {
     title: 'Abrir baú',
     flavor: 'Revela o loot acumulado nas vitórias.',
-    kind: 'acao',
   },
   'chest-all': {
     title: 'Abrir todos',
-    flavor: 'Esvazia a fila de baús de uma só vez.',
-    kind: 'acao',
+    flavor: 'Abre a fila de baús de uma só vez.',
   },
   optimize: {
     title: 'Otimizar equipe',
     flavor: 'Equipa automaticamente o melhor gear disponível.',
-    kind: 'acao',
   },
 };
 

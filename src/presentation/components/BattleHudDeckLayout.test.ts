@@ -68,5 +68,6 @@ describe('battle-hud-deck layout', () => {
       expect(html).toContain(`id="${id}"`);
       expect(html.indexOf(`id="${id}"`)).toBeGreaterThan(railStart);
     }
+    expect(html).not.toMatch(/id="open-battle-stats-btn"[^>]*\bhidden\b/);
   });
 });

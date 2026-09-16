@@ -7,19 +7,20 @@ import {
 } from './MenuTooltipPresentation';
 
 describe('MenuTooltipPresentation', () => {
-  it('monta card RPG com categoria, titulo e flavor', () => {
+  it('monta carta com título e o que o menu faz', () => {
     const anchor = document.createElement('button');
     anchor.dataset.menuTooltip = 'shop';
 
     const content = resolveMenuTooltipContent(anchor);
     expect(content?.title).toBe('Loja');
-    expect(content?.kindLabel).toBe('Sistema');
+    expect(content?.flavor).toContain('Compra ofertas');
 
     const html = renderMenuTooltipHtml(content!);
-    expect(html).toContain('menu-tooltip-kind');
-    expect(html).toContain('Sistema');
+    expect(html).not.toContain('menu-tooltip-kind');
+    expect(html).not.toContain('Sistema');
+    expect(html).toContain('game-tooltip__title');
     expect(html).toContain('Loja');
-    expect(html).toContain('Ofertas do acampamento');
+    expect(html).toContain('Compra ofertas do acampamento');
   });
 
   it('usa titulo e detalhe dinamicos quando informados', () => {

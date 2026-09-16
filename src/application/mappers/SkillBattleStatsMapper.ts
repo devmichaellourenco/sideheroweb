@@ -221,7 +221,7 @@ export function describeHeroSkillCooldown(
       text:
         combat.cooldownSeconds !== undefined
           ? `Base catálogo = ${rawBase.toFixed(2)}s`
-          : `Base = ${combat.cooldownTurns} turns × ${turnSeconds}s (${hero.heroClass}) = ${rawBase.toFixed(2)}s`,
+          : `Base = ${combat.cooldownTurns} turnos × ${turnSeconds}s (${hero.heroClass}) = ${rawBase.toFixed(2)}s`,
     },
     {
       text:

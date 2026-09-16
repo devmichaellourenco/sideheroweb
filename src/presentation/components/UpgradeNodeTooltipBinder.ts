@@ -1,4 +1,5 @@
 import { UpgradeNodeDto } from '../../application/dto/UpgradeNodeDto';
+import { gameTooltipClassName } from './GameTooltipSurface';
 
 const TOOLTIP_PORTAL_ID = 'upgrade-node-tooltip-portal';
 const PINNED_BRIDGE_MS = 80;
@@ -105,7 +106,7 @@ function ensureTooltipPortal(): HTMLElement {
 
   portal = document.createElement('div');
   portal.id = TOOLTIP_PORTAL_ID;
-  portal.className = 'upgrade-node-tooltip-portal hidden';
+  portal.className = gameTooltipClassName('upgrade-node-tooltip-portal', 'hidden');
   portal.setAttribute('role', 'tooltip');
   document.body.appendChild(portal);
   return portal;
@@ -144,7 +145,10 @@ function showUpgradeNodeTooltip(
   html: string,
 ): void {
   const portal = ensureTooltipPortal();
-  portal.className = `upgrade-node-tooltip-portal upgrade-node-tooltip-portal--${node.status}`;
+  portal.className = gameTooltipClassName(
+    'upgrade-node-tooltip-portal',
+    `upgrade-node-tooltip-portal--${node.status}`,
+  );
   portal.innerHTML = html;
 
   portal.onmouseenter = () => {

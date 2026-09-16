@@ -33,6 +33,7 @@ export function renderStripActorBars(options: {
 }): string {
   const fillWidth = Math.max(0, Math.min(100, options.actionTimeRatio * 100));
   const safeLabel = escapeHtml(options.healthLabel);
+  const healthTip = escapeHtml(`Atual / máximo\n${options.healthLabel}`).replace(/\n/g, '&#10;');
   const safeCurrent = escapeHtml(options.healthCurrent);
   const countdown = formatActionTimeCountdown(options.actionTimeRemaining);
   const tooltip = formatActionTimeBarTooltip(
@@ -47,7 +48,7 @@ export function renderStripActorBars(options: {
     <div class="strip-actor-bars">
       <div
         class="stat-bar health-bar ${options.side} strip-bar"
-        data-bar-label="${safeLabel}"
+        data-bar-label="${healthTip}"
         tabindex="0"
         aria-label="Vida ${safeLabel}"
       >

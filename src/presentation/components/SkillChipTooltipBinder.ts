@@ -1,3 +1,5 @@
+import { gameTooltipClassName } from './GameTooltipSurface';
+
 const PORTAL_ID = 'skill-chip-tooltip-portal';
 const PINNED_BRIDGE_MS = 80;
 
@@ -58,7 +60,7 @@ function ensurePortal(): HTMLElement {
 
   portal = document.createElement('div');
   portal.id = PORTAL_ID;
-  portal.className = 'skill-chip-tooltip-portal hidden';
+  portal.className = gameTooltipClassName('skill-chip-tooltip-portal', 'hidden');
   portal.setAttribute('role', 'tooltip');
 
   portal.addEventListener('mouseenter', () => {
@@ -200,7 +202,7 @@ function showPortal(anchor: HTMLElement, tooltip: HTMLElement): void {
   const portal = ensurePortal();
   const branch = getBranchClass(anchor);
 
-  portal.className = 'skill-chip-tooltip-portal';
+  portal.className = gameTooltipClassName('skill-chip-tooltip-portal');
   if (branch) portal.classList.add(branch);
   applyPortalPointerMode(portal);
   portal.innerHTML = tooltip.innerHTML;

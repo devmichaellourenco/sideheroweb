@@ -74,8 +74,12 @@ export const STAT_LINE_ICON_BY_ID: Record<string, StatIconKey> = {
   'resist-air': 'air',
 };
 
+export function getStatIconPath(key: StatIconKey): string {
+  return STAT_ICON_PATHS[key];
+}
+
 export function getStatIconUrl(key: StatIconKey): string {
-  return getAssetUrl(STAT_ICON_PATHS[key]);
+  return getAssetUrl(getStatIconPath(key));
 }
 
 /** `<img>` decorativa da estatística; tingida via `--stat-icon-filter`. */

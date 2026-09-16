@@ -3,7 +3,7 @@ import { shouldAnimateBattleStripTimers } from './SkillCooldownDisplayAnimator';
 import { renderCombatStatusEffects } from './CombatStatusEffectPresentation';
 import { patchCombatSkillBar } from './CombatSkillIntentPresentation';
 import { formatEnemyHealthLabel } from './EnemyBattlePresentation';
-import { formatHealthLabel } from './HeroBarsPresentation';
+import { formatHealthBarTooltip, formatHealthLabel } from './HeroBarsPresentation';
 import { clampHealthPercent, freezeActionTimeVisualOnCard, formatStripHealthCurrent, patchActionTimeBar } from './BattleActorHealthPresentation';
 
 function updateHealthBar(
@@ -16,7 +16,7 @@ function updateHealthBar(
   const bar = card.querySelector(selector);
   if (!bar) return;
 
-  bar.setAttribute('data-bar-label', healthLabel);
+  bar.setAttribute('data-bar-label', formatHealthBarTooltip(healthLabel));
   bar.setAttribute('aria-label', `Vida ${healthLabel}`);
 
   const fill = bar.querySelector('.health-fill') as HTMLElement | null;

@@ -41,6 +41,23 @@ function renderSkillElementMeta(skill: SkillTooltipData): string {
   })}`;
 }
 
+function formatSkillTooltipMeta(scopeLabel: string, scalingLabel: string): string {
+  const scope =
+    scopeLabel === 'Classe'
+      ? 'Skill de classe'
+      : scopeLabel === 'Universal'
+        ? 'Skill universal'
+        : scopeLabel;
+  const attrMap: Record<string, string> = {
+    STR: 'Força',
+    DEX: 'Destreza',
+    INT: 'Inteligência',
+    ATK: 'Ataque',
+  };
+  const attr = attrMap[scalingLabel] ?? scalingLabel;
+  return `${scope} · escala com ${attr}`;
+}
+
 function renderBattleStats(battleStats: HeroActiveSkillStatDto[]): string {
   if (battleStats.length === 0) return '';
 
@@ -129,7 +146,7 @@ export function renderSkillTooltipContent(skill: SkillTooltipData): string {
       ${renderTooltipPreviewImage(getSkillIconUrl(skill.id), skill.name)}
       <strong class="hero-skill-chip-tooltip-name">${escapeHtml(skill.name)}</strong>
       <span class="hero-skill-chip-tooltip-meta">
-        ${escapeHtml(skill.branchLabel)} · ${escapeHtml(skill.scopeLabel)} · ${escapeHtml(skill.scalingLabel)}${renderSkillElementMeta(skill)}
+        ${escapeHtml(formatSkillTooltipMeta(skill.scopeLabel, skill.scalingLabel))}${renderSkillElementMeta(skill)}
       </span>
       <p class="hero-skill-chip-tooltip-desc">${escapeHtml(skill.description)}</p>
       ${renderBattleStats(skill.battleStats)}

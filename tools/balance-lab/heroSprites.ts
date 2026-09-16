@@ -17,3 +17,16 @@ export function heroSpriteUrlForLab(heroClass: string): string {
 export function heroSpriteFallbackUrlForLab(): string {
   return '/panel/assets/characters/galneon_aprendiz.png';
 }
+
+export function bindHeroSpriteFallback(img: HTMLImageElement): void {
+  img.addEventListener(
+    'error',
+    () => {
+      const fallback = heroSpriteFallbackUrlForLab();
+      if (img.src.endsWith(fallback) || img.dataset.fallbackApplied === '1') return;
+      img.dataset.fallbackApplied = '1';
+      img.src = fallback;
+    },
+    { once: true },
+  );
+}

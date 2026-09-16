@@ -165,6 +165,8 @@ const PUBLIC_ASSET_MAP = [
 const ASSET_MAP = [
   ['Fonts/Alata-Regular.ttf', 'fonts/Alata-Regular.ttf'],
   ['Fonts/JosefinSans-Bold.ttf', 'fonts/JosefinSans-Bold.ttf'],
+  ['Fonts/Cinzel-Regular.ttf', 'fonts/Cinzel-Regular.ttf'],
+  ['Fonts/Cinzel-Bold.ttf', 'fonts/Cinzel-Bold.ttf'],
 
   ['Sprites/Demo/Demo_Character/character_back_glow_small.png', 'characters/glow.png'],
 

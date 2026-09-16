@@ -2,7 +2,7 @@
 
 ## Status
 
-**Aceite:** 9/9 (100%)  
+**Aceite:** 10/10 (100%)  
 **Testes obrigatórios:** 1/1 presentes na suite
 
 ## Objetivo
@@ -16,6 +16,7 @@ Referência canônica: card `.onboarding-card`.
 ## Critérios de aceite
 
 - [x] Tokens em `:root` + `MedievalThemeTokens.ts` — chrome claro (pergaminho) + texto tinta + semântica (dano/cura/elementos)
+- [x] Superfície de tooltip (`MEDIEVAL_TOOLTIP_SURFACE` / `--tooltip-*`) é carta selada **fixa** (não inverte com `data-ui-theme`); ilha CSS reaponta tokens do chrome nos descendentes e no cartão de iniciar missão; destaques (verde/vermelho/azul/elementos) usam tons densos do claro (`--tooltip-better/--tooltip-worse`), não os tons claros do dark
 - [x] `#app`, header, trilha/campanha, footer de ações, modais e cards usam fundo claro e texto escuro
 - [x] Onboarding consome as mesmas CSS vars
 - [x] `.battle-stage` (strip + combat bar) **não** herda o pergaminho como fundo de combate; hub `.battle-stage--camp-map` segue o tema do painel (mapa = modal)

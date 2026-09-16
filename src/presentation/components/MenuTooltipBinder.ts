@@ -1,3 +1,4 @@
+import { gameTooltipClassName } from './GameTooltipSurface';
 import {
   renderMenuTooltipHtml,
   resolveMenuTooltipContent,
@@ -14,7 +15,7 @@ function ensurePortal(): HTMLElement {
 
   portal = document.createElement('div');
   portal.id = PORTAL_ID;
-  portal.className = 'menu-tooltip-portal hidden';
+  portal.className = gameTooltipClassName('menu-tooltip-portal', 'hidden');
   portal.setAttribute('role', 'tooltip');
   document.body.appendChild(portal);
   return portal;
@@ -58,7 +59,7 @@ function showPortal(anchor: HTMLElement): void {
   if (!content) return;
 
   const portal = ensurePortal();
-  portal.className = 'menu-tooltip-portal';
+  portal.className = gameTooltipClassName('menu-tooltip-portal');
   portal.dataset.menuTooltipId = content.id;
   portal.innerHTML = renderMenuTooltipHtml(content);
   positionPortal(portal, anchor.getBoundingClientRect());

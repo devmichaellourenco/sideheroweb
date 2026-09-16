@@ -1,11 +1,16 @@
 import { describe, expect, it } from 'vitest';
 import {
   STAT_LINE_ICON_BY_ID,
+  getStatIconPath,
   getStatIconUrl,
   statIconImg,
 } from './StatIconCatalog';
 
 describe('StatIconCatalog', () => {
+  it('expõe path relativo do ícone', () => {
+    expect(getStatIconPath('attack')).toBe('ui/stats/attack.png');
+  });
+
   it('resolve URL de ícone para cada atributo base', () => {
     expect(getStatIconUrl('str')).toContain('ui/stats/str.png');
     expect(getStatIconUrl('dex')).toContain('ui/stats/dex.png');

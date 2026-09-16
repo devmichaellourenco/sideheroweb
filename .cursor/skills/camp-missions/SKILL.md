@@ -42,7 +42,7 @@ description: Acampamento, mapa de missões e tipos principal/secundária/normal 
 - Vitória/derrota → CLEAR/DEFEAT → tela de recompensas (sem scroll; Continuar no deck) → acampamento + mapa. O mapa só volta depois do Continuar (não no tick/load do fim da batalha).
 - Iniciar no mapa → cue START → combate + abrir Estatísticas; mapa embutido no hub; ícone Mapa expande modal; unpin retransmite ao painel principal
 - XP/ouro: ouro nos kills (`targetGold`); XP = orçamento `targetXp` só na vitória (`grantPhaseVictoryXp`). Derrota: ouro parcial dos kills, XP 0. Overlay CLEAR/DEFEAT usa baseline do START (`BattleAttemptRewardBaseline`)
-- Preview/CTA só ao clicar no pin (quest card: tipo, ouro/XP, bônus item/cena, ameaça, inimigos, CTA; sem footer permanente)
+- Preview/CTA só ao clicar no pin (quest card carta selada: tipo, ouro/XP, bônus item/cena, ameaça, inimigos, CTA floresta; sem footer permanente; tinta no pergaminho no tema escuro)
 - Região: título + bioma compactos; painel do mapa com padding mínimo; progresso só no hover; troca via mapa-mundo
 - Pins do mapa com margem segura (não cortam no topo/laterais)
 - Clique fora do popover fecha a seleção; popover em portal com clamp na viewport/scrollport (sempre visível)

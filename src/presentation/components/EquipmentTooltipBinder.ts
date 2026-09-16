@@ -1,5 +1,6 @@
 import { GEAR_RARITY_ORDER } from './GearRarityPresentation';
 import { resolveEquipmentTooltipPosition } from './EquipmentTooltipPosition';
+import { gameTooltipClassName } from './GameTooltipSurface';
 
 const PORTAL_ID = 'gear-tooltip-portal';
 
@@ -17,7 +18,7 @@ function ensurePortal(): HTMLElement {
 
   portal = document.createElement('div');
   portal.id = PORTAL_ID;
-  portal.className = 'gear-tooltip-portal hidden';
+  portal.className = gameTooltipClassName('gear-tooltip-portal', 'hidden');
   portal.setAttribute('role', 'tooltip');
   document.body.appendChild(portal);
   return portal;
@@ -66,7 +67,7 @@ function showPortal(slot: HTMLElement, tooltip: HTMLElement): void {
   const portal = ensurePortal();
   const rarity = getRarityClass(slot);
 
-  portal.className = 'gear-tooltip-portal';
+  portal.className = gameTooltipClassName('gear-tooltip-portal');
   if (rarity) portal.classList.add(rarity);
   portal.innerHTML = tooltip.innerHTML;
 

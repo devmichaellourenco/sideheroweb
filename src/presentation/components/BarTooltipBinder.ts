@@ -1,3 +1,5 @@
+import { gameTooltipClassName } from './GameTooltipSurface';
+
 const PORTAL_ID = 'bar-tooltip-portal';
 
 function escapeHtml(text: string): string {
@@ -14,7 +16,7 @@ function ensurePortal(): HTMLElement {
 
   portal = document.createElement('div');
   portal.id = PORTAL_ID;
-  portal.className = 'bar-tooltip-portal hidden';
+  portal.className = gameTooltipClassName('bar-tooltip-portal', 'hidden');
   portal.setAttribute('role', 'tooltip');
   document.body.appendChild(portal);
   return portal;
@@ -54,7 +56,7 @@ function showPortal(bar: HTMLElement): void {
   if (!label) return;
 
   const portal = ensurePortal();
-  portal.className = 'bar-tooltip-portal';
+  portal.className = gameTooltipClassName('bar-tooltip-portal');
 
   const iconUrl = bar.getAttribute('data-bar-icon');
   if (iconUrl) {

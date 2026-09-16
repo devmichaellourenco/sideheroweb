@@ -87,6 +87,7 @@ describe('SkillCardPresentation', () => {
 
     expect(html).toContain('hero-skill-chip-tooltip');
     expect(html).toContain('Lança uma esfera flamejante');
+    expect(html).toContain('Skill de classe · escala com Inteligência');
     expect(html).toContain('hero-skill-chip-tooltip-stat-label');
   });
 

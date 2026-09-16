@@ -20,6 +20,7 @@ export function formatActionTimeBarTooltip(
   const remaining = Math.max(0, remainingSeconds);
   const cycle = totalSeconds > 0 ? totalSeconds : interval;
   const lines = [
+    'Tempo entre ações',
     `ASPD ${attackSpeed.toFixed(2)}/s`,
     `TTA = 1 ÷ ${attackSpeed.toFixed(2)} = ${interval.toFixed(2)}s`,
     remaining > 0

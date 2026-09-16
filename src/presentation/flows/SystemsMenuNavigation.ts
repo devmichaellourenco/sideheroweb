@@ -60,9 +60,8 @@ export function isSystemsMenuAvailable(
       return availability.canEditParty && availability.stashUnlocked;
     case 'forge':
       return availability.divineForge;
-    case 'stats':
-      return availability.battleStats;
     case 'log':
+    case 'stats':
     case 'campaign':
     case 'upgrades':
     case 'achievements':

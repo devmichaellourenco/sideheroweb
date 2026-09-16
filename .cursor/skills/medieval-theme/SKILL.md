@@ -34,7 +34,9 @@ Card do tutorial (`.onboarding-card`): borda ouro `#c9a227`, fundo `#fff9ed → 
 Preferência: `GamePreferences.uiTheme` → `applyUiTheme()` → `data-ui-theme`  
 Batalha: `html[data-ui-theme='dark'] .battle-stage:not(.battle-stage--camp-map)` restaura tokens light. Hub com mapa embutido herda o tema do painel (como o modal Mapa).
 
-Inclui base, **semântica**, **tokens por contexto** e `MEDIEVAL_THEME_DARK`.
+Inclui base, **semântica**, **tokens por contexto**, `MEDIEVAL_THEME_DARK` e `MEDIEVAL_TOOLTIP_SURFACE` (carta selada dos tooltips — não inverte).
+
+`.game-tooltip`: pergaminho claro + moldura de tinta; portais em `document.body`. Ilha CSS reaponta `--text/--muted/--ink/--parchment-*` e destaques (`--forest/--danger/--stat-better`) para `--tooltip-*` (tema escuro não clareia tinta nem verde/vermelho). O cartão Iniciar missão (`.campaign-mission-popover`) usa a mesma ilha.
 
 ## Fluxo ao alterar cor / tema
 

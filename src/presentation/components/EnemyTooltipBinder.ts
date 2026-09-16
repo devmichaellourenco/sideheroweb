@@ -1,3 +1,5 @@
+import { gameTooltipClassName } from './GameTooltipSurface';
+
 const PORTAL_ID = 'enemy-tooltip-portal';
 
 function ensurePortal(): HTMLElement {
@@ -6,7 +8,7 @@ function ensurePortal(): HTMLElement {
 
   portal = document.createElement('div');
   portal.id = PORTAL_ID;
-  portal.className = 'enemy-tooltip-portal hidden';
+  portal.className = gameTooltipClassName('enemy-tooltip-portal', 'hidden');
   portal.setAttribute('role', 'tooltip');
   document.body.appendChild(portal);
   return portal;
@@ -58,7 +60,7 @@ function showPortal(card: HTMLElement): void {
   if (!tooltip) return;
 
   const portal = ensurePortal();
-  portal.className = 'enemy-tooltip-portal';
+  portal.className = gameTooltipClassName('enemy-tooltip-portal');
   portal.innerHTML = tooltip.innerHTML;
   positionPortal(portal, card.getBoundingClientRect());
 }

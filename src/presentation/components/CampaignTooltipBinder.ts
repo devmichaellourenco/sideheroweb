@@ -1,3 +1,5 @@
+import { gameTooltipClassName } from './GameTooltipSurface';
+
 const PORTAL_ID = 'campaign-tooltip-portal';
 
 function ensurePortal(): HTMLElement {
@@ -6,7 +8,7 @@ function ensurePortal(): HTMLElement {
 
   portal = document.createElement('div');
   portal.id = PORTAL_ID;
-  portal.className = 'campaign-tooltip-portal hidden';
+  portal.className = gameTooltipClassName('campaign-tooltip-portal', 'hidden');
   portal.setAttribute('role', 'tooltip');
   document.body.appendChild(portal);
   return portal;
@@ -47,7 +49,7 @@ function showPortal(anchor: HTMLElement): void {
 
   const portal = ensurePortal();
   const theme = anchor.getAttribute('data-campaign-theme');
-  portal.className = 'campaign-tooltip-portal';
+  portal.className = gameTooltipClassName('campaign-tooltip-portal');
   if (theme) {
     portal.setAttribute('data-campaign-theme', theme);
   } else {

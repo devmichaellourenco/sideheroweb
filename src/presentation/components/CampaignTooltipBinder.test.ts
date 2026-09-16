@@ -47,7 +47,8 @@ describe('CampaignTooltipBinder', () => {
     const portal = document.getElementById('campaign-tooltip-portal') as HTMLElement;
     expect(portal).toBeTruthy();
     expect(portal.getAttribute('role')).toBe('tooltip');
-    expect(portal.className).toBe('campaign-tooltip-portal');
+    expect(portal.classList.contains('game-tooltip')).toBe(true);
+    expect(portal.classList.contains('campaign-tooltip-portal')).toBe(true);
     expect(portal.getAttribute('data-campaign-theme')).toBe('stendra');
     expect(portal.innerHTML).toContain('campaign-tooltip-title');
 

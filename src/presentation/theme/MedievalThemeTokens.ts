@@ -233,6 +233,37 @@ export const MEDIEVAL_THEME_DARK: { readonly [K in keyof typeof MEDIEVAL_THEME]:
   mapVoidThrone: MEDIEVAL_THEME.mapVoidThrone,
 };
 
+/**
+ * Superfície dos tooltips (“carta selada”). Não entra em MEDIEVAL_THEME /
+ * MEDIEVAL_THEME_DARK para não ser invertida com o chrome. Espelhar os mesmos
+ * valores em `:root`, `html[data-ui-theme='dark']` e no reset de `.battle-stage`.
+ * Em `panel.css`, `.game-tooltip` / `.campaign-mission-popover` /
+ * `.campaign-phase-preview` reapontam `--text/--muted/--ink/--parchment-*`
+ * e destaques (`--forest/--danger/--stat-better` etc.) para estes tokens,
+ * para o chrome escuro não clarear tinta nem verde/vermelho da carta.
+ */
+export const MEDIEVAL_TOOLTIP_SURFACE = {
+  fill0: '#fff9ed',
+  fill1: '#f3e4bc',
+  fill2: '#e8d4a0',
+  ink: '#1f1710',
+  inkMuted: '#3d3428',
+  frame: '#1f1710',
+  seal: '#c9a227',
+  gold: '#8a6510',
+  /** Destaques no pergaminho: mesma matiz do chrome, tom denso (não o claro do dark). */
+  better: MEDIEVAL_THEME.forest,
+  betterHi: MEDIEVAL_THEME.forestHi,
+  worse: MEDIEVAL_THEME.danger,
+  info: MEDIEVAL_THEME.info,
+  accent: MEDIEVAL_THEME.accent,
+  fire: MEDIEVAL_THEME.elementFire,
+  cold: MEDIEVAL_THEME.elementCold,
+  lightning: MEDIEVAL_THEME.elementLightning,
+  air: MEDIEVAL_THEME.elementAir,
+  zIndex: '12500',
+} as const;
+
 export type MedievalThemeToken = keyof typeof MEDIEVAL_THEME;
 
 export const MEDIEVAL_THEME_BY_ID: Record<UiThemeId, typeof MEDIEVAL_THEME | typeof MEDIEVAL_THEME_DARK> = {

@@ -1,7 +1,7 @@
 import { GEAR_RARITY_ORDER } from './GearRarityPresentation';
+import { gameTooltipClassName } from './GameTooltipSurface';
 
 const PORTAL_ID = 'inventory-gear-tooltip-portal';
-const PORTAL_Z_INDEX = 1600;
 const PINNED_BRIDGE_MS = 80;
 const SLOT_PINNED_CLASS = 'inventory-grid-slot--tooltip-pinned';
 
@@ -86,8 +86,7 @@ function ensurePortal(): HTMLElement {
 
   portal = document.createElement('div');
   portal.id = PORTAL_ID;
-  portal.className = 'gear-tooltip-portal gear-tooltip-portal--interactive hidden';
-  portal.style.zIndex = String(PORTAL_Z_INDEX);
+  portal.className = gameTooltipClassName('gear-tooltip-portal', 'gear-tooltip-portal--interactive', 'hidden');
   portal.setAttribute('role', 'tooltip');
 
   portal.addEventListener('mouseenter', () => {
@@ -185,9 +184,8 @@ function showPortal(slot: HTMLElement, tooltip: HTMLElement): void {
   const rarity = getRarityClass(slot);
   const slotChanged = activeSlot !== slot;
 
-  portal.className = 'gear-tooltip-portal gear-tooltip-portal--interactive';
+  portal.className = gameTooltipClassName('gear-tooltip-portal', 'gear-tooltip-portal--interactive');
   if (rarity) portal.classList.add(rarity);
-  portal.style.zIndex = String(PORTAL_Z_INDEX);
   applyPortalPointerMode(portal);
 
   if (slotChanged) {

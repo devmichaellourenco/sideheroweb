@@ -29,8 +29,9 @@ describe('MenuTooltipBinder', () => {
     const portal = document.getElementById('menu-tooltip-portal');
     expect(portal).not.toBeNull();
     expect(portal?.classList.contains('hidden')).toBe(false);
-    expect(portal?.querySelector('.menu-tooltip-title')?.textContent).toBe('Crônica de batalha');
-    expect(portal?.querySelector('.menu-tooltip-flavor')?.textContent).toContain('pergaminho');
+    expect(portal?.classList.contains('game-tooltip')).toBe(true);
+    expect(portal?.querySelector('.menu-tooltip-title')?.textContent).toBe('Log de batalha');
+    expect(portal?.querySelector('.menu-tooltip-flavor')?.textContent).toContain('golpes');
   });
 
   it('esconde ao sair do botao', () => {

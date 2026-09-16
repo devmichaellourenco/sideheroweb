@@ -4,11 +4,10 @@
 import { confirmChangeReview } from './changeReview';
 import { registerWorkspaceSave, setWorkspaceDirty } from './workspaceState';
 import { openEnemyInSimulator } from './navigation';
-import {
-  fetchCombatSim,
-  renderSimResult,
-} from './combatSimUi';
+import { updateHashDeepLink } from './deepLinks';
+import { fetchCombatSim, renderSimResult } from './combatSimUi';
 import { bindSpriteFallback } from './enemyPicker';
+import { bindLabArtFallback, labFieldStatIconUrl, labStatIconUrl } from './labAssetUrl';
 
 type FieldDef = { key: string; label: string; step: number };
 
@@ -21,7 +20,12 @@ interface IdentityRow {
 
 interface MonsterSkillRow {
   skillId: string;
+  name: string;
+  description: string;
   kind: string;
+  usesAttackStat?: boolean;
+  iconUrl?: string;
+  iconFallbackUrl?: string;
   baseline: Record<string, number>;
   effective: Record<string, number>;
   hasOverride: boolean;
@@ -32,6 +36,8 @@ interface EnemyEntry {
   name: string;
   powerTier: number;
   rosterRole: string;
+  roleLabel: string;
+  dexNo: number;
   spriteUrl: string;
   skillIds: readonly string[];
   identity: IdentityRow;
@@ -47,10 +53,11 @@ interface Payload {
 }
 
 let payload: Payload | null = null;
-let selectedType = '';
+let selectedType: string | null = null;
 let filterQuery = '';
 let statusMessage = '';
 let statusError = false;
+const collapsedSheetSections = new Set<string>();
 
 const dirtyIdentities = new Set<string>();
 const dirtyMonsterSkills = new Set<string>();
@@ -74,6 +81,18 @@ async function api<T>(path: string, init?: RequestInit): Promise<T> {
   const json = (await response.json()) as T & { ok?: boolean; error?: string };
   if (!response.ok || json.ok === false) throw new Error(json.error || `HTTP ${response.status}`);
   return json;
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function padDex(n: number): string {
+  return `NO.${String(n).padStart(3, '0')}`;
 }
 
 function numbersDiffer(a: Record<string, number>, b: Record<string, number>): boolean {
@@ -118,9 +137,6 @@ export async function loadEnemyCombat(): Promise<void> {
     updatedAt: data.updatedAt,
     backups: data.backups ?? [],
   };
-  if (!selectedType && payload.enemies.length > 0) {
-    selectedType = payload.enemies[0]!.enemyType;
-  }
   syncDraft();
 }
 
@@ -141,7 +157,78 @@ function updateDirtyChrome(): void {
 }
 
 function selectedEnemy(): EnemyEntry | null {
-  return payload?.enemies.find((e) => e.enemyType === selectedType) ?? null;
+  if (!selectedType) return null;
+  return payload?.enemies.find((enemy) => enemy.enemyType === selectedType) ?? null;
+}
+
+function openEnemy(id: string): void {
+  selectedType = id;
+  updateHashDeepLink('enemies', 'id', id);
+}
+
+function closeSheet(): void {
+  selectedType = null;
+  updateHashDeepLink('enemies');
+}
+
+function sheetSequence(): string[] {
+  return (payload?.enemies ?? []).map((enemy) => enemy.enemyType);
+}
+
+function sheetNeighbor(delta: number): string | null {
+  const ids = sheetSequence();
+  if (ids.length === 0) return null;
+  const current = selectedType ?? ids[0]!;
+  const index = ids.indexOf(current);
+  if (index < 0) return ids[0] ?? null;
+  return ids[(index + delta + ids.length) % ids.length] ?? null;
+}
+
+function sheetEntryLabel(id: string): string {
+  return payload?.enemies.find((enemy) => enemy.enemyType === id)?.name ?? id;
+}
+
+function simRole(entry: EnemyEntry): 'trash' | 'elite' | 'boss' {
+  if (entry.rosterRole === 'boss') return 'boss';
+  if (entry.rosterRole === 'subboss' || entry.rosterRole === 'elite') return 'elite';
+  return 'trash';
+}
+
+function skillKindLabel(kind: string): string {
+  if (kind === 'damage') return 'Dano';
+  if (kind === 'heal_ally') return 'Cura';
+  if (kind === 'buff_attack') return 'Buff de ataque';
+  if (kind === 'debuff_defense') return 'Debuff de defesa';
+  return 'Skill';
+}
+
+function overrideBadge(hasOverride: boolean): string {
+  return hasOverride ? '<span class="xp-badge">alterado</span>' : '';
+}
+
+function artImg(
+  src: string | undefined,
+  className: string,
+  extras: { fallback?: string; thumb?: 'enemy' | 'art'; alt?: string } = {},
+): string {
+  if (!src) return '';
+  const fallback =
+    extras.fallback && extras.fallback !== src ? ` data-fallback="${escapeHtml(extras.fallback)}"` : '';
+  const thumb =
+    extras.thumb === 'enemy' ? ' data-enemy-thumb' : extras.thumb === 'art' ? ' data-lab-art' : '';
+  return `<img class="${className}" src="${escapeHtml(src)}" alt="${escapeHtml(extras.alt ?? '')}"${thumb}${fallback} loading="lazy" draggable="false" />`;
+}
+
+function picto(key: 'attack' | 'defense' | 'health' | 'attackSpeed'): string {
+  return `<img class="hc-picto" src="${escapeHtml(labStatIconUrl(key))}" alt="" aria-hidden="true" data-lab-art />`;
+}
+
+function fieldCaption(field: FieldDef): string {
+  const iconUrl = labFieldStatIconUrl(field.key);
+  const icon = iconUrl
+    ? `<img class="hc-picto" src="${escapeHtml(iconUrl)}" alt="" aria-hidden="true" data-lab-art />`
+    : '';
+  return `<span class="hc-field-caption">${icon}${escapeHtml(field.label)}</span>`;
 }
 
 function numberInputs(fields: FieldDef[], values: Record<string, number>, dataAttr: string): string {
@@ -149,148 +236,267 @@ function numberInputs(fields: FieldDef[], values: Record<string, number>, dataAt
     .filter((field) => values[field.key] !== undefined)
     .map(
       (field) => `
-      <label>${field.label}
+      <label>${fieldCaption(field)}
         <input type="number" step="${field.step}" data-${dataAttr}="${field.key}" value="${values[field.key]}" />
       </label>`,
     )
     .join('');
 }
 
+function statBar(
+  label: string,
+  value: number,
+  max: number,
+  kind: string,
+  iconKey: 'attack' | 'defense' | 'health' | 'attackSpeed',
+): string {
+  const pct = Math.max(4, Math.min(100, Math.round((value / Math.max(max, 1)) * 100)));
+  const shown = Number.isInteger(value) ? String(value) : value.toFixed(2);
+  return `<div class="hc-bar hc-bar--${kind}">
+    <span class="hc-bar-label">${picto(iconKey)}${label}</span>
+    <span class="hc-bar-track" aria-hidden="true"><i style="width:${pct}%"></i></span>
+    <strong class="hc-bar-value">${shown}</strong>
+  </div>`;
+}
+
+function rosterMaxes(): { attack: number; defense: number; health: number; aspd: number } {
+  const zeros = { attack: 1, defense: 1, health: 1, aspd: 1 };
+  if (!payload) return zeros;
+  let attack = 1;
+  let defense = 1;
+  let health = 1;
+  let aspd = 1;
+  for (const enemy of payload.enemies) {
+    const identity = identityDraft.get(enemy.enemyType) ?? enemy.identity.effective;
+    attack = Math.max(attack, Number(identity.attackPerLevel ?? 0));
+    defense = Math.max(defense, Number(identity.defensePerLevel ?? 0));
+    health = Math.max(health, Number(identity.healthPerLevel ?? 0));
+    aspd = Math.max(aspd, Number(identity.attackSpeedFactor ?? 0));
+  }
+  return { attack, defense, health, aspd };
+}
+
+function enemyHasOverride(entry: EnemyEntry): boolean {
+  return entry.identity.hasOverride || entry.monsterSkills.some((skill) => skill.hasOverride);
+}
+
+function enemyHasPendingDraft(enemyType: string): boolean {
+  if (dirtyIdentities.has(enemyType)) return true;
+  const enemy = payload?.enemies.find((entry) => entry.enemyType === enemyType);
+  return Boolean(enemy?.monsterSkills.some((skill) => dirtyMonsterSkills.has(skill.skillId)));
+}
+
+function renderSheetPager(title: string): string {
+  const prevId = sheetNeighbor(-1);
+  const nextId = sheetNeighbor(1);
+  const prevName = prevId ? sheetEntryLabel(prevId) : '';
+  const nextName = nextId ? sheetEntryLabel(nextId) : '';
+  return `<nav class="hc-sheet-pager" aria-label="Trocar monstro">
+    <button type="button" class="hc-sheet-step" data-enemy-step="-1" title="${escapeHtml(
+      prevName,
+    )}" aria-label="Anterior: ${escapeHtml(prevName)}" ${prevId ? '' : 'disabled'}>&lt;</button>
+    <p class="hc-sheet-pager-current">${escapeHtml(title)}</p>
+    <button type="button" class="hc-sheet-step" data-enemy-step="1" title="${escapeHtml(
+      nextName,
+    )}" aria-label="Próximo: ${escapeHtml(nextName)}" ${nextId ? '' : 'disabled'}>&gt;</button>
+  </nav>`;
+}
+
+function renderSheetBlock(id: string, title: string, body: string, extraHead = ''): string {
+  const collapsed = collapsedSheetSections.has(id);
+  const action = collapsed ? 'Expandir' : 'Recolher';
+  return `
+    <section class="hc-block${collapsed ? ' is-collapsed' : ''}" data-sheet-section="${id}">
+      <header class="hc-block-head">
+        <h3>${escapeHtml(title)}</h3>
+        ${extraHead}
+        <button type="button" class="hc-block-toggle" data-toggle-section="${id}" title="${action}" aria-expanded="${
+          collapsed ? 'false' : 'true'
+        }" aria-label="${action} ${escapeHtml(title)}">${collapsed ? 'v' : '^'}</button>
+      </header>
+      <div class="hc-block-body">${body}</div>
+    </section>`;
+}
+
+function renderToolbar(): string {
+  const count = dirtyCount();
+  const backups = payload?.backups ?? [];
+  return `
+    <div class="hc-toolbar">
+      <button type="button" class="lab-btn--primary" id="ec-save" ${count === 0 ? 'disabled' : ''}>${
+        count > 1 ? `Salvar tudo (${count})` : 'Salvar no sistema'
+      }</button>
+      <span id="ec-dirty-count" class="xp-dirty-count"></span>
+      <div class="mb-backups hc-toolbar-backups">
+        <h3>Backups</h3>
+        ${
+          backups.length === 0
+            ? '<p class="lab-hint">Nenhum backup ainda.</p>'
+            : `<ul class="xp-backup-list">${backups
+                .slice(0, 8)
+                .map(
+                  (backup) =>
+                    `<li><button type="button" class="lab-btn--info" data-restore-backup="${backup.id}">${backup.id}</button></li>`,
+                )
+                .join('')}</ul>`
+        }
+      </div>
+    </div>`;
+}
+
+function renderSkillCard(skill: MonsterSkillRow, fields: FieldDef[]): string {
+  const draft = monsterSkillDraft.get(skill.skillId) ?? skill.effective;
+  const dirty = dirtyMonsterSkills.has(skill.skillId) ? ' is-dirty' : '';
+  return `<article class="hc-card${dirty}" data-skill-id="${skill.skillId}">
+    <header class="hc-card-head">
+      ${artImg(skill.iconUrl, 'hc-art hc-art--skill', {
+        fallback: skill.iconFallbackUrl,
+        thumb: 'art',
+        alt: skill.name,
+      })}
+      <div class="hc-card-head-text">
+        <strong>${escapeHtml(skill.name)}</strong> ${overrideBadge(skill.hasOverride)}
+        <span class="xp-muted">${escapeHtml(skillKindLabel(skill.kind))}</span>
+      </div>
+    </header>
+    ${skill.description ? `<p class="hc-skill-blurb">${escapeHtml(skill.description)}</p>` : ''}
+    <p class="hc-skill-meta">CD ${draft.cooldownTurns ?? 0} turnos · poder/rank ${draft.powerPerRank ?? 0}</p>
+    <div class="hc-fields">${numberInputs(fields, draft, 'skill-field')}</div>
+    <button type="button" class="lab-btn--warn" data-reset-skill="${skill.skillId}">↺ baseline</button>
+  </article>`;
+}
+
+function renderRosterCard(entry: EnemyEntry): string {
+  const pending = enemyHasPendingDraft(entry.enemyType);
+  const identity = identityDraft.get(entry.enemyType) ?? entry.identity.effective;
+  const marks = [
+    pending ? '<span class="mb-badge mb-badge--dirty">rascunho</span>' : '',
+    !pending && enemyHasOverride(entry) ? '<span class="xp-badge">alterado</span>' : '',
+  ]
+    .filter(Boolean)
+    .join('');
+  return `
+    <button type="button" class="hc-dex-card${pending ? ' is-dirty' : ''}" data-select-enemy="${
+      entry.enemyType
+    }">
+      <span class="hc-dex-no">${padDex(entry.dexNo)}</span>
+      <img class="hc-dex-art" src="${escapeHtml(entry.spriteUrl)}" alt="" data-enemy-thumb />
+      <strong class="hc-dex-name">${escapeHtml(entry.name)}</strong>
+      <span class="hc-dex-role">T${entry.powerTier} · ${escapeHtml(entry.roleLabel)}</span>
+      <span class="hc-dex-stats">
+        <span class="res res--atk">${picto('attack')} ${identity.attackPerLevel ?? 0}</span>
+        <span class="res res--def">${picto('defense')} ${identity.defensePerLevel ?? 0}</span>
+        <span class="res res--hp">${picto('health')} ${identity.healthPerLevel ?? 0}</span>
+      </span>
+      <span class="hc-dex-marks">${marks}</span>
+    </button>`;
+}
+
+function renderRoster(): string {
+  const q = filterQuery.trim().toLowerCase();
+  const enemies = (payload?.enemies ?? []).filter((entry) => {
+    if (!q) return true;
+    return [entry.name, entry.roleLabel, entry.rosterRole, entry.enemyType, `t${entry.powerTier}`]
+      .join(' ')
+      .toLowerCase()
+      .includes(q);
+  });
+  return `
+    <div class="hc-dex">
+      <header class="hc-dex-head">
+        <div>
+          <p class="hc-dex-kicker">Índice de monstros</p>
+          <h2>Inimigos</h2>
+          <p class="lab-hint">Clique num monstro para abrir a ficha (stats e skills).</p>
+        </div>
+        <label class="hc-dex-search">Buscar
+          <input type="search" id="ec-filter" value="${escapeHtml(filterQuery)}" placeholder="nome, papel ou tier" />
+        </label>
+      </header>
+      <div class="hc-dex-grid">
+        ${enemies.map((entry) => renderRosterCard(entry)).join('')}
+      </div>
+      ${enemies.length === 0 ? '<p class="lab-hint">Nenhum monstro neste filtro.</p>' : ''}
+      ${renderToolbar()}
+      <p id="ec-status" class="lab-status${statusError ? ' is-error' : ''}" role="status">${statusMessage}</p>
+    </div>`;
+}
+
+function renderSheet(): string {
+  const enemy = selectedEnemy();
+  if (!enemy || !payload) return renderRoster();
+  const identityValues = identityDraft.get(enemy.enemyType) ?? enemy.identity.effective;
+  const maxes = rosterMaxes();
+  const dirtyId = dirtyIdentities.has(enemy.enemyType);
+  const role = simRole(enemy);
+
+  return `
+    <div class="hc-sheet">
+      <nav class="hc-sheet-nav">
+        <button type="button" class="lab-btn--info" data-dex-back>← Índice</button>
+      </nav>
+      ${renderSheetPager(enemy.name)}
+      <header class="hc-sheet-head">
+        <img class="hc-sheet-art" src="${escapeHtml(enemy.spriteUrl)}" alt="" data-enemy-thumb />
+        <div class="hc-sheet-id">
+          <span class="hc-dex-no">${padDex(enemy.dexNo)}</span>
+          <h2>${escapeHtml(enemy.name)}</h2>
+          <p class="hc-sheet-tag">T${enemy.powerTier} · ${escapeHtml(enemy.roleLabel)}</p>
+        </div>
+        <div class="ec-editor-actions">
+          <button type="button" class="lab-btn--info" data-open-enemy-simulator="${enemy.enemyType}" data-open-enemy-role="${role}">Abrir no Simulador</button>
+          <button type="button" class="lab-btn--info" data-run-combat-sim="${enemy.enemyType}" data-sim-tier="${enemy.powerTier}" data-sim-role="${role}">▶️ Simular vs party</button>
+        </div>
+      </header>
+      <div id="ec-sim-result-${enemy.enemyType}" class="ec-sim-result"></div>
+
+      ${renderSheetBlock(
+        'overview',
+        'Visão geral',
+        `<div class="hc-bars">
+          ${statBar('ATK/nv', Number(identityValues.attackPerLevel ?? 0), maxes.attack, 'atk', 'attack')}
+          ${statBar('DEF/nv', Number(identityValues.defensePerLevel ?? 0), maxes.defense, 'def', 'defense')}
+          ${statBar('HP/nv', Number(identityValues.healthPerLevel ?? 0), maxes.health, 'hp', 'health')}
+          ${statBar('ASPD', Number(identityValues.attackSpeedFactor ?? 0), maxes.aspd, 'spd', 'attackSpeed')}
+        </div>`,
+      )}
+
+      ${renderSheetBlock(
+        'attributes',
+        'Atributos',
+        `<div class="hc-card${dirtyId ? ' is-dirty' : ''}" data-identity="${enemy.enemyType}">
+          <p class="lab-hint">Crescimento e timing. O ataque básico é ATK × o fator de ataque básico.</p>
+          <div class="hc-fields">${numberInputs(payload.identityFields, identityValues, 'identity-field')}</div>
+          <button type="button" class="lab-btn--warn" data-reset-identity="${enemy.enemyType}">↺ baseline</button>
+        </div>`,
+        overrideBadge(enemy.identity.hasOverride),
+      )}
+
+      ${renderSheetBlock(
+        'skills',
+        'Skills',
+        enemy.monsterSkills.length === 0
+          ? '<p class="lab-hint">Nenhuma skill exclusiva neste monstro.</p>'
+          : `<div class="hc-skill-grid">${enemy.monsterSkills
+              .map((skill) => renderSkillCard(skill, payload!.skillFields))
+              .join('')}</div>`,
+      )}
+      ${renderToolbar()}
+      <p id="ec-status" class="lab-status${statusError ? ' is-error' : ''}" role="status">${statusMessage}</p>
+    </div>`;
+}
+
 export function renderEnemyCombat(): void {
   const host = document.getElementById('lab-enemy-combat');
   if (!host || !payload) return;
   setWorkspaceDirty('enemies', dirtyCount());
-
-  const enemy = selectedEnemy();
-  const identityValues = enemy
-    ? (identityDraft.get(enemy.enemyType) ?? enemy.identity.effective)
-    : {};
-
-  const query = filterQuery.toLowerCase();
-  const filtered = payload.enemies.filter(
-    (e) =>
-      !query ||
-      e.name.toLowerCase().includes(query) ||
-      e.enemyType.toLowerCase().includes(query),
-  );
-
-  const tierBadge = (tier: number): string => {
-    const colors = ['', '#7cb87c', '#8ea8e8', '#c9a227', '#b07fd8', '#e0708f'];
-    return `<span style="color:${colors[tier] ?? '#aaa'}">T${tier}</span>`;
-  };
-
-  host.innerHTML = `
-    <div class="xp-layout">
-      <aside class="xp-sidebar">
-        <p class="lab-hint">Edite identidade e skills de monstro. Salva em <code>enemy-combat-overrides.json</code>.</p>
-        <input type="text" id="ec-filter" placeholder="Filtrar inimigos…" value="${filterQuery}" class="lab-filter-input" />
-        <ul class="hc-hero-list">
-          ${filtered
-            .map((e) => {
-              const active = selectedType === e.enemyType ? ' is-active' : '';
-              const dirty = dirtyIdentities.has(e.enemyType) ? ' is-dirty' : '';
-              const badge = e.identity.hasOverride
-                ? '<span class="xp-badge">override</span>'
-                : '';
-              return `<li><button type="button" class="hc-hero-btn ec-list-btn${active}${dirty}" data-select-enemy="${e.enemyType}">
-                <img class="ec-list-thumb" src="${e.spriteUrl}" alt="" loading="lazy" data-enemy-thumb="${e.enemyType}" />
-                <span class="ec-list-copy">
-                  <strong>${e.name}</strong>
-                  <span>${tierBadge(e.powerTier)} · ${e.rosterRole}</span>
-                </span>
-                ${badge}
-              </button></li>`;
-            })
-            .join('')}
-        </ul>
-        <div class="xp-toolbar">
-          <button type="button" class="lab-btn--primary" id="ec-save" ${dirtyCount() === 0 ? 'disabled' : ''}>
-            ${dirtyCount() > 1 ? `Salvar tudo (${dirtyCount()})` : 'Salvar no sistema'}
-          </button>
-          <span id="ec-dirty-count" class="xp-dirty-count"></span>
-        </div>
-        <div class="mb-backups">
-          <h3>Backups</h3>
-          ${
-            payload.backups.length === 0
-              ? '<p class="lab-hint">Nenhum backup ainda.</p>'
-              : `<ul class="xp-backup-list">${payload.backups
-                  .slice(0, 12)
-                  .map(
-                    (b) =>
-                      `<li><button type="button" class="lab-btn--info" data-restore-backup="${b.id}">${b.id}</button></li>`,
-                  )
-                  .join('')}</ul>`
-          }
-        </div>
-      </aside>
-      <section class="xp-main">
-        ${
-          enemy
-            ? `
-          <section class="hc-card${dirtyIdentities.has(enemy.enemyType) ? ' is-dirty' : ''}"
-                   data-identity="${enemy.enemyType}">
-            <header class="ec-editor-head">
-              <img class="ec-editor-thumb" src="${enemy.spriteUrl}" alt="" data-enemy-thumb="${enemy.enemyType}" />
-              <div class="ec-editor-copy">
-                <strong>${enemy.name}</strong>
-                ${enemy.identity.hasOverride ? '<span class="xp-badge">override</span>' : ''}
-                <span class="xp-muted">${enemy.enemyType} · Tier ${enemy.powerTier} · ${enemy.rosterRole}</span>
-              </div>
-              <div class="ec-editor-actions">
-                <button type="button" class="lab-btn--info"
-                  data-open-enemy-simulator="${enemy.enemyType}"
-                  data-open-enemy-role="${enemy.rosterRole === 'boss' ? 'boss' : enemy.rosterRole === 'elite' ? 'elite' : 'trash'}"
-                >Abrir no Simulador</button>
-                <button type="button" class="lab-btn--info"
-                  data-run-combat-sim="${enemy.enemyType}"
-                  data-sim-tier="${enemy.powerTier}"
-                  data-sim-role="${enemy.rosterRole === 'boss' ? 'boss' : enemy.rosterRole === 'subboss' ? 'elite' : 'trash'}"
-                >▶️ Simular vs party</button>
-              </div>
-            </header>
-            <div id="ec-sim-result-${enemy.enemyType}" class="ec-sim-result"></div>
-            <p class="lab-hint">Identidade de combate — crescimento de stats e timing de skills.</p>
-            <div class="hc-fields">
-              ${numberInputs(payload.identityFields, identityValues, 'identity-field')}
-            </div>
-            <button type="button" class="lab-btn--warn" data-reset-identity="${enemy.enemyType}">↺ baseline</button>
-          </section>
-
-          <h3 class="hc-section">Skills de Monstro</h3>
-          <div class="hc-skill-grid">
-            ${enemy.monsterSkills
-              .map((skill) => {
-                const draft = monsterSkillDraft.get(skill.skillId) ?? skill.effective;
-                const dirty = dirtyMonsterSkills.has(skill.skillId) ? ' is-dirty' : '';
-                const badge = skill.hasOverride ? '<span class="xp-badge">override</span>' : '';
-                return `<article class="hc-card${dirty}" data-skill-id="${skill.skillId}">
-                  <header>
-                    <strong>${skill.skillId}</strong> ${badge}
-                    <span class="xp-muted">${skill.kind}</span>
-                  </header>
-                  <div class="hc-fields">
-                    ${numberInputs(payload!.skillFields, draft, 'skill-field')}
-                  </div>
-                  <button type="button" class="lab-btn--warn" data-reset-skill="${skill.skillId}">↺ baseline</button>
-                </article>`;
-              })
-              .join('')}
-            ${enemy.monsterSkills.length === 0 ? '<p class="lab-hint">Nenhuma skill de monstro exclusiva.</p>' : ''}
-          </div>`
-            : '<p class="lab-hint">Selecione um inimigo para editar.</p>'
-        }
-        <p id="ec-status" class="lab-status${statusError ? ' is-error' : ''}" role="status">${statusMessage}</p>
-      </section>
-    </div>`;
-
+  host.innerHTML = selectedType ? renderSheet() : renderRoster();
   updateDirtyChrome();
   bindEnemyCombat(host);
-  host.querySelectorAll<HTMLImageElement>('[data-enemy-thumb]').forEach(bindSpriteFallback);
 }
 
 function markIdentityDirty(enemyType: string): void {
-  const enemy = payload?.enemies.find((e) => e.enemyType === enemyType);
+  const enemy = payload?.enemies.find((entry) => entry.enemyType === enemyType);
   const draft = identityDraft.get(enemyType);
   if (!enemy || !draft) return;
   if (numbersDiffer(draft, enemy.identity.effective)) dirtyIdentities.add(enemyType);
@@ -299,8 +505,8 @@ function markIdentityDirty(enemyType: string): void {
 }
 
 function markSkillDirty(skillId: string): void {
-  const allSkills = payload?.enemies.flatMap((e) => e.monsterSkills) ?? [];
-  const row = allSkills.find((s) => s.skillId === skillId);
+  const allSkills = payload?.enemies.flatMap((entry) => entry.monsterSkills) ?? [];
+  const row = allSkills.find((skill) => skill.skillId === skillId);
   const draft = monsterSkillDraft.get(skillId);
   if (!row || !draft) return;
   if (numbersDiffer(draft, row.effective)) dirtyMonsterSkills.add(skillId);
@@ -318,7 +524,7 @@ async function saveDirty(): Promise<void> {
   const clearMonsterSkills: string[] = [];
 
   for (const enemyType of dirtyIdentities) {
-    const enemy = payload?.enemies.find((e) => e.enemyType === enemyType);
+    const enemy = payload?.enemies.find((entry) => entry.enemyType === enemyType);
     const draft = identityDraft.get(enemyType);
     if (!enemy || !draft) continue;
     const diff = diffAgainstBaseline(enemy.identity.baseline, draft);
@@ -327,8 +533,8 @@ async function saveDirty(): Promise<void> {
   }
 
   for (const skillId of dirtyMonsterSkills) {
-    const allSkills = payload?.enemies.flatMap((e) => e.monsterSkills) ?? [];
-    const row = allSkills.find((s) => s.skillId === skillId);
+    const allSkills = payload?.enemies.flatMap((entry) => entry.monsterSkills) ?? [];
+    const row = allSkills.find((skill) => skill.skillId === skillId);
     const draft = monsterSkillDraft.get(skillId);
     if (!row || !draft) continue;
     const diff = diffAgainstBaseline(row.baseline, draft);
@@ -351,31 +557,64 @@ async function saveDirty(): Promise<void> {
 
   await api('/api/enemy-combat', { method: 'PUT', body: JSON.stringify(changes) });
   await loadEnemyCombat();
-  setStatus('Salvo em enemy-combat-overrides.json. Rebuild da extensão para o jogo.');
+  setStatus('Salvo. Rebuild do jogo para aplicar no combate.');
   renderEnemyCombat();
 }
 
 function bindEnemyCombat(host: HTMLElement): void {
+  host.querySelectorAll<HTMLImageElement>('[data-enemy-thumb]').forEach(bindSpriteFallback);
+  host.querySelectorAll<HTMLImageElement>('[data-lab-art]').forEach(bindLabArtFallback);
+
   host.querySelector<HTMLInputElement>('#ec-filter')?.addEventListener('input', (event) => {
-    filterQuery = (event.target as HTMLInputElement).value;
+    filterQuery = (event.currentTarget as HTMLInputElement).value;
+    renderEnemyCombat();
+    const next = document.getElementById('ec-filter') as HTMLInputElement | null;
+    next?.focus();
+    next?.setSelectionRange(filterQuery.length, filterQuery.length);
+  });
+
+  host.querySelector('[data-dex-back]')?.addEventListener('click', () => {
+    closeSheet();
     renderEnemyCombat();
   });
 
-  host.querySelectorAll<HTMLButtonElement>('[data-select-enemy]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      selectedType = btn.dataset.selectEnemy ?? '';
+  host.querySelectorAll<HTMLButtonElement>('[data-toggle-section]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const id = button.dataset.toggleSection;
+      if (!id) return;
+      if (collapsedSheetSections.has(id)) collapsedSheetSections.delete(id);
+      else collapsedSheetSections.add(id);
       renderEnemyCombat();
     });
   });
 
-  host.querySelector<HTMLButtonElement>('[data-open-enemy-simulator]')?.addEventListener('click', (event) => {
-    const btn = event.currentTarget as HTMLButtonElement;
-    const enemyType = btn.dataset.openEnemySimulator ?? '';
-    const role = (btn.dataset.openEnemyRole ?? 'trash') as 'trash' | 'elite' | 'boss';
-    const enemy = payload?.enemies.find((e) => e.enemyType === enemyType);
-    const level = enemy ? Math.max(1, enemy.powerTier * 5) : 1;
-    openEnemyInSimulator(enemyType, level, role);
+  host.querySelectorAll<HTMLButtonElement>('[data-enemy-step]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const nextId = sheetNeighbor(Number(button.dataset.enemyStep));
+      if (!nextId) return;
+      openEnemy(nextId);
+      renderEnemyCombat();
+    });
   });
+
+  host.querySelectorAll<HTMLButtonElement>('[data-select-enemy]').forEach((button) => {
+    button.addEventListener('click', () => {
+      openEnemy(button.dataset.selectEnemy ?? '');
+      renderEnemyCombat();
+    });
+  });
+
+  host.querySelector<HTMLButtonElement>('[data-open-enemy-simulator]')?.addEventListener(
+    'click',
+    (event) => {
+      const btn = event.currentTarget as HTMLButtonElement;
+      const enemyType = btn.dataset.openEnemySimulator ?? '';
+      const role = (btn.dataset.openEnemyRole ?? 'trash') as 'trash' | 'elite' | 'boss';
+      const enemy = payload?.enemies.find((entry) => entry.enemyType === enemyType);
+      const level = enemy ? Math.max(1, enemy.powerTier * 5) : 1;
+      openEnemyInSimulator(enemyType, level, role);
+    },
+  );
 
   host.querySelector<HTMLButtonElement>('[data-run-combat-sim]')?.addEventListener('click', (event) => {
     const btn = event.currentTarget as HTMLButtonElement;
@@ -391,8 +630,12 @@ function bindEnemyCombat(host: HTMLElement): void {
       runs: 1,
       seed: 0,
     })
-      .then((data) => { if (container) renderSimResult(container, data, 1); })
-      .catch((err: Error) => { if (container) container.innerHTML = `<p class="lab-hint is-error">Erro: ${err.message}</p>`; });
+      .then((data) => {
+        if (container) renderSimResult(container, data, 1);
+      })
+      .catch((err: Error) => {
+        if (container) container.innerHTML = `<p class="lab-hint is-error">Erro: ${err.message}</p>`;
+      });
   });
 
   host.querySelector('#ec-save')?.addEventListener('click', () => {
@@ -426,7 +669,7 @@ function bindEnemyCombat(host: HTMLElement): void {
   host.querySelectorAll<HTMLButtonElement>('[data-reset-identity]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const enemyType = btn.dataset.resetIdentity!;
-      const enemy = payload?.enemies.find((e) => e.enemyType === enemyType);
+      const enemy = payload?.enemies.find((entry) => entry.enemyType === enemyType);
       if (!enemy) return;
       identityDraft.set(enemyType, { ...enemy.identity.baseline });
       dirtyIdentities.add(enemyType);
@@ -437,8 +680,8 @@ function bindEnemyCombat(host: HTMLElement): void {
   host.querySelectorAll<HTMLButtonElement>('[data-reset-skill]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const skillId = btn.dataset.resetSkill!;
-      const allSkills = payload?.enemies.flatMap((e) => e.monsterSkills) ?? [];
-      const row = allSkills.find((s) => s.skillId === skillId);
+      const allSkills = payload?.enemies.flatMap((entry) => entry.monsterSkills) ?? [];
+      const row = allSkills.find((skill) => skill.skillId === skillId);
       if (!row) return;
       monsterSkillDraft.set(skillId, { ...row.baseline });
       dirtyMonsterSkills.add(skillId);
@@ -465,15 +708,15 @@ export async function mountEnemyCombatTab(): Promise<void> {
   registerWorkspaceSave('enemies', saveDirty);
   await loadEnemyCombat();
   renderEnemyCombat();
-  setStatus('Inimigos carregados — edite identidade e skills de monstro e salve.');
+  setStatus('Índice de monstros — clique numa carta para abrir a ficha.');
 }
 
 /** Seleciona inimigo por tipo (para deep-link `#enemies?id=goblin_raider`). */
 export function selectEnemyByType(enemyType: string): void {
   if (!payload) return;
-  const found = payload.enemies.find((e) => e.enemyType === enemyType);
+  const found = payload.enemies.find((entry) => entry.enemyType === enemyType);
   if (found) {
-    selectedType = found.enemyType;
+    openEnemy(found.enemyType);
     renderEnemyCombat();
   }
 }

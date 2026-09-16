@@ -30,6 +30,7 @@ description: Battle strip, modais, Wow e UX do painel Side Hero. Use para battle
 | Stage progress | Ver skill `stage-progress-bar` — timeline entre localização e a strip |
 | Resultado / START | `BattleVictoryFlow` + `BattleStartFlow`; Continuar no deck; recompensas sem scroll; START só no botão **Batalhar** (Iniciar missão no mapa vai direto ao tick) |
 | Stats | Sempre no rail; abre automaticamente ao iniciar missão; painel abaixo da battle-stage |
+| Tooltips | Carta selada `.game-tooltip` (pergaminho + moldura de tinta, Cinzel no título); ilha `--tooltip-*` nos descendentes; binders em `*TooltipBinder.ts` |
 | Modais | `ModalStackController`, `GameViewController`, `SystemsMenuNavigation`, `SystemsMenuIconPresentation` |
 | Navegação menus | Rail inferior (`footer.actions`); sheets só com seta v para fechar; segundo clique no mesmo ícone fecha o sheet. Loja/Formação/Runas/Achievements/Config fecham pela pilha do modal + trackedId (Log/Stats não roubam o toggle). Mapa embutido do hub não é o modal de campanha |
 | Apoio | `DonationPromptController`, `DonationCardPresentation`, `DonationConfig` |

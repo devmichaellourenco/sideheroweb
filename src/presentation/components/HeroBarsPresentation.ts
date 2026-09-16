@@ -6,6 +6,11 @@ export function formatHealthLabel(hero: Pick<HeroDto, 'health' | 'maxHealth'>): 
   return `${hero.health}/${hero.maxHealth}`;
 }
 
+/** Tooltip da barra de vida: o que é + atual/máx. */
+export function formatHealthBarTooltip(currentMaxLabel: string): string {
+  return `Atual / máximo\n${currentMaxLabel}`;
+}
+
 export function formatExperienceLabel(
   hero: Pick<HeroDto, 'experience' | 'experienceToNextLevel'>,
 ): string {
@@ -30,6 +35,7 @@ export function renderHeroBars(
   const compactClass = options.compact ? ' hero-bars-compact' : '';
   const healthLabel = formatHealthLabel(hero);
   const xpLabel = formatExperienceLabel(hero);
+  const healthTip = formatHealthBarTooltip(healthLabel);
   const xpIconUrl = getAssetUrl(ASSETS.ui.xp) || ASSETS.ui.xp;
   const healthBar =
     options.showHealth === false
@@ -37,7 +43,7 @@ export function renderHeroBars(
       : `
       <div
         class="stat-bar health-bar hero card-bar"
-        data-bar-label="${healthLabel}"
+        data-bar-label="${healthTip.replace(/\n/g, '&#10;')}"
         tabindex="0"
         aria-label="Vida ${healthLabel}"
       >

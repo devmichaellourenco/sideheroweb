@@ -41,7 +41,7 @@ describe('SystemsMenuNavigation', () => {
     expect(isSystemsMenuAvailable('stash', { ...campUnlocked, stashUnlocked: false })).toBe(
       false,
     );
-    expect(isSystemsMenuAvailable('stats', { ...campUnlocked, battleStats: false })).toBe(false);
+    expect(isSystemsMenuAvailable('stats', { ...campUnlocked, battleStats: false })).toBe(true);
     expect(isSystemsMenuAvailable('forge', { ...campUnlocked, divineForge: false })).toBe(false);
   });
 

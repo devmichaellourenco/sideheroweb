@@ -13,6 +13,7 @@ describe('ActionTimeBarPresentation', () => {
 
   it('explica ASPD e TTA no tooltip', () => {
     const tip = formatActionTimeBarTooltip(0.5, 1.2, 2);
+    expect(tip).toContain('Tempo entre ações');
     expect(tip).toContain('ASPD 0.50/s');
     expect(tip).toContain('TTA = 1 ÷ 0.50 = 2.00s');
     expect(tip).toContain('Restante');

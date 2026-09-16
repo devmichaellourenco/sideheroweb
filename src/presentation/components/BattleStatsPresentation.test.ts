@@ -137,7 +137,7 @@ const sampleStats = {
       healingDone: 0,
       cooldownLabel: '10s',
       cooldownTooltip:
-        'Base = 2 turns × 5s = 10.00s\nLevel 1: sem redução por level → 10.00s\nCDR do equipamento = 0.0%\nRecarga efetiva = 10.00 × (1 − 0.0%) = 10.00s',
+        'Base = 2 turnos × 5s = 10.00s\nLevel 1: sem redução por level → 10.00s\nCDR do equipamento = 0.0%\nRecarga efetiva = 10.00 × (1 − 0.0%) = 10.00s',
     },
   ],
 };
@@ -156,7 +156,7 @@ describe('BattleStatsPresentation', () => {
     expect(html).toContain('Investida');
     expect(html).toContain('12 atk');
     expect(html).toContain('CD 10s');
-    expect(html).toContain('Base = 2 turns × 5s = 10.00s');
+    expect(html).toContain('Base = 2 turnos × 5s = 10.00s');
     expect(html).toContain('battle-stats-hero-card');
     expect(html).not.toContain('battle-stats-hero-elements');
   });

@@ -3,6 +3,7 @@ import {
   MEDIEVAL_THEME,
   MEDIEVAL_THEME_DARK,
   MEDIEVAL_THEME_SEMANTICS,
+  MEDIEVAL_TOOLTIP_SURFACE,
   parseUiThemeId,
   UI_THEME_IDS,
 } from './MedievalThemeTokens';
@@ -92,6 +93,25 @@ describe('MedievalThemeTokens', () => {
     expect(MEDIEVAL_THEME_DARK.iconWellDeep).toBe(MEDIEVAL_THEME.iconWellDeep);
     expect(MEDIEVAL_THEME_DARK.iconWellBorder).toBe(MEDIEVAL_THEME.iconWellBorder);
     expect(MEDIEVAL_THEME_DARK.iconWell).not.toBe(MEDIEVAL_THEME_DARK.parchment0);
+  });
+
+  it('carta selada dos tooltips usa pergaminho claro e não segue a inversão do chrome', () => {
+    expect(MEDIEVAL_TOOLTIP_SURFACE.fill0).toBe(MEDIEVAL_THEME.parchment0);
+    expect(MEDIEVAL_TOOLTIP_SURFACE.fill1).toBe(MEDIEVAL_THEME.parchment1);
+    expect(MEDIEVAL_TOOLTIP_SURFACE.fill2).toBe(MEDIEVAL_THEME.parchment2);
+    expect(MEDIEVAL_TOOLTIP_SURFACE.ink).toBe(MEDIEVAL_THEME.ink);
+    expect(MEDIEVAL_TOOLTIP_SURFACE.inkMuted).toBe(MEDIEVAL_THEME.inkMuted);
+    expect(MEDIEVAL_TOOLTIP_SURFACE.frame).toBe(MEDIEVAL_THEME.ink);
+    expect(MEDIEVAL_TOOLTIP_SURFACE.seal).toBe(MEDIEVAL_THEME.sealGold);
+    expect(MEDIEVAL_TOOLTIP_SURFACE.gold).toBe(MEDIEVAL_THEME.sealGoldDark);
+    expect(MEDIEVAL_TOOLTIP_SURFACE.better).toBe(MEDIEVAL_THEME.forest);
+    expect(MEDIEVAL_TOOLTIP_SURFACE.worse).toBe(MEDIEVAL_THEME.danger);
+    expect(MEDIEVAL_TOOLTIP_SURFACE.info).toBe(MEDIEVAL_THEME.info);
+    expect(MEDIEVAL_TOOLTIP_SURFACE.better).not.toBe(MEDIEVAL_THEME_DARK.forest);
+    expect(MEDIEVAL_TOOLTIP_SURFACE.worse).not.toBe(MEDIEVAL_THEME_DARK.danger);
+    expect(MEDIEVAL_TOOLTIP_SURFACE.zIndex).toBe('12500');
+    expect(MEDIEVAL_TOOLTIP_SURFACE.fill0).not.toBe(MEDIEVAL_THEME_DARK.parchment0);
+    expect(MEDIEVAL_TOOLTIP_SURFACE.ink).not.toBe(MEDIEVAL_THEME_DARK.ink);
   });
 
   it('mantém tokens de batalha iguais entre light e dark (isolamento v1)', () => {

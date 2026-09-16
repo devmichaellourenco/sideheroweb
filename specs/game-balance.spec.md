@@ -72,8 +72,8 @@ Poder × crítico → split damageComponents[]
 - [x] Balance Lab: aba **XP por nível** lista a curva de level-up 1→100 (XP base, XP efetiva, crescimento vs nível anterior, XP acumulada) com filtro por faixa de 10 níveis; edição por nível com save em `hero-level-xp-overrides.json` + backups (`GET|PUT|DELETE /api/hero-level-xp`); merge em `expRequiredToAdvanceFromLevel`
 - [x] Balance Lab: aba **Itens** lista o catálogo (`gear-items.catalog.json`) com filtros slot/raridade/busca; edita nome, preço base fixo, raridade, flags, requisitos e stats; save em `gear-item-overrides.json` + backups (`GET|PUT|DELETE /api/gear-items`); merge em `getGearCatalogItem` / loot lists
 - [x] Balance Lab: aba **Lojas** cria/edita/duplica/exclui lojas vinculadas a marcos `main:X-Y`, com pool explícito e modificadores globais; save em `shop-overrides.json` + backups (`GET|PUT|DELETE /api/shops`); merge em `listConfiguredShops` / `resolveActiveShop`
-- [x] Balance Lab: aba **Personagens** edita stats base (ATK/DEF/HP), identidade, skills de combate, passivas e evoluções (ascensão); save em `hero-combat-overrides.json` + backups (`GET|PUT /api/hero-combat`); merge em `getHeroCombatSkill` / `getHeroCombatIdentity` / `getHeroBaseStats` / `getPassiveDefinition` / `getAscensionById`
-- [x] Balance Lab: aba **Inimigos** edita identidade e skills de monstro por tipo de inimigo; roster completo com tier/role/sprite; miniaturas na lista do filtro e no painel do monstro; save em `enemy-combat-overrides.json` + backups (`GET|PUT /api/enemy-combat`); merge em `EnemyCombatOverrides` / `EnemyCombatIdentityCatalog` / `CombatSkillRegistry`
+- [x] Balance Lab: aba **Personagens** tem índice em grade (sprite, NO., nome, classe/papel) e ficha por herói (pager `<` título `>` entre heróis + Universais sem voltar ao índice, botão Índice, seções-marco recolhíveis Visão geral/Atributos/Evolução/Passivas/Skills (toggle `^`/`v`), barras ATK/DEF/HP/ASPD com ícones, skills/passivas/evoluções com arte, edição de stats base/identidade/skills/passivas/ascensão); IDs internos (skill/passiva/ascensão) ficam só em `data-*`/payload — a UI mostra nomes e rótulos de balanceamento; save em `hero-combat-overrides.json` + backups (`GET|PUT /api/hero-combat`); merge em `getHeroCombatSkill` / `getHeroCombatIdentity` / `getHeroBaseStats` / `getPassiveDefinition` / `getAscensionById`
+- [x] Balance Lab: aba **Inimigos** tem índice em grade (sprite, NO., nome, tier/papel) e ficha por monstro (pager `<` título `>` entre tipos, botão Índice, seções-marco recolhíveis Visão geral/Atributos/Skills, ícones de skill, edição de identidade/skills); IDs internos ficam só em `data-*`/payload; save em `enemy-combat-overrides.json` + backups (`GET|PUT /api/enemy-combat`); merge em `EnemyCombatOverrides` / `EnemyCombatIdentityCatalog` / `CombatSkillRegistry`; deep-link `#enemies?id=`
 - [x] Balance Lab: aba **Melhorias** edita custo, textos, `parents[]` e `requirements[]`; valida IDs/ciclos/raiz antes do save em `upgrade-overrides.json` + backups (`GET|PUT /api/upgrades`); merge em `UpgradeOverrides` / `UpgradeCatalog`
 - [x] Balance Lab: aba **Economia** auditoria read-only de ouro por fase (por mapa/capítulo) + pool de lojas com preços efetivos e custo de renovação (`GET /api/economy-audit`)
 - [x] Balance Lab: **Sparklines SVG leves** (sem deps externas) em XP por fase (XP acumulado + nível projetado), XP por nível (XP por nível + acumulada) e Economia (ouro vs preço médio/épico); helper `tools/balance-lab/sparkline.ts`; aria-label + figcaption; CSS responsivo
@@ -186,7 +186,9 @@ Ferramenta **fora do produto jogável** (`npm run balance-lab` → http://127.0.
 | Aba XP por nível | Curva de XP para subir de nível (1→100); XP base vs efetiva, crescimento, acumulado; filtro por faixa; salvar overrides; backups |
 | Aba Itens | Catálogo de gear (156+); editar nome/preço base/raridade/flags/requisitos/stats; filtros slot/raridade/busca; salvar overrides; backups |
 | Aba Lojas | CRUD de lojas; marco `main:X-Y`; pool explícito; multiplicador/ajuste globais; backups |
-| Aba Personagens | Editar stats base, identidade, skills, passivas e evoluções por herói; impacto (pts/skills/passiva); salvar overrides; backups |
+| Aba Personagens | Índice em grade + ficha (barras, ícones de skill/evolução/passiva/stats, edição, backups) |
+| Aba Inimigos | Índice em grade + ficha (pager, seções-marco, ícones de skill, edição, backups) |
+| `tools/balance-lab/enemyCombatCatalog.ts` / `enemyCombatUi.ts` | Snapshot e UI da aba Inimigos |
 | `src/domain/campaign/data/phase-battle-overrides.json` | Overrides persistidos; merge sobre handcrafted |
 | `src/domain/campaign/data/phase-reward-overrides.json` | Alvos XP/ouro por fase; escala em `WaveEnemyFactory` |
 | `PhaseBattleOverrides.ts` | Merge determinístico usado por `CampaignCatalog.resolvePhase` |
@@ -243,6 +245,7 @@ Não substitui catálogos canônicos: identidade/skills calibrados no lab gravam
 
 - `tools/balance-lab/balanceLabMaintenance.test.ts` — `diffJsonSnapshots`, `isPathSafe`, `computeVersionToken`
 - `tools/balance-lab/balancePack.test.ts` — validação/preview do Balance Pack
+- `tools/balance-lab/heroCombatCatalog.test.ts` — índice de heróis (ordem Nix-first, sprite, papel, descrição de skill)
 
 ## Backlog conhecido (auditoria 2026-07-03)
 

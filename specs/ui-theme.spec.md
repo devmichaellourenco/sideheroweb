@@ -2,7 +2,7 @@
 
 ## Status
 
-**Aceite:** 8/8 (100%)  
+**Aceite:** 12/12 (100%)  
 **Testes obrigatórios:** 2/2 presentes na suite
 
 ## Objetivo
@@ -23,6 +23,8 @@ Permitir escolher o **tema de UI** do painel Side Hero entre **claro** (pergamin
 - [x] Testes de tokens dark + preferência/aplicação de tema
 - [x] Superfícies chrome usam `var(--parchment-*)` / `color-mix` (sem `rgba` de pergaminho fixo)
 - [x] Rótulos em painéis sempre-escuros usam `--on-dark-panel-*` / `--forest-cta-label` (não invertem)
+- [x] Tooltips (`.game-tooltip`) usam `--tooltip-*` da carta selada — **não** seguem a inversão do chrome; os mesmos valores em `:root`, dark e reset de `.battle-stage`
+- [x] Ilha da carta: descendentes de `.game-tooltip` (e o cartão `.campaign-mission-popover` / `.campaign-phase-preview`) reapontam `--text/--muted/--ink/--parchment-*` e destaques (`--forest/--danger/--stat-better` etc.) para `--tooltip-*` — tinta e verde/vermelho densos no pergaminho mesmo com tema escuro
 
 ## Paleta escura (princípio)
 

@@ -24,7 +24,7 @@ describe('mapBattleSessionStats', () => {
     const fireball = dto.skills.find((entry) => entry.skillId === 'fireball');
 
     expect(fireball?.cooldownLabel).toMatch(/\d/);
-    expect(fireball?.cooldownTooltip).toContain('turns ×');
+    expect(fireball?.cooldownTooltip).toContain('turnos ×');
     expect(fireball?.cooldownTooltip).toContain('Recarga efetiva');
   });
 });

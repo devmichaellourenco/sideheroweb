@@ -44,36 +44,62 @@ import {
 } from '../../src/domain/progression/combat/HeroCombatSkillCatalog';
 import { getSkillById, SKILL_CATALOG } from '../../src/domain/progression/SkillCatalog';
 import type { AscensionId } from '../../src/domain/progression/SkillId';
+import { heroSpriteUrlForLab } from './heroSprites';
+import {
+  labEvolutionSpriteUrl,
+  labPassiveIconUrl,
+  labSkillIconFallbackUrl,
+  labSkillIconUrl,
+} from './labAssetUrl';
 
-export const HERO_CLASS_DISPLAY: Record<HeroClass, { name: string; classLabel: string }> = {
-  sorcerer: { name: 'Nix', classLabel: 'Maga' },
-  knight: { name: 'Galneon', classLabel: 'Cavaleiro' },
-  priest: { name: 'Elara', classLabel: 'Sacerdotisa' },
-  berserker: { name: 'Torius', classLabel: 'Berserker' },
-  archer: { name: 'Rain', classLabel: 'Arqueira' },
-  paladin: { name: 'Valerius', classLabel: 'Paladino' },
+export interface HeroDexDisplay {
+  name: string;
+  classLabel: string;
+  /** Papel de combate no dex (análogo a “Fogo DPS” do Aniimo). */
+  roleLabel: string;
+  dexNo: number;
+  starter: boolean;
+}
+
+/** Ordem do roster = new game + cadeia de unlock (Nix → Galneon → …). */
+export const HERO_DEX_ORDER: readonly HeroClass[] = [
+  'sorcerer',
+  'knight',
+  'priest',
+  'berserker',
+  'archer',
+  'paladin',
+];
+
+export const HERO_CLASS_DISPLAY: Record<HeroClass, HeroDexDisplay> = {
+  sorcerer: { name: 'Nix', classLabel: 'Maga', roleLabel: 'Magia', dexNo: 1, starter: true },
+  knight: { name: 'Galneon', classLabel: 'Cavaleiro', roleLabel: 'Vanguarda', dexNo: 2, starter: false },
+  priest: { name: 'Elara', classLabel: 'Sacerdotisa', roleLabel: 'Cura', dexNo: 3, starter: false },
+  berserker: { name: 'Torius', classLabel: 'Berserker', roleLabel: 'Fúria', dexNo: 4, starter: false },
+  archer: { name: 'Rain', classLabel: 'Arqueira', roleLabel: 'Precisão', dexNo: 5, starter: false },
+  paladin: { name: 'Valerius', classLabel: 'Paladino', roleLabel: 'Proteção', dexNo: 6, starter: false },
 };
 
 export const SKILL_EDIT_FIELDS = [
-  { key: 'powerPerRank', label: 'powerPerRank', step: 1 },
-  { key: 'basePower', label: 'basePower', step: 1 },
-  { key: 'attributeFactor', label: 'attr ×', step: 0.01 },
-  { key: 'cooldownTurns', label: 'CD turns', step: 1 },
-  { key: 'initialCooldown', label: 'CD inicial', step: 1 },
-  { key: 'actionRecoverySeconds', label: 'recovery s', step: 0.05 },
-  { key: 'cooldownSecondsPerRank', label: 'CD −s/rank', step: 0.1 },
-  { key: 'maxCooldownReduction', label: 'CDR teto', step: 0.05 },
-  { key: 'minCooldownReduction', label: 'CDR piso', step: 0.05 },
-  { key: 'usePriority', label: 'prioridade', step: 1 },
+  { key: 'powerPerRank', label: 'Poder / rank', step: 1 },
+  { key: 'basePower', label: 'Poder base', step: 1 },
+  { key: 'attributeFactor', label: 'Fator de atributo', step: 0.01 },
+  { key: 'cooldownTurns', label: 'Recarga (turnos)', step: 1 },
+  { key: 'initialCooldown', label: 'Recarga inicial', step: 1 },
+  { key: 'actionRecoverySeconds', label: 'Recuperação (s)', step: 0.05 },
+  { key: 'cooldownSecondsPerRank', label: 'Recarga −s / rank', step: 0.1 },
+  { key: 'maxCooldownReduction', label: 'Teto de CDR', step: 0.05 },
+  { key: 'minCooldownReduction', label: 'Piso de CDR', step: 0.05 },
+  { key: 'usePriority', label: 'Prioridade', step: 1 },
 ] as const;
 
 export const IDENTITY_EDIT_FIELDS = [
-  { key: 'basicAttackDamageRatio', label: 'básico ATK ×', step: 0.05 },
-  { key: 'skillCooldownTurnSeconds', label: 's/turno CD', step: 0.1 },
-  { key: 'attackSpeedFactor', label: 'ASPD fator', step: 0.01 },
-  { key: 'attackPerLevel', label: 'ATK/nível', step: 1 },
-  { key: 'defensePerLevel', label: 'DEF/nível', step: 1 },
-  { key: 'healthPerLevel', label: 'HP/nível', step: 1 },
+  { key: 'basicAttackDamageRatio', label: 'Ataque básico × ATK', step: 0.05 },
+  { key: 'skillCooldownTurnSeconds', label: 'Segundos por turno de CD', step: 0.1 },
+  { key: 'attackSpeedFactor', label: 'Fator de ASPD', step: 0.01 },
+  { key: 'attackPerLevel', label: 'ATK / nível', step: 1 },
+  { key: 'defensePerLevel', label: 'DEF / nível', step: 1 },
+  { key: 'healthPerLevel', label: 'HP / nível', step: 1 },
   { key: 'levelUpAttackGain', label: 'ATK no level-up', step: 1 },
   { key: 'levelUpDefenseGain', label: 'DEF no level-up', step: 1 },
   { key: 'levelUpHealthGain', label: 'HP no level-up', step: 1 },
@@ -88,6 +114,7 @@ export const BASE_STATS_EDIT_FIELDS = [
 export interface HeroSkillLabRow {
   skillId: string;
   name: string;
+  description: string;
   kind: string;
   branch: string;
   heroClass: HeroClass | 'universal';
@@ -95,6 +122,8 @@ export interface HeroSkillLabRow {
   hasDot: boolean;
   /** true = dano vem de ATK × identidade, não de basePower/powerPerRank. */
   usesAttackStat: boolean;
+  iconUrl: string;
+  iconFallbackUrl: string;
   baseline: Record<string, number>;
   effective: Record<string, number>;
   hasOverride: boolean;
@@ -119,6 +148,7 @@ export interface HeroPassiveLabRow {
   name: string;
   description: string;
   source: string;
+  iconUrl: string;
   effects: Array<{ kind: string; fields: Record<string, number> }>;
   baselineEffects: Array<{ kind: string; fields: Record<string, number> }>;
   hasOverride: boolean;
@@ -146,10 +176,11 @@ export interface HeroAscensionLabRow {
   prerequisiteAscensionId: AscensionId | null;
   pointsGranted: number;
   baselinePointsGranted: number;
+  spriteUrl: string;
   requirements: HeroAscensionReqLabField[];
   impact: {
-    skills: Array<{ id: string; name: string }>;
-    passive: { id: string; name: string } | null;
+    skills: Array<{ id: string; name: string; iconUrl: string; iconFallbackUrl: string }>;
+    passive: { id: string; name: string; iconUrl: string } | null;
     cumulativePoints: number;
     pathTotalPoints: number;
     pathSkillCount: number;
@@ -161,6 +192,10 @@ export interface HeroCombatLabHero {
   heroClass: HeroClass;
   name: string;
   classLabel: string;
+  roleLabel: string;
+  dexNo: number;
+  starter: boolean;
+  spriteUrl: string;
   identity: HeroIdentityLabRow;
   baseStats: HeroBaseStatsLabRow;
   skills: HeroSkillLabRow[];
@@ -239,12 +274,15 @@ function buildSkillRow(
   return {
     skillId,
     name: meta?.name ?? skillId,
+    description: meta?.description ?? '',
     kind: catalog.kind,
     branch: meta?.branch ?? 'offense',
     heroClass: meta?.heroClass ?? 'universal',
     pointType: meta?.pointType ?? 'improvement',
     hasDot: Boolean(catalog.onHitDot),
     usesAttackStat,
+    iconUrl: labSkillIconUrl(skillId),
+    iconFallbackUrl: labSkillIconFallbackUrl(skillId),
     baseline: baselineNumbers,
     effective: numbers,
     hasOverride: Boolean(normalizeSkillCombatOverride(disk)),
@@ -285,6 +323,7 @@ function passivesForHero(
       name: baseline.name,
       description: baseline.description,
       source,
+      iconUrl: labPassiveIconUrl(effective.effects[0]?.kind),
       effects: effectFields(effective.effects),
       baselineEffects: effectFields(baseline.effects),
       hasOverride: Boolean(normalizePassiveOverride(override)),
@@ -354,10 +393,14 @@ function pathRootLabel(ascensionId: AscensionId): string {
   return root?.pathLabel ?? 'Caminho';
 }
 
-function skillsForAscension(ascensionId: AscensionId): Array<{ id: string; name: string }> {
+function skillsForAscension(
+  ascensionId: AscensionId,
+): Array<{ id: string; name: string; iconUrl: string; iconFallbackUrl: string }> {
   return SKILL_CATALOG.filter((skill) => skill.ascensionId === ascensionId).map((skill) => ({
     id: skill.id,
     name: skill.name,
+    iconUrl: labSkillIconUrl(skill.id),
+    iconFallbackUrl: labSkillIconFallbackUrl(skill.id),
   }));
 }
 
@@ -403,6 +446,7 @@ function ascensionsForHero(
       ? {
           id: passiveId,
           name: getCatalogPassiveDefinition(passiveId).name,
+          iconUrl: labPassiveIconUrl(getCatalogPassiveDefinition(passiveId).effects[0]?.kind),
         }
       : null;
 
@@ -419,6 +463,7 @@ function ascensionsForHero(
       prerequisiteAscensionId: baseline.prerequisiteAscensionId,
       pointsGranted: effective.pointsGranted,
       baselinePointsGranted: baseline.pointsGranted,
+      spriteUrl: labEvolutionSpriteUrl(heroClass, baseline.id),
       requirements: requirementFields(baseline.requirements, effective.requirements),
       impact: {
         skills: skillsForAscension(baseline.id),
@@ -463,16 +508,18 @@ export function buildHeroCombatLabPayload(filters?: {
     else skillsByClass[row.heroClass].push(row);
   }
 
-  const heroes = HERO_CLASSES.map((heroClass) => {
+  const heroes = HERO_DEX_ORDER.map((heroClass) => {
     const baseline = getCatalogHeroCombatIdentity(heroClass);
     const override = disk.identities[heroClass];
     const effective = applyIdentityOverride(baseline, heroClass, override ?? null);
     const baseBaseline = getCatalogHeroBaseStats(heroClass);
     const baseOverride = disk.baseStats?.[heroClass];
     const baseEffective = applyBaseStatsOverride(baseBaseline, baseOverride ?? null);
+    const display = HERO_CLASS_DISPLAY[heroClass];
     return {
       heroClass,
-      ...HERO_CLASS_DISPLAY[heroClass],
+      ...display,
+      spriteUrl: heroSpriteUrlForLab(heroClass),
       identity: {
         heroClass,
         baseline: { ...baseline },

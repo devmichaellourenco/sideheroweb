@@ -2,7 +2,7 @@
 
 ## Status
 
-**Aceite:** 26/26 (100%) · auditoria 2026-08-11  
+**Aceite:** 27/27 (100%) · auditoria 2026-08-11  
 **Testes obrigatórios:** 19/19 presentes na suite
 
 ## Objetivo
@@ -18,7 +18,7 @@ Interface HTML5 itch.io (shell 960×740): battle strip 666×266 e menus no rodap
 - [x] Baú flutuante na batalha quando pendente
 - [x] Pausa loadout / hub: mapa embutido no `battle-field` (substitui overlay ACAMPAMENTO); após Continuar do resultado o mapa reaparece no hub
 - [x] Pausa de batalha (≠ acampamento): overlay PAUSA + Continuar; stats sempre no menu (abrem ao iniciar missão)
-- [x] Menu **Stats** (runa): painel **abaixo da batalha**; atualiza em tempo real; abas Geral | Dano | Cura | Sofrido | Mitigado | Críticos; abas Dano / Sofrido / Mitigado com ranking por tipo de dano; **Por skill** exibe CD com tooltip do cálculo (turns×s, level, CDR)
+- [x] Menu **Stats**: painel **abaixo da batalha**; atualiza em tempo real; abas Geral | Dano | Cura | Sofrido | Mitigado | Críticos; abas Dano / Sofrido / Mitigado com ranking por tipo de dano; **Por skill** exibe CD com tooltip do cálculo (turnos×s, level, CDR); tooltip do rail sem menção a janela destacada
 - [x] Compra de runa não gera Wow duplicado quando o mesmo evento já dispara unlock de herói/feature (`isUpgradePurchaseCoveredByStateChange`)
 - [x] Todos os menus da barra de sistemas (`SystemsMenuId`) abrem na própria página (overlays/sheets); sem janelas destacadas nem pin
 - [x] **Iniciar missão** no mapa inicia o combate na mesma página e abre **Estatísticas** automaticamente
@@ -29,13 +29,14 @@ Interface HTML5 itch.io (shell 960×740): battle strip 666×266 e menus no rodap
 - [x] Onboarding contextual pausa entre dicas (`OnboardingPolicy`); spotlight com furo no véu escuro no âncora (sem véu claro cobrindo o alvo); clone visual do âncora no overlay (`onboarding-anchor-clone`) para ícone/texto legíveis (ex.: Abrir baú); dica de runa (`first-upgrade`) só no acampamento (`canEditParty`), nunca no meio do combate
 - [x] Primeira sessão: após a cena de abertura, card **de boas-vindas** central (`variant: 'welcome'`, sem âncora) cujo CTA abre o mapa; em seguida o tutorial guiado do mapa (pinos → preview do local → Iniciar missão) com passos ancorados em `.campaign-mission-pin--main`, `.campaign-mission-popover` e `.campaign-phase-preview-start`. Passos do mapa só disparam com o mapa aberto (`OnboardingUiContext`) e param após a primeira fase concluída ou ao iniciar a primeira missão
 - [x] Barras de vida: heróis verdes, inimigos vermelhas; texto só da vida atual (negrito) sobre barra fina; tooltip com atual/máx; HP no deck da strip
-- [x] Barras de TTA: countdown regressivo (herói/inimigo) sobre a barra; tooltip com ASPD e cálculo `1÷ASPD`; cadência no painel Estatísticas e na ficha Status
+- [x] Barras de TTA: countdown regressivo (herói/inimigo) sobre a barra; tooltip com lead “Tempo entre ações”, ASPD e cálculo `1÷ASPD`; cadência no painel Estatísticas e na ficha Status
 - [x] Battle field: cena **666×266** (dobro da arte 333×133); deck HUD opaco (~50px) abaixo com HP + TTA + skills alinhados coluna a coluna; overlays de resultado/START cobrem cena + deck (Continuar no espaço do deck; sem scroll)
 - [x] Botão **Apoiar** no header (direita) abre card de doação voluntária; link Stripe em nova aba; jogo permanece 100% gratuito
 - [x] Heróis / Formação / Loja / Inventário / Baús só aparecem no **acampamento** (`canEditParty`)
 - [x] Pista de combate do mapa (ameaça/favorável) no tooltip da campanha e header do mapa; eficácia vs área nas stats de skill
 - [x] Splash `splash_screen.png` na abertura da página (≥5s) antes de tutorial/Wow/loop de batalha (`SplashScreenController`)
-- [x] Tooltips dos menus do rodapé usam portal RPG (`MenuTooltipBinder`) — pergaminho, selo ouro, categoria e flavor; sem `title` nativo do navegador
+- [x] Tooltips usam carta selada (`.game-tooltip`): pergaminho claro + moldura de tinta + ouro de selo, **independente** do tema do chrome; títulos em Cinzel; copy explica a mecânica (sem categoria Sistema/Ação/Registro); menus sem `title` nativo (`MenuTooltipBinder`); texto interno sempre `--tooltip-ink*` e destaques `--tooltip-better/--tooltip-worse` (tons densos no pergaminho, sem vazar o chrome escuro)
+- [x] Cartão **Iniciar missão** (`.campaign-mission-popover` / `.campaign-phase-preview`) usa a mesma superfície de carta; CTA permanece floresta
 
 ## Critérios — camp-missions (novos)
 
@@ -86,7 +87,7 @@ Interface HTML5 itch.io (shell 960×740): battle strip 666×266 e menus no rodap
 - [x] `SystemsMenuNavigation.test.ts` — disponibilidade por camp/unlock + wrap prev/next; segundo clique no rail fecha o sheet (mapa embutido não conta)
 - [x] `UiOverlayOrchestrator.test.ts` — prioridade e fila de overlays exclusivos
 - [x] `SplashScreenController.test.ts` — splash de abertura antes do loop
-- [x] `MenuTooltipBinder.test.ts`, `MenuTooltipPresentation.test.ts` — tooltips RPG dos menus
+- [x] `MenuTooltipBinder.test.ts`, `MenuTooltipPresentation.test.ts` — carta selada dos menus (sem categoria Sistema/Ação)
 - [x] `BattleHudDeckLayout.test.ts` — cena + deck HUD + palco central de sistemas + rail inferior (IDs, sem ícones nos sheets)
 - [x] `ActionTimeBarPresentation.test.ts` — countdown e tooltip de cálculo TTA
 - [x] `BattleVictoryFlow.test.ts` — clear/defeat revelam detalhes (sem headline) e aguardam Continuar; wave-clear auto-dismiss
